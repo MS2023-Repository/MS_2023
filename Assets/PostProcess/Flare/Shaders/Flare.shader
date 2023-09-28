@@ -4,7 +4,7 @@
     {
         _MainTex ("Texture", 2D) = "white" {}
     }
-HLSLINCLUDE
+    HLSLINCLUDE
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
     #include "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
 
@@ -14,6 +14,26 @@ HLSLINCLUDE
     float4 _FlareColor;
     float4 _ParaVector;
     float4 _ParaColor;
+
+    struct appdata
+    {
+        float4 positionOS : POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct v2f
+    {
+        float4 positionCS : SV_POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    v2f vert(appdata input)
+    {
+        v2f output;
+        output.positionCS = TransformObjectToHClip(input.positionOS);
+        output.uv = input.uv;
+        return output;
+    }
 
     half3 ApplyFlare(half3 color, float2 screenPos)
     {
@@ -27,18 +47,21 @@ HLSLINCLUDE
         return color;
     }
 
-    half4 Frag(Varyings input) : SV_Target
+    half4 Frag(v2f input) : SV_Target
     {
-        half4 color = SAMPLE_TEXTURE2D_X(_MainTex, sampler_LinearClamp , input.uv);
+        half4 color = SAMPLE_TEXTURE2D_X(_MainTex, sampler_LinearClamp, input.uv);
         color.rgb = ApplyFlare(color.rgb, (input.uv - 0.5) * 2.0);
 
         return color;
     }
-ENDHLSL
-    
+    ENDHLSL
+
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"}
+        Tags
+        {
+            "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"
+        }
         LOD 100
         ZTest Always ZWrite Off Cull Off
 
@@ -47,8 +70,8 @@ ENDHLSL
             Name "Flare"
 
             HLSLPROGRAM
-                #pragma vertex Vert
-                #pragma fragment Frag
+            #pragma vertex vert
+            #pragma fragment Frag
             ENDHLSL
         }
     }

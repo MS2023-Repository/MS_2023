@@ -26,8 +26,11 @@ namespace Toguchi.Rendering
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            _pass.Setup(renderer.cameraColorTarget);
             renderer.EnqueuePass(_pass);
+        }
+        public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData)
+        {
+            _pass.Setup(renderer.cameraColorTarget);
         }
     }
 }
