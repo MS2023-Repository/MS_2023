@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    renderPassEvent: 550
+    renderPassEvent: 500
     shader: {fileID: 4800000, guid: 08a08896ba4da814a9fe49e0e3d48376, type: 3}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
@@ -71,7 +71,9 @@ MonoBehaviour:
   - {fileID: -1878332245247344467}
   - {fileID: 4067866202130889071}
   - {fileID: -2243437078301573532}
-  m_RendererFeatureMap: adc0de57c6d2eee56f39d423c2f6733864fee40fddb5dde0
+  - {fileID: 1504867239843859651}
+  - {fileID: 4098645797286201108}
+  m_RendererFeatureMap: adc0de57c6d2eee56f39d423c2f6733864fee40fddb5dde0c30c0411c85ce21414476417a350e138
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -114,6 +116,22 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &1504867239843859651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b5ecde360e82241b7c7b7cd0b0e3ed, type: 3}
+  m_Name: GradientFog
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    renderPassEvent: 550
+    shader: {fileID: 4800000, guid: bc740dd5a7d89d048809a75fadc45455, type: 3}
 --- !u!114 &4067866202130889071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,3 +148,19 @@ MonoBehaviour:
   settings:
     renderPassEvent: 550
     shader: {fileID: 4800000, guid: 1e5d32f2abcb28348a88eb63af4b3746, type: 3}
+--- !u!114 &4098645797286201108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74e9a7bb399453594372c3d0f455279, type: 3}
+  m_Name: LightShaftPass
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    renderPassEvent: 550
+    shader: {fileID: 4800000, guid: fbe2fb8a28c74fa4b0c80dbbc0360d4e, type: 3}

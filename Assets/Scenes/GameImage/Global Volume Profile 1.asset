@@ -47,6 +47,26 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-5234985378345673099
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d146ea0b8c76d47ba27a63f2f8d2e8, type: 3}
+  m_Name: GradientFog
+  m_EditorClassIdentifier: 
+  active: 0
+  gradientTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: e975ff9d41bed1741ae85110ad74be22, type: 3}
+    dimension: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.409
 --- !u!114 &-3836686704142972583
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -65,7 +85,7 @@ MonoBehaviour:
     m_Value: 8.8
   intensity:
     m_OverrideState: 1
-    m_Value: 0.068
+    m_Value: 0.099
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +107,33 @@ MonoBehaviour:
   - {fileID: 1506419444523660000}
   - {fileID: -3836686704142972583}
   - {fileID: 5068819294965980271}
+  - {fileID: -5234985378345673099}
+  - {fileID: 269288563886468919}
+--- !u!114 &269288563886468919
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f3adaab4db4f8f9fbc58713914aa1b, type: 3}
+  m_Name: LightShaft
+  m_EditorClassIdentifier: 
+  active: 1
+  maxIterations:
+    m_OverrideState: 1
+    m_Value: 730
+  maxDistance:
+    m_OverrideState: 1
+    m_Value: 16.6
+  minDistance:
+    m_OverrideState: 1
+    m_Value: 15.2
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.581
 --- !u!114 &914996696481234235
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -99,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
     m_Value: 0.08
@@ -127,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c592f8609bbaa404b8c91d85a7293970, type: 3}
   m_Name: Flare
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   flareColor:
     m_OverrideState: 1
     m_Value: {r: 0.9811321, g: 0.6165016, b: 0.14346743, a: 1}
@@ -164,7 +211,7 @@ MonoBehaviour:
     m_Value: 0.4
   contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 11.4
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
