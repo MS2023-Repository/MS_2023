@@ -4,8 +4,8 @@ Shader "Hidden/Toguchi/PostProcessing/LightShaft"
     {
         _MainTex ("Texture", 2D) = "white" {}
     }
-    
-HLSLINCLUDE
+
+    HLSLINCLUDE
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
     #include "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
@@ -29,12 +29,32 @@ HLSLINCLUDE
 
     struct RayVaryings
     {
-        float4 positionCS    : SV_POSITION;
-        float2 uv            : TEXCOORD0;
-        float4 ray           : TEXCOORD1;
+        float4 positionCS : SV_POSITION;
+        float2 uv : TEXCOORD0;
+        float4 ray : TEXCOORD1;
     };
 
-    RayVaryings Vert_Ray(Attributes input)
+    struct appdata
+    {
+        float4 positionOS : POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct v2f
+    {
+        float4 positionCS : SV_POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    v2f vert(appdata input)
+    {
+        v2f output;
+        output.positionCS = TransformObjectToHClip(input.positionOS);
+        output.uv = input.uv;
+        return output;
+    }
+
+    RayVaryings Vert_Ray(appdata input)
     {
         RayVaryings output;
         output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
@@ -42,7 +62,7 @@ HLSLINCLUDE
 
         int index = output.uv.x + 2 * output.uv.y;
         output.ray = _CamFrustum[index];
-        
+
         return output;
     }
 
@@ -54,25 +74,26 @@ HLSLINCLUDE
     half4 SimpleRaymarching(float3 rayOrigin, float3 rayDirection, float depth)
     {
         half4 result = float4(_MainLightColor.xyz, 1) * _Intensity;
-        
+
         float step = _MaxDistance / _MaxIterations;
         float t = _MinDistance + step * GetRandomNumber(rayDirection, _Time.y * 100);
         // float t = _MinDistance;
         float alpha = 0;
 
-        for(int i = 0; i < _MaxIterations; i++)
+        for (int i = 0; i < _MaxIterations; i++)
         {
-            if(t > _MaxDistance || t >= depth)
+            if (t > _MaxDistance || t >= depth)
             {
                 break;
             }
-            
+
             float3 p = rayOrigin + rayDirection * t;
             // float d = DistanceField(p);
 
             float4 shadowCoord = TransformWorldToShadowCoord(p);
-            float shadow = SAMPLE_TEXTURE2D_SHADOW(_MainLightShadowmapTexture, sampler_MainLightShadowmapTexture, shadowCoord);
-            if(shadow >= 1)
+            float shadow = SAMPLE_TEXTURE2D_SHADOW(_MainLightShadowmapTexture, sampler_MainLightShadowmapTexture,
+      shadowCoord);
+            if (shadow >= 1)
             {
                 alpha += step * 0.2;
             }
@@ -94,24 +115,27 @@ HLSLINCLUDE
         float3 rayOrigin = _CamWorldSpace;
         float3 rayDir = normalize(input.ray);
         float4 result = SimpleRaymarching(rayOrigin, rayDir, depth);
-        
+
         return result;
     }
 
     half4 Frag_Combine(Varyings input) : SV_Target
     {
-        half4 color = SAMPLE_TEXTURE2D_X(_MainTex, sampler_LinearClamp , input.uv);
-        half4 shaft = SAMPLE_TEXTURE2D_X(_LightShaftTempTex, sampler_LinearClamp, input.uv);
+        half4 color = SAMPLE_TEXTURE2D_X(_MainTex, sampler_LinearClamp, input.texcoord);
+        half4 shaft = SAMPLE_TEXTURE2D_X(_LightShaftTempTex, sampler_LinearClamp, input.texcoord);
 
         color.rgb = color.rgb * (1 - shaft.a) + shaft.rgb * shaft.a;
-        
+
         return color;
     }
-ENDHLSL
-    
+    ENDHLSL
+
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"}
+        Tags
+        {
+            "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline"
+        }
         LOD 100
         ZTest Always ZWrite Off Cull Off
 
@@ -120,18 +144,18 @@ ENDHLSL
             Name "GradientFog"
 
             HLSLPROGRAM
-                #pragma vertex Vert_Ray
-                #pragma fragment Frag
+            #pragma vertex Vert_Ray
+            #pragma fragment Frag
             ENDHLSL
         }
-        
+
         Pass
         {
             Name "Combine"
-            
+
             HLSLPROGRAM
-                #pragma vertex Vert
-                #pragma fragment Frag_Combine
+            #pragma vertex vert
+            #pragma fragment Frag_Combine
             ENDHLSL
         }
     }
