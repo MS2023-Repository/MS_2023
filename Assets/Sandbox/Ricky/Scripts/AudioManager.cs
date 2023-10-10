@@ -2,22 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public partial class Managers : MonoBehaviour
 {
-    private static AudioManager _instance;
-
-    public static AudioManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                Debug.LogError("AudioManager is null");
-            }
-            return _instance;
-        }
-    }
-
     public struct SoundClip
     {
         public AudioClip clip;
@@ -32,18 +18,24 @@ public class AudioManager : MonoBehaviour
 
     private void Awake() 
     {
-        _instance = this;
+        DontDestroyOnLoad(this);
     }
 
     // Start is called before the first frame update
-    void Start()
+    void SoundInit()
     {
         bgmAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
         seAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
+
+        bgmAudioSource.loop = true;
+        bgmAudioSource.clip = bgmClips[0].clip;
+        bgmAudioSource.volume = bgmClips[0].volume;
+
+        bgmAudioSource.Play();
     }
 
     // Update is called once per frame
-    void Update()
+    void SoundUpdate()
     {
         
     }
