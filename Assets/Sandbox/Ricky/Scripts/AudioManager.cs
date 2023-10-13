@@ -2,46 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class Managers : MonoBehaviour
+namespace OutGame.Audio
 {
-    public struct SoundClip
+    public class AudioManager : MonoBehaviour
     {
-        public AudioClip clip;
-        public float volume;
-    }
+        public static AudioManager instance { get; private set; }
 
-    private AudioSource bgmAudioSource;
-    private AudioSource seAudioSource;
+        public struct SoundClip
+        {
+            public string name;
+            public AudioClip clip;
+            public float volume;
+        }
 
-    public SoundClip[] seClips;
-    public SoundClip[] bgmClips;
+        private AudioSource bgmAudioSource;
+        private AudioSource seAudioSource;
 
-    private void Awake() 
-    {
-        DontDestroyOnLoad(this);
-    }
+        public SoundClip[] seClips;
+        public SoundClip[] bgmClips;
 
-    // Start is called before the first frame update
-    void SoundInit()
-    {
-        bgmAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
-        seAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                instance = this;
+            }
 
-        bgmAudioSource.loop = true;
-        bgmAudioSource.clip = bgmClips[0].clip;
-        bgmAudioSource.volume = bgmClips[0].volume;
+            DontDestroyOnLoad(this);
+        }
 
-        bgmAudioSource.Play();
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            bgmAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
+            seAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
 
-    // Update is called once per frame
-    void SoundUpdate()
-    {
-        
-    }
+            bgmAudioSource.loop = true;
+            bgmAudioSource.clip = bgmClips[0].clip;
+            bgmAudioSource.volume = bgmClips[0].volume;
 
-    public void PlaySE(SoundClip insertedClip)
-    {
-        seAudioSource.PlayOneShot(insertedClip.clip, insertedClip.volume);
+            bgmAudioSource.Play();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void PlaySE(string clipName)
+        {
+            foreach (var clip in seClips)
+            {
+                if (clip.name == clipName)
+                {
+                    seAudioSource.PlayOneShot(clip.clip, clip.volume);
+                    break;
+                }
+            }
+
+            Debug.LogError("No coressponding SE clip found");
+        }
     }
 }

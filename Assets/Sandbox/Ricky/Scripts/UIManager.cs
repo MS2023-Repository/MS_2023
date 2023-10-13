@@ -3,28 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+namespace OutGame.UI
 {
-    [HideInInspector] public static UIManager instance { get; private set; }
-
-    [SerializeField] private GameObject[] UIElements;
-
-    private void Awake()
+    public class UIManager : MonoBehaviour
     {
+        [SerializeField] private GameObject[] UIElements;
+        [SerializeField] private GameObject canvasPrefab;
 
+        private GameObject canvasObj;
 
-        DontDestroyOnLoad(this);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            CheckForCanvas();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+            foreach (var element in UIElements) 
+            {
+                var newUI = Instantiate(element, canvasObj.transform);
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update is called once per frame
+        void Update()
+        {
+            CheckForCanvas();
+        }
+
+        private void CheckForCanvas()
+        {
+            if (GameObject.Find("Canvas") != null)
+            {
+                canvasObj = GameObject.Find("Canvas");
+            }
+            else
+            {
+                canvasObj = Instantiate(canvasPrefab);
+                canvasObj.name = "Canvas";
+            }
+        }
     }
 }
