@@ -103,6 +103,26 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-6169605632581062673
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d146ea0b8c76d47ba27a63f2f8d2e8, type: 3}
+  m_Name: GradientFog
+  m_EditorClassIdentifier: 
+  active: 1
+  gradientTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 12cfe2560140b504686b0fa9816c6f26, type: 3}
+    dimension: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.562
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +141,8 @@ MonoBehaviour:
   - {fileID: -8219643373668467239}
   - {fileID: 287131324703688368}
   - {fileID: 6550253773727134893}
+  - {fileID: -6169605632581062673}
+  - {fileID: 4755914783920555062}
 --- !u!114 &287131324703688368
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -161,6 +183,31 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+--- !u!114 &4755914783920555062
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f3adaab4db4f8f9fbc58713914aa1b, type: 3}
+  m_Name: LightShaft
+  m_EditorClassIdentifier: 
+  active: 1
+  maxIterations:
+    m_OverrideState: 1
+    m_Value: 696
+  maxDistance:
+    m_OverrideState: 1
+    m_Value: 13.2
+  minDistance:
+    m_OverrideState: 1
+    m_Value: 0.4
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.284
 --- !u!114 &6550253773727134893
 MonoBehaviour:
   m_ObjectHideFlags: 3
