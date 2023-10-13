@@ -46,6 +46,15 @@ namespace OutGame.Audio
             bgmAudioSource.volume = bgmClips[0].volume;
 
             bgmAudioSource.Play();
+
+            var audioObjs = GameObject.FindObjectsOfType<AudioListener>();
+            foreach (var current in audioObjs)
+            {
+                if (current.name != "MainCamera")
+                {
+                    Destroy(current);
+                }
+            }
         }
 
         // Update is called once per frame

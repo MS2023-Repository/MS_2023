@@ -32,7 +32,19 @@ namespace OutGame.SceneManager
         // Start is called before the first frame update
         void Start()
         {
-            ResetLoadingScreen();
+            SceneManager.activeSceneChanged += ResetLoadingScreen;
+
+            if (GameObject.Find("LoadingScreen") == null)
+            {
+                loadingObj = Instantiate(loadingScreenObj);
+                loadingObj.name = "LoadingScreen";
+                loadingObj.SetActive(false);
+            }
+            else
+            {
+                loadingObj = GameObject.Find("LoadingScreen");
+                loadingObj.SetActive(false);
+            }
         }
 
         // Update is called once per frame
@@ -43,10 +55,9 @@ namespace OutGame.SceneManager
                 LoadScene("SampleScene");
             }
 
-            ResetLoadingScreen();
-
             if (loadingObj.transform.parent == null)
             {
+                Debug.Log("asdasda");
                 if (GameObject.Find("Canvas") != null)
                 {
                     loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);
@@ -74,11 +85,12 @@ namespace OutGame.SceneManager
             loadingObj.SetActive(false);
         }
 
-        private void ResetLoadingScreen()
+        private void ResetLoadingScreen(Scene current, Scene next)
         {
             if (GameObject.Find("LoadingScreen") == null)
             {
                 loadingObj = Instantiate(loadingScreenObj);
+                loadingObj.name = "LoadingScreen";
                 loadingObj.SetActive(false);
             }
             else
@@ -86,7 +98,6 @@ namespace OutGame.SceneManager
                 loadingObj = GameObject.Find("LoadingScreen");
                 loadingObj.SetActive(false);
             }
-
         }
     }
 }

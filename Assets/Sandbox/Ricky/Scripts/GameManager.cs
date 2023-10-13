@@ -2,38 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace OutGame.GameManager
 {
-    // マネージャーのシングルトン変数
-    private static GameManager _instance;
-
-    // マネージャーのシングルトン（参照用）
-    public static GameManager Instance
+    public class GameManager : MonoBehaviour
     {
-        get
+        // �}�l�[�W���[�̃V���O���g��
+        public static GameManager instance { get; private set; }
+
+        public int collectedItems { get; private set; }
+        private int maxItems;
+
+        public float GetCollectedItemPercentage()
         {
-            if (_instance == null)
-            {
-                Debug.LogError("GameManager is null");
-            }
-            return _instance;
+            float num = (float)collectedItems / (float)maxItems;
+            return num;
         }
-    }
 
-    private void Awake() 
-    {
-        _instance = this;
-    }
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                instance = this;
+            }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+            DontDestroyOnLoad(this);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+            collectedItems = 0;
+
+            maxItems = 10;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                collectedItems++;
+            }
+        }
     }
 }
