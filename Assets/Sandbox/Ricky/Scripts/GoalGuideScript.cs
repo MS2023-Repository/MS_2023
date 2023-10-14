@@ -37,18 +37,18 @@ namespace InGame.GoalGuide
             {
                 if (scaleScalar < 3.45f)
                 {
-                    scaleScalar = Mathf.MoveTowards(scaleScalar, 3.45f, TimeManager.instance.deltaTime / 2.0f);
+                    scaleScalar = Mathf.MoveTowards(scaleScalar, 3.45f, TimeManager.instance.deltaTime);
                 }
                 else
                 {
-                    realProgressNum = Mathf.MoveTowards(realProgressNum, progressNum, TimeManager.instance.deltaTime / 8.0f);
+                    realProgressNum = Mathf.MoveTowards(realProgressNum, progressNum, TimeManager.instance.deltaTime / 6.0f);
 
                     fullProgress.fillAmount = realProgressNum;
                 }
             }
             else
             {
-                scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime / 2.0f);
+                scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime);
             }
 
             transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
