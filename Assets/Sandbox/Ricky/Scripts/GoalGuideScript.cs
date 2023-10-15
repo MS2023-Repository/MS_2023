@@ -76,16 +76,15 @@ namespace InGame.GoalGuide
 
             if (Physics.Raycast(cameraObj.transform.position, dir.normalized, out hit, Mathf.Infinity))
             {
-                Debug.Log(hit.transform.name);
                 if (hit.transform.gameObject.tag == "Goal")
                 {
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(1).gameObject.SetActive(false);
+                    //transform.GetChild(0).gameObject.SetActive(false);
+                    //transform.GetChild(1).gameObject.SetActive(false);
                 }
                 else
                 {
-                    transform.GetChild(0).gameObject.SetActive(true);
-                    transform.GetChild(1).gameObject.SetActive(true);
+                    //transform.GetChild(0).gameObject.SetActive(true);
+                    //transform.GetChild(1).gameObject.SetActive(true);
                 }
             }
 
