@@ -30,7 +30,7 @@ namespace InGame.GoalGuide
 
             scaleScalar = 3.15f;
 
-            cameraObj = Camera.main.transform.GetChild(0).gameObject;
+            cameraObj = Camera.main.gameObject;
             goalObj = GameObject.FindGameObjectWithTag("Goal");
         }
 
