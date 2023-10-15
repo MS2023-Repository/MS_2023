@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Goal
+  - CollectibleObject
+  - Cage
+  - GoalHolePoint
   layers:
   - Default
   - TransparentFX
