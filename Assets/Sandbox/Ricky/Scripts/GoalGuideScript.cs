@@ -30,7 +30,7 @@ namespace InGame.GoalGuide
 
             scaleScalar = 3.15f;
 
-            cameraObj = Camera.main.transform.GetChild(0).gameObject;
+            cameraObj = Camera.main.gameObject;
             goalObj = GameObject.FindGameObjectWithTag("Goal");
         }
 
@@ -89,7 +89,6 @@ namespace InGame.GoalGuide
             }
 
             screenDir *= 1200.0f;
-            screenDir *= 1.3f;
 
             screenDir.y = Mathf.Clamp(screenDir.y, -355, 355);
             screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
