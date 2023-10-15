@@ -76,7 +76,8 @@ namespace InGame.GoalGuide
 
             if (Physics.Raycast(cameraObj.transform.position, dir.normalized, out hit, Mathf.Infinity))
             {
-                if (hit.transform.gameObject == goalObj)
+                Debug.Log(hit.transform.name);
+                if (hit.transform.gameObject.tag == "Goal")
                 {
                     transform.GetChild(0).gameObject.SetActive(false);
                     transform.GetChild(1).gameObject.SetActive(false);
@@ -94,8 +95,6 @@ namespace InGame.GoalGuide
             screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
 
             this.GetComponent<RectTransform>().anchoredPosition = screenDir;
-
-            
         }
     }
 }
