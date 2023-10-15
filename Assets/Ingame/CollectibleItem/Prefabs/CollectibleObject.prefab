@@ -4853,12 +4853,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2686753135783046444}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7737366883079249888}
+  m_Father: {fileID: 2485427811699893548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5300800428526819188
 BoxCollider:
@@ -4995,7 +4995,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2485427811699893548}
-  - {fileID: 6177323225491165748}
   - {fileID: 1218741717721882044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5137,6 +5136,7 @@ Transform:
   m_Children:
   - {fileID: 1290109035604801766}
   - {fileID: 7606640665788661667}
+  - {fileID: 6177323225491165748}
   m_Father: {fileID: 7737366883079249888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3473611623263315322
@@ -5152,5 +5152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveDistance: 0.04
-  rotateEnabled: 1
+  EaseDuration: 1
+  isHitGroundEnabled: 1
   rotationSpeed: 45
+  suctionSpeed: 2
