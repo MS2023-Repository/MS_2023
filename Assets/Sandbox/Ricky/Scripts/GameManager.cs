@@ -12,7 +12,7 @@ namespace OutGame.GameManager
         private int collectedItems;
         private int maxItems;
 
-        private void AddCollectedItems(int num)
+        public void AddCollectedItems(int num)
         {
             collectedItems += num;
         }
