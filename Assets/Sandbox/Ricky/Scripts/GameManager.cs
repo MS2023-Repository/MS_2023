@@ -9,8 +9,13 @@ namespace OutGame.GameManager
         // マネージャーのシングルトン
         public static GameManager instance { get; private set; }
 
-        public int collectedItems { get; private set; }
+        private int collectedItems;
         private int maxItems;
+
+        private void AddCollectedItems(int num)
+        {
+            collectedItems += num;
+        }
 
         public float GetCollectedItemPercentage()
         {
@@ -43,10 +48,10 @@ namespace OutGame.GameManager
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                collectedItems++;
-            }
+            //if (Input.GetKeyDown(KeyCode.UpArrow))
+            //{
+            //    collectedItems++;
+            //}
         }
     }
 }

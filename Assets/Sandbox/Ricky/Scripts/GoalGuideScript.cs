@@ -19,6 +19,9 @@ namespace InGame.GoalGuide
 
         private float scaleScalar;
 
+        private GameObject cameraObj;
+        private GameObject goalObj;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,6 +29,9 @@ namespace InGame.GoalGuide
             realProgressNum = 0;
 
             scaleScalar = 3.15f;
+
+            cameraObj = Camera.main.transform.GetChild(0).gameObject;
+            goalObj = GameObject.FindGameObjectWithTag("Goal");
         }
 
         // Update is called once per frame
@@ -52,6 +58,45 @@ namespace InGame.GoalGuide
             }
 
             transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
+        }
+
+        private void FixedUpdate()
+        {
+            UpdatePosition();
+        }
+
+        void UpdatePosition()
+        {
+            Vector3 dir = goalObj.transform.position - cameraObj.transform.position;
+            Vector2 screenDir = new Vector2(dir.x, dir.z);
+
+            screenDir.Normalize();
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(cameraObj.transform.position, dir.normalized, out hit, Mathf.Infinity))
+            {
+                if (hit.transform.gameObject == goalObj)
+                {
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(1).gameObject.SetActive(false);
+                }
+                else
+                {
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    transform.GetChild(1).gameObject.SetActive(true);
+                }
+            }
+
+            screenDir *= 1200.0f;
+            screenDir *= 1.3f;
+
+            screenDir.y = Mathf.Clamp(screenDir.y, -355, 355);
+            screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
+
+            this.GetComponent<RectTransform>().anchoredPosition = screenDir;
+
+            
         }
     }
 }

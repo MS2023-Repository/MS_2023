@@ -57,7 +57,6 @@ namespace OutGame.SceneManager
 
             if (loadingObj.transform.parent == null)
             {
-                Debug.Log("asdasda");
                 if (GameObject.Find("Canvas") != null)
                 {
                     loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);

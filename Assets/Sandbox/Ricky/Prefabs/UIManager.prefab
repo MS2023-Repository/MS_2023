@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf4cc8477e830740984d420d014ec79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIElements: []
+  canvasPrefab: {fileID: 7524670629885771101, guid: 23e14ee8bed760f4ab9b75ac17bf9144,
+    type: 3}
