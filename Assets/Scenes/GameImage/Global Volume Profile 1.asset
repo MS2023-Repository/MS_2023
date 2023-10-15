@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c592f8609bbaa404b8c91d85a7293970, type: 3}
   m_Name: Flare
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   flareColor:
     m_OverrideState: 1
     m_Value: {r: 0.9811321, g: 0.6165016, b: 0.14346743, a: 1}

@@ -7,6 +7,8 @@ TagManager:
   - Goal
   - CollectibleObject
   - Box
+  - Cage
+  - GoalHolePoint
   layers:
   - Default
   - TransparentFX
