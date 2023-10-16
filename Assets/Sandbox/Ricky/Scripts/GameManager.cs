@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace OutGame.GameManager
@@ -42,7 +43,7 @@ namespace OutGame.GameManager
         {
             collectedItems = 0;
 
-            maxItems = 10;
+            maxItems = GameObject.FindGameObjectsWithTag("CollectibleObject").Count();
         }
 
         // Update is called once per frame

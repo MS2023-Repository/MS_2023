@@ -72,8 +72,10 @@ namespace InGame.CollectibleItem
         {
             if (!_beingSucked)
             {
+                this.transform.GetChild(0).GetComponent<Collider>().enabled = true;
                 if (!pickedUp)
                 {
+                    this.transform.GetComponent<Rigidbody>().useGravity = false;
                     float elapsedTime = Time.time - _startTime;
                     float t = Mathf.SmoothStep(0, 1, elapsedTime / EaseDuration);
 
@@ -94,6 +96,8 @@ namespace InGame.CollectibleItem
             }
             else
             {
+                this.transform.GetComponent<Rigidbody>().useGravity = false;
+                this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
                 RotateAroundXZPlane(transform.position, _goalPosition, rotationAroundGoalDistance);
                 // "Goal"に向かって徐々に移動
                 float step = suctionSpeed * Time.deltaTime;
@@ -140,7 +144,6 @@ namespace InGame.CollectibleItem
 
             if (other.gameObject.tag == "Player")
             {
-                Debug.Log(other.gameObject.name);
                 StartCoroutine(PickUpObject(other.gameObject));
             }
         }
@@ -198,8 +201,10 @@ namespace InGame.CollectibleItem
         {
             if (!pickedUp)
             {
-                this.transform.parent.position = playerObj.transform.position + new Vector3(0, 1, 0);
-                this.transform.parent.GetComponent<Rigidbody>().useGravity = true;
+                this.transform.position = playerObj.transform.parent.position + new Vector3(0, 0.5f, 0);
+                this.transform.GetComponent<Rigidbody>().useGravity = true;
+
+                this.transform.GetChild(1).gameObject.SetActive(false);
 
                 yield return new WaitForSeconds(0.5f);
 
