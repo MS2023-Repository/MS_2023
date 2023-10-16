@@ -21,13 +21,13 @@ namespace InGame.Player
             // TextObjects ‚Ì”ˆÈã‚Ìî•ñ‚ÍÚ‚¹‚ç‚ê‚È‚¢‚Ì‚ÅA­‚È‚¢•û‚Ì”‚Å for ‚·‚é
             for (int i = 0; i < Gamepad.all.Count; i++)
             {
-                //Debug.Log(Gamepad.all.Count);
+                Debug.Log(Gamepad.all.Count);
                 var gamepad = Gamepad.all[i];
 
                 if (Gamepad.all.Count == 1)
                 {
                     i = 1;
-                    //Debug.Log(i);
+                    Debug.Log(i);
                 }
 
                 // ‘€ì‚³‚ê‚½ƒ{ƒ^ƒ“‚È‚Ç‚Ìî•ñ‚ğæ“¾
