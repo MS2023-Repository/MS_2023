@@ -13,6 +13,8 @@ namespace OutGame.InputManager
 
         private MainInputControls inputControls;
 
+        private bool inGameState;
+
         private void Awake() 
         {
             if (instance != null && instance != this)
@@ -28,21 +30,45 @@ namespace OutGame.InputManager
         // Start is called before the first frame update
         void Start()
         {
+            inputControls.PauseMenu.Disable();
+
             if (SceneManager.GetActiveScene().name.Contains("Level"))
             {
                 inputControls.Player.Enable();
-                inputControls.PauseMenu.Disable();
+                inputControls.Menu.Disable();
+
+                inGameState = true;
             }
             else
             {
-                
+                inputControls.Menu.Enable();
+                inputControls.Player.Disable();
+
+                inGameState = false;
             }
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (inGameState)
+            {
+                GameUpdate();
+            }
+            else
+            {
+                MenuUpdate();
+            }
+        }
+
+        private void GameUpdate()
+        {
             
+        }
+
+        private void MenuUpdate()
+        {
+
         }
     }
 }
