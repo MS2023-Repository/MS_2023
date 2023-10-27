@@ -582,7 +582,7 @@ namespace UnityEditor.Rendering.Toon
         //Specify only those that use the m_MaterialEditor method as their UI. For specifying textures and colors on a single line.
         private static class Styles
         {
-            public static readonly GUIContent shaderFoldout = EditorGUIUtility.TrTextContent("Shader Settings", "Shader Settings provides basic settings that are not specific to  cel-shading but are needed for general CG.");
+            public static readonly GUIContent shaderFoldout = EditorGUIUtility.TrTextContent("ShaderSettings", "ShaderSetting provides basic settings that are not specific to  cel-shading but are needed for general CG.");
             public static readonly GUIContent basicColorFoldout = EditorGUIUtility.TrTextContent("Three Color and Control Map Settings", "Three Color Map and Control Map Settings provide very basic settings for cel-shading in Unity Toon Shader.");
             public static readonly GUIContent shadingStepAndFeatherFoldout = EditorGUIUtility.TrTextContent("Shading Step and Feather Settings", "Basic 3 color step and feather settings.");
             public static readonly GUIContent normalMapFoldout = EditorGUIUtility.TrTextContent("Normal Map Settings", "Normal Map settings. Normal Map itself and its effectiveness to some areas.");
