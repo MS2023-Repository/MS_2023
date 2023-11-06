@@ -4,22 +4,23 @@ using UnityEngine;
 
 namespace OutGame.Audio
 {
+    [System.Serializable]
+    public struct SoundClip
+    {
+        public string name;
+        public AudioClip clip;
+        public float volume;
+    }
+
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager instance { get; private set; }
 
-        public struct SoundClip
-        {
-            public string name;
-            public AudioClip clip;
-            public float volume;
-        }
-
         private AudioSource bgmAudioSource;
         private AudioSource seAudioSource;
 
-        public SoundClip[] seClips;
-        public SoundClip[] bgmClips;
+        [SerializeField] private SoundClip[] SEClips;
+        [SerializeField] private SoundClip[] BGMClips;
 
         private void Awake()
         {
@@ -42,10 +43,6 @@ namespace OutGame.Audio
             seAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
 
             bgmAudioSource.loop = true;
-            bgmAudioSource.clip = bgmClips[0].clip;
-            bgmAudioSource.volume = bgmClips[0].volume;
-
-            bgmAudioSource.Play();
 
             var audioObjs = GameObject.FindObjectsOfType<AudioListener>();
             foreach (var current in audioObjs)
@@ -65,7 +62,7 @@ namespace OutGame.Audio
 
         public void PlaySE(string clipName)
         {
-            foreach (var clip in seClips)
+            foreach (var clip in SEClips)
             {
                 if (clip.name == clipName)
                 {
