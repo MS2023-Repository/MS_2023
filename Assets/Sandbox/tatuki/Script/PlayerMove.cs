@@ -5,93 +5,72 @@ using UnityEngine;
 
 namespace InGame.Player
 {
-
     public class PlayerMove : MonoBehaviour
     {
+        public enum MoveDirection
+        {
+            Left,
+            Right,
+            Forward,
+            Back,
+        }
+
         //プレイヤーオブジェクト
         [SerializeField] private GameObject[] player;
 
-        // 更新はフレームごとに1回呼び出されます
-        void Update()
+        public void MoveLStick(int playerNum, Vector2 stickValue)
         {
-            Vector3 Pos;
+            Vector3 tempPos;
+            tempPos = player[playerNum].transform.position;
+            tempPos.x += stickValue.x * Time.deltaTime;
+            tempPos.z += stickValue.y * Time.deltaTime;
+            player[playerNum].transform.position = tempPos;
+        }
 
-            // コントローラー操作
-            // Gamepad.all で接続されているすべてのゲームパッドを列挙できる
-            // TextObjects の数以上の情報は載せられないので、少ない方の数で for する
-            for (int i = 0; i < Gamepad.all.Count; i++)
+        public void MoveKeyboard(int playerNum, MoveDirection direction)
+        {
+            Vector3 tempPos;
+            tempPos = player[playerNum].transform.position;
+
+            switch (direction)
             {
-                Debug.Log(Gamepad.all.Count);
-                var gamepad = Gamepad.all[i];
-
-                if (Gamepad.all.Count == 1)
-                {
-                    i = 1;
-                    Debug.Log(i);
-                }
-
-                // 操作されたボタンなどの情報を取得
-                var leftStickValue = gamepad.leftStick.ReadValue();
-                var rightStickValue = gamepad.rightStick.ReadValue();
-                var dpadValue = gamepad.dpad.ReadValue();
-
-                Pos = player[i].transform.position;
-
-                //左スティック
-                if (leftStickValue.magnitude > 0f)
-                {
-                    Vector2 stickValue = leftStickValue.normalized;
-                    Pos.x += stickValue.x * Time.deltaTime;
-                    Pos.z += stickValue.y * Time.deltaTime;
-                    player[i].transform.position = Pos;
-                }
-
-                var leftTriggerValue = gamepad.leftTrigger.ReadValue();
-                var rightTriggerValue = gamepad.rightTrigger.ReadValue();
-
-                if (leftTriggerValue > 0 || rightTriggerValue > 0)
-                {
-
-                }
+                case MoveDirection.Left:
+                    tempPos.x -= Time.deltaTime;
+                    break;
+                case MoveDirection.Right:
+                    tempPos.x += Time.deltaTime;
+                    break;
+                case MoveDirection.Forward:
+                    tempPos.z += Time.deltaTime;
+                    break;
+                case MoveDirection.Back:
+                    tempPos.z -= Time.deltaTime;
+                    break;
             }
+            player[playerNum].transform.position = tempPos;
+        }
 
-            // キーボード操作
-            // 現在のキーボード情報
-            var current = Keyboard.current;
 
-            // キーボード接続チェック
-            if (current == null)
+        public void PlayerPosCorrection(float minDistance,float maxDistance)
+        {
+            Vector3 posPl1 = player[0].transform.position;
+            Vector3 posPl2 = player[1].transform.position;
+
+            float distancePlayer = Vector3.Distance(posPl1, posPl2);
+
+            Vector3 vec1 = (posPl2 - posPl1).normalized;
+            Vector3 vec2 = (posPl1 - posPl2).normalized;
+
+            if (distancePlayer > maxDistance)
             {
-                // キーボードが接続されていないと
-                // Keyboard.currentがnullになる
-                return;
+                player[0].transform.position += vec1 * Time.deltaTime;
+                player[1].transform.position += vec2 * Time.deltaTime;
             }
-
-            Pos = player[0].transform.position;
-
-            var aKey = current.aKey;
-            var wKey = current.wKey;
-            var sKey = current.sKey;
-            var dKey = current.dKey;
-
-            if (aKey.isPressed)
+            else if(distancePlayer < minDistance)
             {
-                Pos.x -= Time.deltaTime;
+                player[0].transform.position -= vec1 * Time.deltaTime;
+                player[1].transform.position -= vec2 * Time.deltaTime;
             }
-            if (wKey.isPressed)
-            {
-                Pos.z += Time.deltaTime;
-            }
-            if (sKey.isPressed)
-            {
-                Pos.z -= Time.deltaTime;
-            }
-            if (dKey.isPressed)
-            {
-                Pos.x += Time.deltaTime;
-            }
-
-            player[0].transform.position = Pos;
         }
     }
 }
