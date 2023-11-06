@@ -71,6 +71,11 @@ namespace OutGame.SceneManager
             StartCoroutine(LoadSceneAsynchronously(sceneName));
         }
 
+        public void ReloadScene()
+        {
+            LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         IEnumerator LoadSceneAsynchronously(string name)
         {
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);

@@ -7,7 +7,7 @@ namespace OutGame.GameManager
 {
     public class GameManager : MonoBehaviour
     {
-        // ƒ}ƒl[ƒWƒƒ[‚ÌƒVƒ“ƒOƒ‹ƒgƒ“
+        // ï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½ï¿½[ï¿½ÌƒVï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½
         public static GameManager instance { get; private set; }
 
         private int collectedItems;

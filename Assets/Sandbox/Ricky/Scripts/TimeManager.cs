@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace OutGame.TimeManager
 {
+    using OutGame.PauseManager;
+
     public class TimeManager : MonoBehaviour
     {
         public static TimeManager instance;
@@ -13,7 +15,7 @@ namespace OutGame.TimeManager
 
         private float timeSpeed;
 
-        private void SetTimeSpeed(float speed)
+        public void SetTimeSpeed(float speed)
         {
             timeSpeed = speed;
             timeSpeed = Mathf.Clamp01(timeSpeed);
@@ -45,6 +47,11 @@ namespace OutGame.TimeManager
         // Update is called once per frame
         void Update()
         {
+            if (PauseManager.instance.isPaused)
+            {
+                timeSpeed = 0;
+            }
+
             Time.timeScale = timeSpeed;
 
             deltaTime = Time.deltaTime;
