@@ -18,7 +18,10 @@ namespace InGame.Player
         // Update is called once per frame
         void Update()
         {
-            transform.localPosition = initLocalPos;
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                transform.position = transform.parent.gameObject.transform.position + initLocalPos;
+            }
         }
     }
 }

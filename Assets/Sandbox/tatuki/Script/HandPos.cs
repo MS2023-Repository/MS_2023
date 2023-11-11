@@ -34,29 +34,12 @@ namespace InGame.Player
         // Update is called once per frame
         void Update()
         {
-            //_BoxCornerPosScript.SetBoxCornerPos();
-
-            ResetRotateHand();
-            ////var leftTriggerValue = gamepad.leftTrigger.ReadValue();
-            ////var rightTriggerValue = gamepad.rightTrigger.ReadValue();
-
-            ////if (leftTriggerValue > 0 || rightTriggerValue > 0)
-            ////{
-
-            ////}
-
-            //_LeftHandPos = _LeftHand.transform.position;
-            //_LeftHandPos.y = _Player.transform.position.y + _LeftHeight + _InitLeftHeight;
-            //_LeftHand.transform.position = _LeftHandPos;
-
-            //_RightHandPos = _RightHand.transform.position;
-            //_RightHandPos.y = _Player.transform.position.y + _RightHeight + _InitRightHeight;
-            //_RightHand.transform.position = _RightHandPos;
+            ResetRotateHand();       
         }
 
         public void SetLeftHandHeight(float InitHeight,float InitWidth,float height,float width)
         {
-            //_BoxCornerPosScript.SetBoxCornerPos();
+            _BoxCornerPosScript.SetBoxCornerPos();
 
             _LeftHeight = -height * width;
 
@@ -68,7 +51,7 @@ namespace InGame.Player
 
         public void SetRightHandHeight(float InitHeight,float InitWidth,float height, float range)
         {
-            //_BoxCornerPosScript.SetBoxCornerPos();
+            _BoxCornerPosScript.SetBoxCornerPos();
 
             _RightHeight = -height * range;
 
