@@ -16,6 +16,8 @@ namespace InGame.Box
         [SerializeField] private GameObject _Player2LeftHand_Pos;
         [SerializeField] private GameObject _Player2RightHand_Pos;
 
+        [SerializeField] private float _MoveSpeed;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -25,20 +27,28 @@ namespace InGame.Box
         // Update is called once per frame
         void Update()
         {
-            _Player1LeftBoxCorner.transform.position = new Vector3(0, 0, 0);
+            
+            //Vector3 vecLeftHand = (_Player1LeftHand_Pos.transform.position - _Player1LeftBoxCorner.transform.position).normalized;
+            //Vector3 vecRightHand = (_Player1RightHand_Pos.transform.position - _Player1RightBoxCorner.transform.position).normalized;
 
-            _Player1LeftBoxCorner.transform.position = _Player1LeftHand_Pos.transform.position;
-            //_Player1RightBoxCorner.transform.position = _Player1RightHand_Pos.transform.position;
-            //_Player2LeftBoxCorner.transform.position = _Player2LeftHand_Pos.transform.position;
-            //_Player2RightBoxCorner.transform.position = _Player2RightHand_Pos.transform.position;
+            //_Player1LeftBoxCorner.transform.position += vecLeftHand * Time.deltaTime * _MoveSpeed;
+            //_Player1RightBoxCorner.transform.position += vecRightHand * Time.deltaTime * _MoveSpeed;
+
+            //vecLeftHand = (_Player2LeftHand_Pos.transform.position - _Player2LeftBoxCorner.transform.position).normalized;
+            //vecRightHand = (_Player2RightHand_Pos.transform.position - _Player2RightBoxCorner.transform.position).normalized;
+
+            //_Player2LeftBoxCorner.transform.position += vecLeftHand * Time.deltaTime * _MoveSpeed;
+            //_Player2RightBoxCorner.transform.position += vecRightHand * Time.deltaTime * _MoveSpeed;
         }
 
         public void SetBoxCornerPos()
         {
             _Player1LeftBoxCorner.transform.position = _Player1LeftHand_Pos.transform.position;
             _Player1RightBoxCorner.transform.position = _Player1RightHand_Pos.transform.position;
+
             _Player2LeftBoxCorner.transform.position = _Player2LeftHand_Pos.transform.position;
             _Player2RightBoxCorner.transform.position = _Player2RightHand_Pos.transform.position;
+
         }
     }
 }
