@@ -21,7 +21,6 @@ public class StageSelectButtons : MonoBehaviour
         playerCount = 0;
 
         t = 0;
-        Debug.Log(transform.childCount);
         mat = transform.GetChild(1).GetComponent<Renderer>().material;
     }
 
