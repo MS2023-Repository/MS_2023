@@ -15,6 +15,12 @@ namespace OutGame.TimeManager
 
         private float timeSpeed;
 
+        private float currentTime = 0.0f; // 現在の経過時間（分）
+
+        public float daytimescale = 1.0f; // 1日が経過するのにかかる秒数
+
+        private const float minutesInADay = 1440.0f; // 1日の合計分数
+
         public void SetTimeSpeed(float speed)
         {
             timeSpeed = speed;
@@ -54,6 +60,26 @@ namespace OutGame.TimeManager
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
+
+            // 現在の経過時間を更新
+            currentTime += deltaTime / daytimescale * minutesInADay;
+
+            // 1日（1440分）に達した場合、時間をリセット
+            if (currentTime >= minutesInADay)
+            {
+                currentTime = 0.0f;
+            }
+        }
+
+        // 現在の時間（分）を取得
+        public int GetCurrentHour()
+        {
+            return Mathf.FloorToInt(currentTime / 60);
+        }
+
+        public int GetCurrentMinute()
+        {
+            return Mathf.FloorToInt(currentTime);
         }
     }
 }

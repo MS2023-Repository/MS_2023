@@ -47,11 +47,6 @@ Shader "ToonEnvironment"
 
         [Enum(OFF,0,FRONT,1,BACK,2)] _CullMode("Cull Mode", int) = 2 //OFF/FRONT/BACK
 
-
-
-
-
-
         _MainTex ("BaseMap", 2D) = "white" {}
         _BaseMap ("BaseMap", 2D) = "white" {}
         _BaseColor ("BaseColor", Color) = (1,1,1,1)
@@ -205,6 +200,9 @@ Shader "ToonEnvironment"
         _Offset_Y_Axis_BLD (" Offset Y-Axis (Built-in Light Direction)", Range(-1, 1)) = 0.09
         [Toggle(_)] _Inverse_Z_Axis_BLD (" Inverse Z-Axis (Built-in Light Direction)", Float ) = 1
 
+        //改良部分ここから
+         _Snow("Snow", Range(0,2))= 0.0
+        
         //////////////////////////////////////////////////////////////////////////////
         ////////////////// Beginning of HDRP Matte. //////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////
