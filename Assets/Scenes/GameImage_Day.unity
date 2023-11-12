@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.78
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14165539, g: 0.17726237, b: 0.23978296, a: 0.78}
+  m_IndirectSpecularColor: {r: 0.09930914, g: 0.10463611, b: 0.0944411, a: 0.78}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6817,6 +6817,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1239146103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &334178102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1973020405893422842, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728185836341926406, guid: 5e30cb62d057be24a8ffea9d8454d5eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e30cb62d057be24a8ffea9d8454d5eb, type: 3}
 --- !u!1 &335812706
 GameObject:
   m_ObjectHideFlags: 0
@@ -22761,6 +22829,7 @@ GameObject:
   - component: {fileID: 1570466638}
   - component: {fileID: 1570466637}
   - component: {fileID: 1570466636}
+  - component: {fileID: 1570466639}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -22861,14 +22930,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570466635}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11561679, y: -0.88665, z: 0.36265028, w: -0.26262015}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 506.67773, y: 0.5525246, z: 497.6105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 976786363}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 44.734, y: 507.485, z: 1.173}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1570466639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570466635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ab1ad0a6f94511a792c079b6356083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialTime: 0
+  minIntensity: 0.2
+  maxIntensity: 1.3
 --- !u!1001 &1574123321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32644,3 +32728,4 @@ SceneRoots:
   - {fileID: 573631620}
   - {fileID: 335812709}
   - {fileID: 803641168}
+  - {fileID: 334178102}

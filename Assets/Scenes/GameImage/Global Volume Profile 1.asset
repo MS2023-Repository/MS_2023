@@ -177,13 +177,13 @@ MonoBehaviour:
   active: 1
   flareColor:
     m_OverrideState: 1
-    m_Value: {r: 0.9811321, g: 0.6165016, b: 0.14346743, a: 1}
+    m_Value: {r: 0.5566038, g: 0.31257552, b: 0, a: 1}
   flarePosition:
     m_OverrideState: 1
     m_Value: {x: 1.81, y: 1.75}
   flareSize:
     m_OverrideState: 1
-    m_Value: 2.12
+    m_Value: 1.66
   paraColor:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
