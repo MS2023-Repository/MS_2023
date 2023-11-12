@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e62a2b190f61a47b3e7f2cbfc61498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  daytimescale: 360
