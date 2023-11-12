@@ -37,8 +37,6 @@ namespace OutGame.TimeManager
             {
                 instance = this;
             }
-
-            DontDestroyOnLoad(this);
         }
 
         // Start is called before the first frame update

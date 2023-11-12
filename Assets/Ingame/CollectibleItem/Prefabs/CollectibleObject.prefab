@@ -240,9 +240,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2485427811699893548}
   - {fileID: 9089518556843486233}
   - {fileID: 8134690928334182098}
-  - {fileID: 2485427811699893548}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &6412146494835762920
@@ -584,7 +584,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8524252065677200225}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: be8c5e2830229e845a70573958b3b4b4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

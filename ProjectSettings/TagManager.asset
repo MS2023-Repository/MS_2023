@@ -9,7 +9,8 @@ TagManager:
   - Box
   - Cage
   - GoalHolePoint
-  - PlayerObj
+  - PlayerBody
+  - BoxRange
   layers:
   - Default
   - TransparentFX
