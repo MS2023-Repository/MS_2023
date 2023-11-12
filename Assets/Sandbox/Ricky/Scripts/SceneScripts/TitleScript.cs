@@ -134,8 +134,8 @@ public class TitleScript : MonoBehaviour
                     switch (selectedMenu)
                     {
                         case MENUS.START:
-                            // ÉQÅ[ÉÄäJén
-                            SceneLoader.instance.LoadScene("ProtoScene");
+                            // ÔøΩQÔøΩ[ÔøΩÔøΩÔøΩJÔøΩn
+                            SceneLoader.instance.LoadScene("StageSelect");
                             break;
                         case MENUS.QUIT:
                             Application.Quit();

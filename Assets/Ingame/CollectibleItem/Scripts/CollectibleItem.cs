@@ -54,6 +54,12 @@ namespace InGame.CollectibleItem
         // 拾われた状況
         private bool pickedUp;
 
+        private GameObject boxObject;
+        private bool onBoard;
+
+        private Vector3 lastPos;
+        private bool dropToBox;
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -63,6 +69,10 @@ namespace InGame.CollectibleItem
             _startTime = Time.time;
 
             pickedUp = false;
+            onBoard = false;
+
+            lastPos = this.transform.position;
+            dropToBox = false;
         }
 
         /// <summary>
@@ -114,6 +124,32 @@ namespace InGame.CollectibleItem
             }
         }
 
+        private void FixedUpdate() 
+        {
+            if (pickedUp)
+            {
+                if (dropToBox)
+                {
+                    this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x , this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
+                }
+                
+                if (onBoard)
+                {
+                    var currentPosition = boxObject.transform.position;
+
+                    Vector3 posDif = currentPosition - lastPos;
+                    if (posDif.magnitude > 0.009f)
+                    {
+                        posDif.Normalize();
+
+                        // Apply the friction force
+                        this.GetComponent<Rigidbody>().AddForce(posDif * 15.0f, ForceMode.Force);
+                    }
+
+                    lastPos = currentPosition;
+                }
+            }
+        }
 
         /// <summary>
         /// 外部から位置を設定するためのメソッド
@@ -122,6 +158,26 @@ namespace InGame.CollectibleItem
         public void SetPosition(Vector3 newPosition)
         {
             _startPosition = newPosition;
+        }
+
+        private void OnCollisionEnter(Collision other) 
+        {
+            if (other.gameObject.tag == "Box")
+            {
+                if (pickedUp && !_beingSucked)
+                {
+                    this.transform.GetComponent<Rigidbody>().drag = 13;
+                    this.transform.GetComponent<Rigidbody>().angularDrag = 5;
+
+                    onBoard = true;
+                    dropToBox = false;
+                }
+            }
+        }
+
+        private void OnCollisionExit(Collision other) 
+        {
+            
         }
 
         /// <summary>
@@ -142,9 +198,13 @@ namespace InGame.CollectibleItem
                 Destroy(this.gameObject);
             }
 
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "BoxRange")
             {
-                StartCoroutine(PickUpObject(other.gameObject));
+                if (!pickedUp)
+                {
+                    StartCoroutine(PickUpObject(other.gameObject));
+                    pickedUp = true;
+                }
             }
         }
 
@@ -159,11 +219,6 @@ namespace InGame.CollectibleItem
                 // "Cage"に入った際、rotateEnabledを常にtrueに設定
                 isHitGroundEnabled = true;
             }
-
-            if (other.gameObject.tag == "Player")
-            {
-                pickedUp = true;
-            }
         }
 
         /// <summary>
@@ -176,6 +231,14 @@ namespace InGame.CollectibleItem
             {
                 // "Cage"から出た際、rotateEnabledをfalseに設定
                 isHitGroundEnabled = false;
+            }
+
+            if (other.gameObject.tag == "BoxRange")
+            {
+                if (pickedUp && !_beingSucked)
+                {
+                    StartCoroutine(ResetObject());
+                }
             }
         }
         private Vector3 RotateAroundXZPlane(Vector3 currentPosition, Vector3 goalPosition, float Length)
@@ -199,21 +262,33 @@ namespace InGame.CollectibleItem
 
         IEnumerator PickUpObject(GameObject playerObj)
         {
-            if (!pickedUp)
-            {
-                this.transform.position = playerObj.transform.parent.position + new Vector3(0, 0.5f, 0);
-                this.transform.GetComponent<Rigidbody>().useGravity = true;
+            this.transform.position = playerObj.transform.GetChild(0).position;
+            this.transform.GetComponent<Rigidbody>().useGravity = true;
+            this.transform.GetComponent<Rigidbody>().drag = 5f;
 
-                this.transform.GetChild(1).gameObject.SetActive(false);
+            this.transform.GetChild(1).gameObject.SetActive(false);
+            this.transform.GetChild(2).gameObject.SetActive(false);
 
-                yield return new WaitForSeconds(0.5f);
+            boxObject = playerObj.transform.parent.gameObject;
 
-                pickedUp = true;
-            }
-            else
-            {
-                yield return null;
-            }
+            dropToBox = true;
+
+            yield return null;
+        }
+
+        IEnumerator ResetObject()
+        {
+            yield return new WaitForSeconds(1);
+
+            this.GetComponent<Rigidbody>().useGravity = false;
+            this.transform.GetComponent<Rigidbody>().drag = 0;
+
+            this.transform.GetChild(1).gameObject.SetActive(true);
+            this.transform.GetChild(2).gameObject.SetActive(true);
+
+            pickedUp = false;
+
+            boxObject = null;
         }
     }
 }
