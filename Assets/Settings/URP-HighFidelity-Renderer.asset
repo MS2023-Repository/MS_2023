@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9048209915133588748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f346f1ff0cee4190a4e55af1bd0e70e3, type: 3}
+  m_Name: CustomRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  _width: 960
+  _height: 540
 --- !u!114 &-2243437078301573532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,16 +46,16 @@ MonoBehaviour:
   m_Active: 1
   m_Settings:
     AOMethod: 1
-    Downsample: 0
-    AfterOpaque: 0
+    Downsample: 1
+    AfterOpaque: 1
     Source: 1
     NormalSamples: 1
-    Intensity: 0.5
-    DirectLightingStrength: 0.25
-    Radius: 0.25
+    Intensity: 0.42
+    DirectLightingStrength: 0.354
+    Radius: 1.24
     Samples: 0
     BlurQuality: 0
-    Falloff: 100
+    Falloff: 103.72
     SampleCount: -1
   m_BlueNoise256Textures:
   - {fileID: 2800000, guid: 36f118343fc974119bee3d09e2111500, type: 3}
@@ -73,7 +88,8 @@ MonoBehaviour:
   - {fileID: -2243437078301573532}
   - {fileID: 1504867239843859651}
   - {fileID: 4098645797286201108}
-  m_RendererFeatureMap: adc0de57c6d2eee56f39d423c2f6733864fee40fddb5dde0c30c0411c85ce21414476417a350e138
+  - {fileID: -9048209915133588748}
+  m_RendererFeatureMap: adc0de57c6d2eee56f39d423c2f6733864fee40fddb5dde0c30c0411c85ce21414476417a350e138f48a4b8b054d6e82
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

@@ -992,7 +992,6 @@ namespace UnityEditor.Rendering.Toon
         void DrawShaderOptions(Material material)
         {
             GUI_SetCullingMode(material);
-            GUI_SetSnowSetting(material);
             GUI_SetRenderQueue(material);
             GUI_Tranparent(material);
             GUI_StencilMode(material);
@@ -1375,13 +1374,7 @@ namespace UnityEditor.Rendering.Toon
             GUI_RangeProperty(material, Styles.tweakTransParencyText );
             GUI_Toggle(material, Styles.baseMapAlphaAsClippingMask, ShaderPropIsBaseMapAlphaAsClippingMask, MaterialGetInt(material, ShaderPropIsBaseMapAlphaAsClippingMask) != 0);
         }
-
-        void GUI_SetSnowSetting(Material material)
-        {
-            GUI_RangeProperty(material, Styles.tweakTransParencyText );
-            GUI_Toggle(material, Styles.baseMapAlphaAsClippingMask,"_snow", MaterialGetInt(material,"_snow") != 0);
-        }
-
+        
 
         void GUI_BasicThreeColors(Material material)
         {

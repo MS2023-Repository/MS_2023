@@ -693,13 +693,6 @@ float4 fragEnvironment(VertexOutput i, fixed facing : VFACE) : SV_TARGET
     finalColor = saturate(finalColor) + (envLightColor * envLightIntensity * _GI_Intensity * smoothstep(
         1, 0, envLightIntensity / 2)) + emissive;
 
-    //float d = dot(i.normalDir, fixed3(0, 1, 0));
-    //fixed4 c = tex2D (_MainTex, i.uv0) * _Color;
-    //fixed4 white = fixed4(1,1,1,1);
-    //c = lerp(c, white, d*_Snow);
-
-    //finalColor = finalColor * c;
-
     //v.2.0.4
     #ifdef _IS_CLIPPING_OFF
     //DoubleShadeWithFeather

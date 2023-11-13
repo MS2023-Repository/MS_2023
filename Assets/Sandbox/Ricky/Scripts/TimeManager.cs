@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace OutGame.TimeManager
@@ -80,6 +78,14 @@ namespace OutGame.TimeManager
         public int GetCurrentMinute()
         {
             return Mathf.FloorToInt(currentTime);
+        }
+        public int GetCurrentMinuteTime()
+        {
+            return Mathf.FloorToInt(currentTime % 60);
+        }
+        public float GetMinutesInADay()
+        {
+            return minutesInADay;
         }
     }
 }
