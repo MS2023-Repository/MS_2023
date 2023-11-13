@@ -7,6 +7,11 @@ namespace Ingame.DirectionLight
 {
     public class DirectionLightRotation : MonoBehaviour
     {
+        private Color morningColor = new Color(1f, 0.6f, 0.35f); // 朝日の色
+        private Color middayColor = new Color(1f, 1f, 1f); // 昼間の色
+        private Color eveningColor = new Color(1f, 0.6f, 0.35f); // 夕日の色
+        private Color nightColor = new Color(0.3754005f, 0.3754005f, 0.7169812f); // 夜の色
+        
         private float rotationSpeed = 360.0f / 1440.0f; // 1分あたりの回転速度（1日で360度回転）
         public float initialTime = 6 * 60.0f; // 初期時間を分単位で指定（6時）
 
@@ -59,6 +64,28 @@ namespace Ingame.DirectionLight
             float targetShadowStrength = sunLight.intensity > minIntensity ? 1.0f : 0.0f;
             sunLight.shadowStrength = Mathf.Lerp(sunLight.shadowStrength, targetShadowStrength, shadowTransitionSpeed * Time.deltaTime);
             flare.flareSize = new FloatParameter((flareStartSize.value * sunLight.shadowStrength * 20),true);
+            
+            // 太陽の色を更新
+            UpdateSunColor(rotationAngle);
+        }
+        private void UpdateSunColor(float rotationAngle)
+        {
+            if (rotationAngle < 45.0f) // 朝
+            {
+                sunLight.color = Color.Lerp(nightColor, morningColor, rotationAngle / 45.0f);
+            }
+            else if (rotationAngle < 135.0f) // 昼
+            {
+                sunLight.color = Color.Lerp(morningColor, middayColor, (rotationAngle - 45.0f) / 90.0f);
+            }
+            else if (rotationAngle < 225.0f) // 夕方
+            {
+                sunLight.color = Color.Lerp(middayColor, eveningColor, (rotationAngle - 135.0f) / 90.0f);
+            }
+            else // 夜
+            {
+                sunLight.color = Color.Lerp(eveningColor, nightColor, (rotationAngle - 225.0f) / 135.0f);
+            }
         }
     }
 }
