@@ -24,6 +24,7 @@ namespace InGame.GoalGuide
         private GameObject goalObj;
 
         [SerializeField] private Camera goalCamera;
+        private RenderTexture goalTex;
         private Vector3 offsetPos;
 
         // Start is called before the first frame update
@@ -38,9 +39,18 @@ namespace InGame.GoalGuide
 
             goalObj = GameObject.FindGameObjectWithTag("Goal");
 
-            Instantiate(goalCamera);
-            offsetPos = new Vector3(0, 1, -1);
+            offsetPos = new Vector3(0, 1, -2);
+            goalCamera.transform.parent = null;
             goalCamera.transform.position = goalObj.transform.position + offsetPos;
+
+            if (goalCamera.targetTexture != null)
+            {
+                goalCamera.targetTexture.Release();
+            }
+
+            goalTex = new RenderTexture(1920, 1080, 1);
+            goalCamera.targetTexture = goalTex;
+            goalImage.texture = goalTex;
         }
 
         // Update is called once per frame
@@ -91,15 +101,14 @@ namespace InGame.GoalGuide
             this.GetComponent<RectTransform>().anchoredPosition = screenDir;
         }
 
-        private void OnGUI()
+        private void OnDisable() 
         {
-            if (goalCamera.targetTexture != null)
+            if (goalTex != null)
             {
-                goalCamera.targetTexture.Release();
+                goalImage.texture = null;
+                goalTex.Release();
+                goalTex = null;
             }
-
-            goalCamera.targetTexture = new RenderTexture(500, 500, 1);
-            goalImage.texture = goalCamera.targetTexture;
         }
     }
 }

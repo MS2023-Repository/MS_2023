@@ -30,8 +30,19 @@ public class ResultScript : MonoBehaviour
             resultCamera.targetTexture.Release();
         }
 
-        resultCamera.targetTexture = new RenderTexture(1920, 1080, 1);
-        resultTexture = resultCamera.targetTexture;
+        resultTexture = new RenderTexture(1920, 1080, 1);
+        resultCamera.targetTexture = resultTexture;
         playerImage.texture = resultTexture;
+    }
+
+    private void OnDisable() 
+    {
+        if (resultTexture != null)
+        {
+            resultCamera.targetTexture = null;
+            playerImage.texture = null;
+            resultTexture.Release();
+            resultTexture = null;
+        }
     }
 }
