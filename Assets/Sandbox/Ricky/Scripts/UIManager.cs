@@ -18,9 +18,12 @@ namespace OutGame.UI
         {
             CheckForCanvas();
 
-            foreach (var element in UIElements) 
+            if (UIElements.Length > 0)
             {
-                var newUI = Instantiate(element, canvasObj.transform);
+                foreach (var element in UIElements)
+                {
+                    var newUI = Instantiate(element, canvasObj.transform);
+                }
             }
         }
 

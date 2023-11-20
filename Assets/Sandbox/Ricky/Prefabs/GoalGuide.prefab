@@ -127,6 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   halfProgress: {fileID: 8497445394958184825}
   fullProgress: {fileID: 8825413926712816845}
+  goalImage: {fileID: 2306385166934362967}
+  goalCamera: {fileID: 1868077091614827514, guid: dfa0c64b10113fa4ab4980a8f4f4aa9d,
+    type: 3}
 --- !u!1 &5071628733960677331
 GameObject:
   m_ObjectHideFlags: 0

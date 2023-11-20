@@ -13,6 +13,8 @@ namespace InGame.GoalGuide
         [SerializeField] Image halfProgress;
         [SerializeField] Image fullProgress;
 
+        [SerializeField] RawImage goalImage;
+
         private float progressNum;
         private float realProgressNum;
 
@@ -20,6 +22,9 @@ namespace InGame.GoalGuide
 
         private GameObject cameraObj;
         private GameObject goalObj;
+
+        [SerializeField] private Camera goalCamera;
+        private Vector3 offsetPos;
 
         // Start is called before the first frame update
         void Start()
@@ -30,7 +35,12 @@ namespace InGame.GoalGuide
             scaleScalar = 3.15f;
 
             cameraObj = Camera.main.gameObject;
+
             goalObj = GameObject.FindGameObjectWithTag("Goal");
+
+            Instantiate(goalCamera);
+            offsetPos = new Vector3(0, 1, -1);
+            goalCamera.transform.position = goalObj.transform.position + offsetPos;
         }
 
         // Update is called once per frame
@@ -61,6 +71,8 @@ namespace InGame.GoalGuide
 
         private void FixedUpdate()
         {
+            goalCamera.transform.LookAt(goalObj.transform);
+
             UpdatePosition();
         }
 
@@ -77,6 +89,17 @@ namespace InGame.GoalGuide
             screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
 
             this.GetComponent<RectTransform>().anchoredPosition = screenDir;
+        }
+
+        private void OnGUI()
+        {
+            if (goalCamera.targetTexture != null)
+            {
+                goalCamera.targetTexture.Release();
+            }
+
+            goalCamera.targetTexture = new RenderTexture(500, 500, 1);
+            goalImage.texture = goalCamera.targetTexture;
         }
     }
 }
