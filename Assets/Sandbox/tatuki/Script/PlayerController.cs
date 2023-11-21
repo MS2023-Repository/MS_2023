@@ -10,6 +10,8 @@ namespace InGame.Player
         PlayerMove _PlayerMoveScript;
         HandPos _HandPosScript;
 
+        PlayerAnim[] _PlayerAnim = new PlayerAnim[2];
+
         [SerializeField] private GameObject[] _Player;
 
         [SerializeField] private float _HandHeightRange;
@@ -22,6 +24,9 @@ namespace InGame.Player
         void Start()
         {
             _PlayerMoveScript = GetComponent<PlayerMove>();
+            _PlayerAnim[0] = _Player[0].GetComponent<PlayerAnim>();
+            _PlayerAnim[1] = _Player[1].GetComponent<PlayerAnim>();
+
         }
 
         // Update is called once per frame
@@ -48,6 +53,19 @@ namespace InGame.Player
                 if (leftStickValue.magnitude > 0f)
                 {
                     _PlayerMoveScript.MoveLStick(i, leftStickValue.normalized);
+                    _PlayerAnim[i] = _Player[i].GetComponent<PlayerAnim>();
+                    _PlayerAnim[i].SetAnimWalk(_Player[i].transform.forward, leftStickValue.normalized);
+                }
+                else
+                {
+                    _PlayerAnim[i] = _Player[i].GetComponent<PlayerAnim>();
+                    _PlayerAnim[i].SetIdleAnimWalk();
+                }
+
+                //右スティック
+                if (rightStickValue.magnitude > 0f)
+                {
+                    _PlayerAnim[i].StartAnimEat();
                 }
 
                 var leftTriggerValue = gamepad.leftTrigger.ReadValue();
