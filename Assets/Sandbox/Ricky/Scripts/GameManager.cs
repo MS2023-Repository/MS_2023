@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace OutGame.GameManager
 {
+    using InGame.CollectibleItem;
     using OutGame.TimeManager;
 
     public class GameManager : MonoBehaviour
@@ -12,7 +13,7 @@ namespace OutGame.GameManager
         // �}�l�[�W���[�̃V���O���g��
         public static GameManager instance { get; private set; }
 
-        private int collectedItems;
+        private int collectedNum;
         private int maxItems;
 
         [SerializeField] private float timeLimit = 210;
@@ -20,19 +21,21 @@ namespace OutGame.GameManager
 
         [SerializeField] private int targetItems = 5;
 
+        private CollectibleItem[] collectedItems;
+
         public bool isInGame()
         {
             return elapsedTime < timeLimit;
         }
 
-        public void AddCollectedItems(int num)
+        public void AddCollectedItems(int num, )
         {
-            collectedItems += num;
+            collectedNum += num;
         }
 
         public float GetCollectedItemPercentage()
         {
-            float num = (float)collectedItems / (float)targetItems;
+            float num = (float)collectedNum / (float)targetItems;
             num = Mathf.Clamp01(num);
             return num;
         }
@@ -54,7 +57,7 @@ namespace OutGame.GameManager
         // Start is called before the first frame update
         void Start()
         {
-            collectedItems = 0;
+            collectedNum = 0;
 
             maxItems = GameObject.FindGameObjectsWithTag("CollectibleObject").Count();
 
@@ -66,11 +69,7 @@ namespace OutGame.GameManager
         // Update is called once per frame
         void Update()
         {
-            if (elapsedTime > timeLimit)
-            {
-
-            }
-            else
+            if (elapsedTime < timeLimit)
             {
                 elapsedTime += TimeManager.instance.deltaTime;
             }
