@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace OutGame.GameManager
 {
+    using OutGame.TimeManager;
+
     public class GameManager : MonoBehaviour
     {
         // �}�l�[�W���[�̃V���O���g��
@@ -13,6 +15,16 @@ namespace OutGame.GameManager
         private int collectedItems;
         private int maxItems;
 
+        [SerializeField] private float timeLimit = 210;
+        private float elapsedTime;
+
+        [SerializeField] private int targetItems = 5;
+
+        public bool isInGame()
+        {
+            return elapsedTime < timeLimit;
+        }
+
         public void AddCollectedItems(int num)
         {
             collectedItems += num;
@@ -20,7 +32,8 @@ namespace OutGame.GameManager
 
         public float GetCollectedItemPercentage()
         {
-            float num = (float)collectedItems / (float)maxItems;
+            float num = (float)collectedItems / (float)targetItems;
+            num = Mathf.Clamp01(num);
             return num;
         }
 
@@ -44,15 +57,23 @@ namespace OutGame.GameManager
             collectedItems = 0;
 
             maxItems = GameObject.FindGameObjectsWithTag("CollectibleObject").Count();
+
+            targetItems = Mathf.Clamp(targetItems, 0, maxItems);
+
+            elapsedTime = 0;
         }
 
         // Update is called once per frame
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.UpArrow))
-            //{
-            //    collectedItems++;
-            //}
+            if (elapsedTime > timeLimit)
+            {
+
+            }
+            else
+            {
+                elapsedTime += TimeManager.instance.deltaTime;
+            }
         }
     }
 }

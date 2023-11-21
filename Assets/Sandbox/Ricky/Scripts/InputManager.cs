@@ -76,7 +76,7 @@ namespace OutGame.InputManager
 
             inputControls.Player.Pause.performed += PlayerPauseInput;
 
-            if (SceneManager.GetActiveScene().name.Contains("Level"))
+            if (SceneManager.GetActiveScene().name != "StageSelect" && SceneManager.GetActiveScene().name != "Title")
             {
                 inputControls.Player.Enable();
                 inputControls.Menu.Disable();

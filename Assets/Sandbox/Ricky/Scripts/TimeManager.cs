@@ -19,9 +19,11 @@ namespace OutGame.TimeManager
 
         private const float minutesInADay = 1440.0f; // 1日の合計分数
 
+        private float setSpeed;
+
         public void SetTimeSpeed(float speed)
         {
-            timeSpeed = speed;
+            setSpeed = speed;
             timeSpeed = Mathf.Clamp01(timeSpeed);
         }
 
@@ -40,7 +42,8 @@ namespace OutGame.TimeManager
         // Start is called before the first frame update
         void Start()
         {
-            timeSpeed = 1;
+            setSpeed = 1;
+            timeSpeed = setSpeed;
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
@@ -52,6 +55,10 @@ namespace OutGame.TimeManager
             if (PauseManager.instance.isPaused)
             {
                 timeSpeed = 0;
+            }
+            else
+            {
+                timeSpeed = setSpeed;
             }
 
             Time.timeScale = timeSpeed;
