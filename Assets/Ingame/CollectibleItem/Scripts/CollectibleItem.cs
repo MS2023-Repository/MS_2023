@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using OutGame.GameManager;
+using OutGame.TimeManager;
 
 namespace InGame.CollectibleItem
 {
@@ -60,6 +61,9 @@ namespace InGame.CollectibleItem
         private Vector3 lastPos;
         private bool dropToBox;
 
+        private float timeAway;
+        private bool startDropCount;
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -73,6 +77,8 @@ namespace InGame.CollectibleItem
 
             lastPos = this.transform.position;
             dropToBox = false;
+
+            startDropCount = false;
         }
 
         /// <summary>
@@ -143,10 +149,15 @@ namespace InGame.CollectibleItem
                         posDif.Normalize();
 
                         // Apply the friction force
-                        this.GetComponent<Rigidbody>().AddForce(posDif * 15.0f, ForceMode.Force);
+                        this.GetComponent<Rigidbody>().AddForce(posDif * 12.0f, ForceMode.Force);
                     }
 
                     lastPos = currentPosition;
+                }
+
+                if (CheckIfFallenOff())
+                {
+                    StartCoroutine(ResetObject());
                 }
             }
         }
@@ -158,26 +169,6 @@ namespace InGame.CollectibleItem
         public void SetPosition(Vector3 newPosition)
         {
             _startPosition = newPosition;
-        }
-
-        private void OnCollisionEnter(Collision other) 
-        {
-            if (other.gameObject.tag == "Box")
-            {
-                if (pickedUp && !_beingSucked)
-                {
-                    this.transform.GetComponent<Rigidbody>().drag = 13;
-                    this.transform.GetComponent<Rigidbody>().angularDrag = 5;
-
-                    onBoard = true;
-                    dropToBox = false;
-                }
-            }
-        }
-
-        private void OnCollisionExit(Collision other) 
-        {
-            
         }
 
         /// <summary>
@@ -204,6 +195,20 @@ namespace InGame.CollectibleItem
                 {
                     StartCoroutine(PickUpObject(other.gameObject));
                     pickedUp = true;
+                }
+            }
+
+            if (other.gameObject.tag == "BoxInner")
+            {
+                if (pickedUp && !_beingSucked)
+                {
+                    this.transform.GetComponent<Rigidbody>().drag = 13;
+                    this.transform.GetComponent<Rigidbody>().angularDrag = 5;
+
+                    onBoard = true; 
+                    dropToBox = false;
+
+                    startDropCount = false;
                 }
             }
         }
@@ -233,11 +238,15 @@ namespace InGame.CollectibleItem
                 isHitGroundEnabled = false;
             }
 
-            if (other.gameObject.tag == "BoxRange")
+            if (other.gameObject.tag == "BoxInner")
             {
                 if (pickedUp && !_beingSucked)
                 {
-                    StartCoroutine(ResetObject());
+                    onBoard = false;
+                    startDropCount = true;
+
+                    this.transform.GetComponent<Rigidbody>().drag = 0;
+                    this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
                 }
             }
         }
@@ -258,6 +267,29 @@ namespace InGame.CollectibleItem
 
             // 新しい位置を返す
             return new Vector3(newX, currentPosition.y, newZ);
+        }
+
+        private bool CheckIfFallenOff()
+        {
+            bool result = false;
+
+            if (startDropCount)
+            {
+                timeAway += TimeManager.instance.deltaTime;
+            }
+            else
+            {
+                timeAway = 0;
+            }
+
+            if (timeAway >= 1)
+            {
+                result = true;
+                timeAway = 0;
+                startDropCount = false;
+            }
+
+            return result;
         }
 
         IEnumerator PickUpObject(GameObject playerObj)
@@ -282,11 +314,13 @@ namespace InGame.CollectibleItem
 
             this.GetComponent<Rigidbody>().useGravity = false;
             this.transform.GetComponent<Rigidbody>().drag = 0;
+            this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             this.transform.GetChild(1).gameObject.SetActive(true);
             this.transform.GetChild(2).gameObject.SetActive(true);
 
             pickedUp = false;
+            onBoard = false;
 
             boxObject = null;
         }
