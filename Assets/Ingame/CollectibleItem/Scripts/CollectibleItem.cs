@@ -185,7 +185,7 @@ namespace InGame.CollectibleItem
             if (other.CompareTag("GoalHolePoint"))
             {
                 other.transform.parent.GetComponent<Goal.CollectibleItem>().HitCollectibleItem(0.02f);
-                GameManager.instance.AddCollectedItems(_scorePoint);
+                GameManager.instance.AddCollectedItems(_scorePoint, this.gameObject);
                 Destroy(this.gameObject);
             }
 

@@ -9,15 +9,25 @@ public class ResultPlayerMovement : MonoBehaviour
 
     private Vector3 targetPos;
 
+    public bool reachedPos {get; private set;}
+
     // Start is called before the first frame update
     void Start()
     {
         targetPos = new Vector3(-0.066f, this.transform.localPosition.y, this.transform.localPosition.z);
+        reachedPos = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPos, moveSpeed * TimeManager.instance.unscaledDeltaTime / 10.0f);
+        if (this.transform.localPosition != targetPos)
+        {
+            this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPos, moveSpeed * TimeManager.instance.unscaledDeltaTime / 10.0f);
+        }
+        else
+        {
+            reachedPos = true;
+        }
     }
 }

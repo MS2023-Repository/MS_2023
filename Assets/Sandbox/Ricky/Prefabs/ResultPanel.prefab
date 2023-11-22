@@ -282,6 +282,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 533202995245702983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &493582002135631029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947287813536843427}
+  m_Layer: 3
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &947287813536843427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493582002135631029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.116, y: 2.831, z: -0.748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4136317346859325245}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780063287864704587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1221,8 @@ MonoBehaviour:
   resultCamera: {fileID: 5711842187478799845}
   playerImage: {fileID: 5480577105701641954}
   panel: {fileID: 1993398069019513522}
+  resultPlayerSc: {fileID: 2539937147930132514}
+  spawnPoint: {fileID: 947287813536843427}
 --- !u!1 &2245767734886504949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1839,7 @@ Transform:
   - {fileID: 3008217571192188980}
   - {fileID: 5074715002599764863}
   - {fileID: 3692071912683215121}
+  - {fileID: 947287813536843427}
   m_Father: {fileID: 7194653403036028923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2539937147930132514

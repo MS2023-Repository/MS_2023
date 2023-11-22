@@ -21,16 +21,17 @@ namespace OutGame.GameManager
 
         [SerializeField] private int targetItems = 5;
 
-        private CollectibleItem[] collectedItems;
+        public List<GameObject> collectedItems {get; private set;}
 
         public bool isInGame()
         {
             return elapsedTime < timeLimit;
         }
 
-        public void AddCollectedItems(int num, )
+        public void AddCollectedItems(int num, GameObject itemToInsert)
         {
             collectedNum += num;
+            collectedItems.Add(itemToInsert);
         }
 
         public float GetCollectedItemPercentage()
@@ -64,6 +65,8 @@ namespace OutGame.GameManager
             targetItems = Mathf.Clamp(targetItems, 0, maxItems);
 
             elapsedTime = 0;
+
+            collectedItems = new List<GameObject>();
         }
 
         // Update is called once per frame
