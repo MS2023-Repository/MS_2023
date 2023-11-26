@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2015650581018110378}
   - component: {fileID: 6639348124332712187}
   - component: {fileID: 7536515773291890731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (ParticleRay) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4533165639377551192}
   - component: {fileID: 2603366989482358571}
   - component: {fileID: 2475950147225291942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (ParticleRay) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: strawberry
       objectReference: {fileID: 0}
+    - target: {fileID: 1724972533694550, guid: 63e523ab5d9ce7348b431ae1d689a54d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4863069348827460, guid: 63e523ab5d9ce7348b431ae1d689a54d, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.544867
@@ -341,6 +345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Berry Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6139507229389614915, guid: 0af5684afb1792241a9b065a60b6a1c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7737366883079249888, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -405,6 +414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524252065677200225, guid: 0af5684afb1792241a9b065a60b6a1c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

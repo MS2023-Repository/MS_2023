@@ -27,12 +27,16 @@ public class ResultScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resultPlayerSc.reachedPos)
+        if (!GameManager.instance.isInGame())
         {
-            if (!startSpawn)
+            panel.SetActive(true);
+            if (resultPlayerSc.reachedPos)
             {
-                StartCoroutine(SpawnFoods());
-                startSpawn = true;
+                if (!startSpawn)
+                {
+                    StartCoroutine(SpawnFoods());
+                    startSpawn = true;
+                }
             }
         }
     }
@@ -64,8 +68,12 @@ public class ResultScript : MonoBehaviour
     {
         for (int i = 0; i < GameManager.instance.collectedItems.Count; i++)
         {
-            var spawnedObj = Instantiate(GameManager.instance.collectedItems[i]);
-            spawnedObj.transform.position = spawnPoint.transform.position;
+            var spawnedObj = GameManager.instance.collectedItems[i];
+            spawnedObj.transform.parent = spawnPoint.transform;
+            spawnedObj.transform.localPosition = Vector3.zero;
+
+            spawnedObj.GetComponent<Rigidbody>().useGravity = true;
+            spawnedObj.transform.localScale *= 1.2f;
 
             yield return new WaitForSeconds(0.5f);
         }

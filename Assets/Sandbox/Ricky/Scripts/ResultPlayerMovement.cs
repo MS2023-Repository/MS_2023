@@ -28,6 +28,7 @@ public class ResultPlayerMovement : MonoBehaviour
         else
         {
             reachedPos = true;
+            this.transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace OutGame.GameManager
 
         [SerializeField] private int targetItems = 5;
 
-        public List<GameObject> collectedItems {get; private set;}
+        public List<GameObject> collectedItems { get; private set; }
 
         public bool isInGame()
         {
@@ -30,6 +30,8 @@ namespace OutGame.GameManager
 
         public void AddCollectedItems(int num, GameObject itemToInsert)
         {
+            itemToInsert.transform.position = new Vector3(100, 100, 100);
+
             collectedNum += num;
             collectedItems.Add(itemToInsert);
         }
