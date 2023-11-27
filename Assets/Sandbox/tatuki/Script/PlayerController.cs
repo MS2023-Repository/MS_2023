@@ -18,10 +18,16 @@ namespace InGame.Player
         [SerializeField] private float _MaxDistance;
         [SerializeField] private float _MinDistance;
 
+        public Vector2 rightStickP1 { get; private set; }
+        public Vector2 rightStickP2 { get; private set; }
+
         // Start is called before the first frame update
         void Start()
         {
             _PlayerMoveScript = GetComponent<PlayerMove>();
+
+            rightStickP1 = Vector2.zero;
+            rightStickP2 = Vector2.zero;
         }
 
         // Update is called once per frame
@@ -43,6 +49,15 @@ namespace InGame.Player
                 var leftStickValue = gamepad.leftStick.ReadValue();
                 var rightStickValue = gamepad.rightStick.ReadValue();
                 var dpadValue = gamepad.dpad.ReadValue();
+
+                if (i == 0)
+                {
+                    rightStickP1 = rightStickValue;
+                }
+                else if (i == 1)
+                {
+                    rightStickP2 = rightStickValue;
+                }
 
                 //左スティック
                 if (leftStickValue.magnitude > 0f)

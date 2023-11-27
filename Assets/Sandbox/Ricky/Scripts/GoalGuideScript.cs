@@ -30,6 +30,10 @@ namespace InGame.GoalGuide
         // Start is called before the first frame update
         void Start()
         {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(1).gameObject.SetActive(true);
+            this.transform.GetChild(2).gameObject.SetActive(true);
+
             progressNum = 0;
             realProgressNum = 0;
 

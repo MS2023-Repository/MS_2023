@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3164719272712316933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &761270093086373630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -506,6 +506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GoalCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908493936765457942, guid: dfa0c64b10113fa4ab4980a8f4f4aa9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

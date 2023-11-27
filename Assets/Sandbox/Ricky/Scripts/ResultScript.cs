@@ -14,6 +14,9 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private ResultPlayerMovement resultPlayerSc;
     [SerializeField] private Transform spawnPoint;
 
+    [SerializeField] private GameObject rightConfetti;
+    [SerializeField] private GameObject leftConfetti;
+
     private bool startSpawn;
 
     // Start is called before the first frame update
@@ -22,6 +25,9 @@ public class ResultScript : MonoBehaviour
         panel.SetActive(false);
         playerImage.gameObject.SetActive(true);
         startSpawn = false;
+
+        rightConfetti.SetActive(false);
+        leftConfetti.SetActive(false);
     }
 
     // Update is called once per frame
@@ -77,5 +83,8 @@ public class ResultScript : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
         }
+
+        rightConfetti.SetActive(true);
+        leftConfetti.SetActive(true);
     }
 }
