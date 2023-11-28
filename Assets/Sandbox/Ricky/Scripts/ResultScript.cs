@@ -17,6 +17,8 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private GameObject rightConfetti;
     [SerializeField] private GameObject leftConfetti;
 
+    [SerializeField] private GameObject blurPanel;
+
     private bool startSpawn;
 
     // Start is called before the first frame update
@@ -28,6 +30,8 @@ public class ResultScript : MonoBehaviour
 
         rightConfetti.SetActive(false);
         leftConfetti.SetActive(false);
+
+        Instantiate(blurPanel, Camera.main.transform);
     }
 
     // Update is called once per frame

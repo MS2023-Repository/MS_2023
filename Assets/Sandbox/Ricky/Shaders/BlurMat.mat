@@ -56,5 +56,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlurAmount: 0
+    - _BlurX: 0
+    - _BlurY: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []
