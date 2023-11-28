@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class water : MonoBehaviour
 {
-    [SerializeField] float power=1;
-    [SerializeField] float UpPower=1;
-    private float timer;
-    [SerializeField] float interval = 1;
-    [SerializeField] float down = 1;
+    [SerializeField] float _power=1;
+    [SerializeField] float _upPower=1;
+    private float _timer;
+    [SerializeField] float _interval = 1;
+    [SerializeField] float _down = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,21 +18,21 @@ public class water : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime*interval;
+        _timer += Time.deltaTime*_interval;
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        collision.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward*power);
+        collision.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward*_power);
 
     }
     private void OnTriggerStay(Collider other)
     {
         //other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * (transform.position.y - other.gameObject.transform.position.y + 1)*UpPower);
         Vector3 pos = other.gameObject.transform.position;
-        pos.y = transform.position.y+Mathf.Sin(timer)*down;
+        pos.y = transform.position.y+Mathf.Sin(_timer)*_down;
         other.gameObject.transform.position = pos;
-        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * power);
+        other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * _power);
     }
     private void OnTriggerEnter(Collider other)
     {

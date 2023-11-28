@@ -1,32 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.Collections;
 using UnityEngine;
 
-public class repop : MonoBehaviour
+namespace gimmick
 {
-    // Start is called before the first frame update
-    private GameObject _child;
 
-    void Start()
+    public class repop : MonoBehaviour
     {
-        _child = transform.Find("item").gameObject;
-    }
+        // Start is called before the first frame update
+        private GameObject _child;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
+        private bool _touchjuge = false;
+        void Start()
         {
-            _child.SetActive(true);
-            this.gameObject.transform.DetachChildren();
-
-            Destroy(gameObject, 0.01f);
+            _child = transform.Find("CollectibleObject").gameObject;
+            _child.SetActive(false);
         }
-    }
 
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                transform.position = new Vector3(0, 10, 0);
+                _touchjuge = true;
+            }
+        }
+        //ƒ^ƒO‚É‚æ‚é”»’è
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Ground" && _touchjuge == true)
+            {
+                _child.SetActive(true);
+                
+                this.gameObject.transform.DetachChildren();
+
+                Destroy(gameObject, 0.01f);
+            }
+        }
+
+
+
+    }
 }
