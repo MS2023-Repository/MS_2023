@@ -12,6 +12,7 @@ TagManager:
   - PlayerBody
   - BoxRange
   - BoxInner
+  - BlurPanel
   layers:
   - Default
   - TransparentFX
