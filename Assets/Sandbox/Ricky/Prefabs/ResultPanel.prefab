@@ -6117,6 +6117,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 947287813536843427}
   rightConfetti: {fileID: 9138830515473670403}
   leftConfetti: {fileID: 302605246023810362}
+  blurPanel: {fileID: 7388362706344745222, guid: 6e5974d58128101408ec9d808f931153,
+    type: 3}
 --- !u!1 &2245767734886504949
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private GameObject leftConfetti;
 
     [SerializeField] private GameObject blurPanel;
+    private GameObject blurObj;
 
     private bool startSpawn;
 
@@ -31,7 +32,14 @@ public class ResultScript : MonoBehaviour
         rightConfetti.SetActive(false);
         leftConfetti.SetActive(false);
 
-        Instantiate(blurPanel, Camera.main.transform);
+        if (GameObject.Find("BlurPanel") == null)
+        {
+            blurObj = Instantiate(blurPanel, Camera.main.transform);
+        }
+        else
+        {
+            blurObj = GameObject.Find("BlurPanel");
+        }
     }
 
     // Update is called once per frame

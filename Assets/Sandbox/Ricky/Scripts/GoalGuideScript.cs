@@ -80,6 +80,8 @@ namespace InGame.GoalGuide
                 scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime);
             }
 
+            halfProgress.fillAmount = progressNum;
+
             transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
         }
 
@@ -99,7 +101,7 @@ namespace InGame.GoalGuide
 
             screenDir *= 1200.0f;
 
-            screenDir.y = Mathf.Clamp(screenDir.y, -355, 355);
+            screenDir.y = Mathf.Clamp(screenDir.y, -340, 340);
             screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
 
             this.GetComponent<RectTransform>().anchoredPosition = screenDir;
