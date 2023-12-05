@@ -21,12 +21,13 @@ namespace InGame.Player
             Eat,
         }
 
-        private Animator Anim;
+        [SerializeField] private PlayerController _PlayerControllerScript;
+        private Animator _Anim;
 
         // Start is called before the first frame update
         void Start()
         {
-            Anim = GetComponent<Animator>();
+            _Anim = GetComponent<Animator>();
         }
 
         public void SetAnimWalk(Vector3 PlayerForwardVec,Vector2 StickVec)
@@ -46,14 +47,10 @@ namespace InGame.Player
             // éûåvâÒÇËÇ≈ê≥ÅAîΩéûåvâÒÇËÇ≈ïâ
             var signedAngle = Vector3.SignedAngle(planeFrom, planeTo, planeNormal);
 
-            //Debug.Log(signedAngle);
-
             if (signedAngle < 0)
             {
                 signedAngle += 360;
             }
-
-            Debug.Log(signedAngle);
 
             if (signedAngle > 45 && signedAngle < 135)
             {
@@ -66,7 +63,6 @@ namespace InGame.Player
             else if (signedAngle > 225 && signedAngle < 315)
             {
                 SetAnimWalkID(WalkAnimID.Right);
-                Debug.Log("aaaa");
             }
             else if(signedAngle < 45 || signedAngle < 360 && signedAngle > 315)
             {
@@ -81,18 +77,31 @@ namespace InGame.Player
 
         void SetAnimWalkID(WalkAnimID id)
         {
-            Anim.SetInteger("WalkAnim", (int)id);
-            Debug.Log(Anim.GetInteger("WalkAnim"));
+            _Anim.SetInteger("WalkAnim", (int)id);
         }
 
         public void StartAnimEat()
         {
-            Anim.SetBool("IsEat", true);
+            _Anim.SetBool("IsEat", true);
         }
 
         public void EndAnimEat()
         {
-            Anim.SetBool("IsEat", false);
+            _Anim.SetBool("IsEat", false);
+        }
+
+        public void SetAnimSpeedEat()
+        {
+            if (_PlayerControllerScript.GetISRightStickTrigger())
+            {
+                //Debug.Log("ccccccccccc");
+                _Anim.SetFloat("AnimSpeed", 0.0f);
+            }
+            else if(!_PlayerControllerScript.GetISRightStickTrigger())
+            {
+                //Debug.Log("afafafafafaf");
+                _Anim.SetFloat("AnimSpeed", 1.0f);
+            }
         }
     }
 }
