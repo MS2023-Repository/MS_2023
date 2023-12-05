@@ -13,15 +13,16 @@ TagManager:
   - PlayerBody
   - BoxRange
   - BoxInner
+  - BlurPanel
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Goal
-  - 
+  - Food
   - 
   - 
   - 

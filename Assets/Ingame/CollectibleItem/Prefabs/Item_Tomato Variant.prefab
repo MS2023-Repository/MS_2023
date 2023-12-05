@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6443123408092873085}
   - component: {fileID: 3659916838447225566}
   - component: {fileID: 4246226929351550060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (ParticleRay)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6531111296595758698}
   - component: {fileID: 6914648751099580105}
   - component: {fileID: 1791207178916543199}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tomato_03_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5368729234850178106}
   - component: {fileID: 8555857181869722927}
   - component: {fileID: 7845544845897338602}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (ParticleRay) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,6 +349,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Tomato Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6139507229389614915, guid: 0af5684afb1792241a9b065a60b6a1c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7737366883079249888, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -413,6 +418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524252065677200225, guid: 0af5684afb1792241a9b065a60b6a1c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8887537127841343218, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}

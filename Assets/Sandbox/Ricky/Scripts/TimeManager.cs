@@ -3,6 +3,7 @@ using UnityEngine;
 namespace OutGame.TimeManager
 {
     using OutGame.PauseManager;
+    using OutGame.SceneManager;
 
     public class TimeManager : MonoBehaviour
     {
@@ -19,9 +20,13 @@ namespace OutGame.TimeManager
 
         private const float minutesInADay = 1440.0f; // 1日の合計分数
 
+        private float setSpeed;
+
+        private string sceneName;
+
         public void SetTimeSpeed(float speed)
         {
-            timeSpeed = speed;
+            setSpeed = speed;
             timeSpeed = Mathf.Clamp01(timeSpeed);
         }
 
@@ -40,18 +45,28 @@ namespace OutGame.TimeManager
         // Start is called before the first frame update
         void Start()
         {
-            timeSpeed = 1;
+            setSpeed = 1;
+            timeSpeed = setSpeed;
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
+
+            sceneName = SceneLoader.instance.GetCurrentScene();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (PauseManager.instance.isPaused)
+            if (sceneName != "Title" && sceneName != "StageSelect")
             {
-                timeSpeed = 0;
+                if (PauseManager.instance.isPaused)
+                {
+                    timeSpeed = 0;
+                }
+                else
+                {
+                    timeSpeed = setSpeed;
+                }
             }
 
             Time.timeScale = timeSpeed;
@@ -79,10 +94,12 @@ namespace OutGame.TimeManager
         {
             return Mathf.FloorToInt(currentTime);
         }
+
         public int GetCurrentMinuteTime()
         {
             return Mathf.FloorToInt(currentTime % 60);
         }
+
         public float GetMinutesInADay()
         {
             return minutesInADay;

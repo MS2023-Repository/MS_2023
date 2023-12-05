@@ -64,6 +64,8 @@ namespace InGame.CollectibleItem
         private float timeAway;
         private bool startDropCount;
 
+        private bool resultState;
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -79,6 +81,8 @@ namespace InGame.CollectibleItem
             dropToBox = false;
 
             startDropCount = false;
+
+            resultState = false;
         }
 
         /// <summary>
@@ -86,78 +90,84 @@ namespace InGame.CollectibleItem
         /// </summary>
         void Update()
         {
-            if (!_beingSucked)
+            if (!resultState)
             {
-                this.transform.GetChild(0).GetComponent<Collider>().enabled = true;
-                if (!pickedUp)
+                if (!_beingSucked)
                 {
-                    this.transform.GetComponent<Rigidbody>().useGravity = false;
-                    float elapsedTime = Time.time - _startTime;
-                    float t = Mathf.SmoothStep(0, 1, elapsedTime / EaseDuration);
-
-                    // イージングを考慮した位置計算
-                    float newY = Mathf.Lerp(_startPosition.y, _startPosition.y + _moveDistance, t);
-
-                    // オブジェクトを移動
-                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-
-                    // 上下の移動をループする
-                    if (elapsedTime >= EaseDuration)
+                    this.transform.GetChild(0).GetComponent<Collider>().enabled = true;
+                    if (!pickedUp)
                     {
-                        _startTime = Time.time;
-                        _startPosition = transform.position;
-                        _moveDistance = -_moveDistance; // 逆方向に移動
+                        this.transform.GetComponent<Rigidbody>().useGravity = false;
+                        float elapsedTime = Time.time - _startTime;
+                        float t = Mathf.SmoothStep(0, 1, elapsedTime / EaseDuration);
+
+                        // イージングを考慮した位置計算
+                        float newY = Mathf.Lerp(_startPosition.y, _startPosition.y + _moveDistance, t);
+
+                        // オブジェクトを移動
+                        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+                        // 上下の移動をループする
+                        if (elapsedTime >= EaseDuration)
+                        {
+                            _startTime = Time.time;
+                            _startPosition = transform.position;
+                            _moveDistance = -_moveDistance; // 逆方向に移動
+                        }
                     }
                 }
-            }
-            else
-            {
-                this.transform.GetComponent<Rigidbody>().useGravity = false;
-                this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
-                RotateAroundXZPlane(transform.position, _goalPosition, rotationAroundGoalDistance);
-                // "Goal"に向かって徐々に移動
-                float step = suctionSpeed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, _goalPosition, step);
-                transform.RotateAround(_goalPosition, Vector3.up, rotationAroundGoalSpeed * Time.deltaTime);
-                // "Goal"に向かってY方向にも徐々に移動
-                float newY = Mathf.Lerp(transform.position.y, _goalPosition.y, step);
-                transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-            }
+                else
+                {
+                    this.transform.GetComponent<Rigidbody>().useGravity = false;
+                    this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+                    RotateAroundXZPlane(transform.position, _goalPosition, rotationAroundGoalDistance);
+                    // "Goal"に向かって徐々に移動
+                    float step = suctionSpeed * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, _goalPosition, step);
+                    transform.RotateAround(_goalPosition, Vector3.up, rotationAroundGoalSpeed * Time.deltaTime);
+                    // "Goal"に向かってY方向にも徐々に移動
+                    float newY = Mathf.Lerp(transform.position.y, _goalPosition.y, step);
+                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                }
 
-            if (isHitGroundEnabled)
-            {
-                transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+                if (isHitGroundEnabled)
+                {
+                    transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+                }
             }
         }
 
         private void FixedUpdate() 
         {
-            if (pickedUp)
+            if (!resultState)
             {
-                if (dropToBox)
+                if (pickedUp)
                 {
-                    this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x , this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
-                }
-                
-                if (onBoard)
-                {
-                    var currentPosition = boxObject.transform.position;
-
-                    Vector3 posDif = currentPosition - lastPos;
-                    if (posDif.magnitude > 0.009f)
+                    if (dropToBox)
                     {
-                        posDif.Normalize();
+                        this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x , this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
+                    }
+                    
+                    if (onBoard)
+                    {
+                        var currentPosition = boxObject.transform.position;
 
-                        // Apply the friction force
-                        this.GetComponent<Rigidbody>().AddForce(posDif * 12.0f, ForceMode.Force);
+                        Vector3 posDif = currentPosition - lastPos;
+                        if (posDif.magnitude > 0.009f)
+                        {
+                            posDif.Normalize();
+
+                            // Apply the friction force
+                            this.GetComponent<Rigidbody>().AddForce(posDif * 10f, ForceMode.Force);
+                        }
+
+                        lastPos = currentPosition;
                     }
 
-                    lastPos = currentPosition;
-                }
-
-                if (CheckIfFallenOff())
-                {
-                    StartCoroutine(ResetObject());
+                    if (CheckIfFallenOff())
+                    {
+                        StartCoroutine(ResetObject());
+                    }
                 }
             }
         }
@@ -185,8 +195,12 @@ namespace InGame.CollectibleItem
             if (other.CompareTag("GoalHolePoint"))
             {
                 other.transform.parent.GetComponent<Goal.CollectibleItem>().HitCollectibleItem(0.02f);
-                GameManager.instance.AddCollectedItems(_scorePoint);
-                Destroy(this.gameObject);
+                GameManager.instance.AddCollectedItems(_scorePoint, this.gameObject);
+                resultState = true;
+                this.transform.GetChild(0).GetComponent<Collider>().enabled = true;
+                this.transform.GetComponent<Rigidbody>().drag = 3;
+                this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
+                this.transform.GetComponent<Rigidbody>().mass = 0;
             }
 
             if (other.gameObject.tag == "BoxRange")

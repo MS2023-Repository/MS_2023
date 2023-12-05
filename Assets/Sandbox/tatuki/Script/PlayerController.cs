@@ -7,26 +7,29 @@ namespace InGame.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        //ƒXƒNƒŠƒvƒg
+        //ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
         PlayerMove _PlayerMoveScript;
         HandPos[] _HandPosScript = new HandPos[2];
         HeadIK[] _HeadIKscript = new HeadIK[2];
         PlayerAnim[] _PlayerAnim = new PlayerAnim[2];
 
-        //‰EƒXƒeƒBƒbƒN‚ğ“|‚µ‚Ä‚¢‚é‚©
+        //å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚’å€’ã—ã¦ã„ã‚‹ã‹
         bool _IsRightStickTrigger;
 
-        //ƒvƒŒƒCƒ„[‚ÌGameObject
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®GameObject
         [SerializeField] private GameObject[] _Player;
 
-        //˜r‚Ìƒ‚[ƒVƒ‡ƒ“
+        //è…•ã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
         [SerializeField] private float _HandHeightRange;
         [SerializeField] private float _InitHandHeight;
         [SerializeField] private float _InitHandWidth;
         [SerializeField] private float _MaxDistance;
         [SerializeField] private float _MinDistance;
 
-        //H‚×‚éƒ‚[ƒVƒ‡ƒ“
+        public Vector2 rightStickP1 { get; private set; }
+        public Vector2 rightStickP2 { get; private set; }
+        
+        //é£Ÿã¹ã‚‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
         [SerializeField] private float _ResetSpeedRotateHead;
         [SerializeField] private float _SpeedScaleHead;
         [SerializeField] private Vector3 _ScaleUpHead;
@@ -36,6 +39,10 @@ namespace InGame.Player
         {
             _IsRightStickTrigger = false;
             _PlayerMoveScript = GetComponent<PlayerMove>();
+            
+            rightStickP1 = Vector2.zero;
+            rightStickP2 = Vector2.zero;
+
             _HandPosScript[0] = _Player[0].GetComponent<HandPos>();
             _HandPosScript[1] = _Player[1].GetComponent<HandPos>();
             _HeadIKscript[0] = _Player[0].GetComponent<HeadIK>();
@@ -45,15 +52,14 @@ namespace InGame.Player
 
             _HeadIKscript[0].InitChangeScaleNeckNum(_ScaleUpHead, _SpeedScaleHead);
             _HeadIKscript[1].InitChangeScaleNeckNum(_ScaleUpHead, _SpeedScaleHead);
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            // ƒRƒ“ƒgƒ[ƒ‰[‘€ì
-            // Gamepad.all ‚ÅÚ‘±‚³‚ê‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒQ[ƒ€ƒpƒbƒh‚ğ—ñ‹“‚Å‚«‚é
-            // TextObjects ‚Ì”ˆÈã‚Ìî•ñ‚ÍÚ‚¹‚ç‚ê‚È‚¢‚Ì‚ÅA­‚È‚¢•û‚Ì”‚Å for ‚·‚é
+            // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼æ“ä½œ
+            // Gamepad.all ã§æ¥ç¶šã•ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ã‚’åˆ—æŒ™ã§ãã‚‹
+            // TextObjects ã®æ•°ä»¥ä¸Šã®æƒ…å ±ã¯è¼‰ã›ã‚‰ã‚Œãªã„ã®ã§ã€å°‘ãªã„æ–¹ã®æ•°ã§ for ã™ã‚‹
             for (int i = 0; i < Gamepad.all.Count; i++)
             {
                 var gamepad = Gamepad.all[i];
@@ -63,12 +69,21 @@ namespace InGame.Player
                     i = 1;
                 }
 
-                // ‘€ì‚³‚ê‚½ƒ{ƒ^ƒ“‚È‚Ç‚Ìî•ñ‚ğæ“¾
+                // æ“ä½œã•ã‚ŒãŸãƒœã‚¿ãƒ³ãªã©ã®æƒ…å ±ã‚’å–å¾—
                 var leftStickValue = gamepad.leftStick.ReadValue();
                 var rightStickValue = gamepad.rightStick.ReadValue();
                 var dpadValue = gamepad.dpad.ReadValue();
 
-                //¶ƒXƒeƒBƒbƒN
+                if (i == 0)
+                {
+                    rightStickP1 = rightStickValue;
+                }
+                else if (i == 1)
+                {
+                    rightStickP2 = rightStickValue;
+                }
+
+                //å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯
                 if (leftStickValue.magnitude > 0f)
                 {
                     _PlayerMoveScript.MoveLStick(i, leftStickValue.normalized);
@@ -81,7 +96,7 @@ namespace InGame.Player
                     _PlayerAnim[i].SetIdleAnimWalk();
                 }
 
-                //‰EƒXƒeƒBƒbƒN
+                //å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯
                 if (rightStickValue.magnitude > 0f)
                 {
                     _IsRightStickTrigger = true;
@@ -115,15 +130,15 @@ namespace InGame.Player
 
             }
 
-            // ƒL[ƒ{[ƒh‘€ì
-            // Œ»İ‚ÌƒL[ƒ{[ƒhî•ñ
+            // ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æ“ä½œ
+            // ç¾åœ¨ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æƒ…å ±
             var current = Keyboard.current;
 
-            // ƒL[ƒ{[ƒhÚ‘±ƒ`ƒFƒbƒN
+            // ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æ¥ç¶šãƒã‚§ãƒƒã‚¯
             if (current == null)
             {
-                // ƒL[ƒ{[ƒh‚ªÚ‘±‚³‚ê‚Ä‚¢‚È‚¢‚Æ
-                // Keyboard.current‚ªnull‚É‚È‚é
+                // ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãŒæ¥ç¶šã•ã‚Œã¦ã„ãªã„ã¨
+                // Keyboard.currentãŒnullã«ãªã‚‹
                 Debug.Log("noneKeyboard");
                 return;
             }
@@ -232,19 +247,19 @@ namespace InGame.Player
 
         }
 
-        //‹óŠÔã‚ÌƒxƒNƒgƒ‹‚ğ•½–Ê‚ÌƒxƒNƒgƒ‹‚É•ÏŠ·Œã
-        //‚»‚ÌƒxƒNƒgƒ‹‚Ìˆ×‚·Šp“x‚ğ•Ô‚·
+        //ç©ºé–“ä¸Šã®ãƒ™ã‚¯ãƒˆãƒ«ã‚’å¹³é¢ã®ãƒ™ã‚¯ãƒˆãƒ«ã«å¤‰æ›å¾Œ
+        //ãã®ãƒ™ã‚¯ãƒˆãƒ«ã®ç‚ºã™è§’åº¦ã‚’è¿”ã™
         float GetSignedAngle(Vector3 from,Vector3 to)
         {
-            // •½–Ê‚Ì–@üƒxƒNƒgƒ‹iãŒü‚«ƒxƒNƒgƒ‹‚Æ‚·‚éj
+            // å¹³é¢ã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ï¼ˆä¸Šå‘ããƒ™ã‚¯ãƒˆãƒ«ã¨ã™ã‚‹ï¼‰
             var planeNormal = Vector3.up;
 
-            // •½–Ê‚É“Š‰e‚³‚ê‚½ƒxƒNƒgƒ‹‚ğ‹‚ß‚é
+            // å¹³é¢ã«æŠ•å½±ã•ã‚ŒãŸãƒ™ã‚¯ãƒˆãƒ«ã‚’æ±‚ã‚ã‚‹
             var planeFrom = Vector3.ProjectOnPlane(from, planeNormal);
             var planeTo = Vector3.ProjectOnPlane(to, planeNormal);
 
-            // •½–Ê‚É“Š‰e‚³‚ê‚½ƒxƒNƒgƒ‹“¯m‚Ì•„†•t‚«Šp“x
-            // Œv‰ñ‚è‚Å³A”½Œv‰ñ‚è‚Å•‰
+            // å¹³é¢ã«æŠ•å½±ã•ã‚ŒãŸãƒ™ã‚¯ãƒˆãƒ«åŒå£«ã®ç¬¦å·ä»˜ãè§’åº¦
+            // æ™‚è¨ˆå›ã‚Šã§æ­£ã€åæ™‚è¨ˆå›ã‚Šã§è² 
             var signedAngle = Vector3.SignedAngle(planeFrom, planeTo, planeNormal);
             return signedAngle;
         }

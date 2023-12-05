@@ -1,16 +1,19 @@
+using OutGame.SceneManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct SoundClip
+{
+    public string name;
+    public AudioClip clip;
+    [Range(0.0f, 1.0f)] public float volume;
+}
+
 namespace OutGame.Audio
 {
-    [System.Serializable]
-    public struct SoundClip
-    {
-        public string name;
-        public AudioClip clip;
-        public float volume;
-    }
+    using OutGame.TimeManager;
 
     public class AudioManager : MonoBehaviour
     {
@@ -19,8 +22,12 @@ namespace OutGame.Audio
         private AudioSource bgmAudioSource;
         private AudioSource seAudioSource;
 
-        [SerializeField] private SoundClip[] SEClips;
-        [SerializeField] private SoundClip[] BGMClips;
+        public SoundClip[] SEClips;
+        public SoundClip[] BGMClips;
+
+        private string currentSceneName;
+
+        private bool changeBgmFlg;
 
         private void Awake()
         {
@@ -52,12 +59,25 @@ namespace OutGame.Audio
                     Destroy(current);
                 }
             }
+
+            currentSceneName = "  ";
+
+            bgmAudioSource.volume = 0.0f;
+            changeBgmFlg = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (currentSceneName != SceneLoader.instance.GetCurrentScene())
+            {
+                if (!changeBgmFlg)
+                {
+                    currentSceneName = SceneLoader.instance.GetCurrentScene();
+                    changeBgmFlg = true;
+                    StartCoroutine(FadeOut());
+                }
+            }
         }
 
         public void PlaySE(string clipName)
@@ -72,6 +92,40 @@ namespace OutGame.Audio
             }
 
             Debug.LogError("No coressponding SE clip found");
+        }
+
+        IEnumerator FadeOut()
+        {
+            while (bgmAudioSource.volume > 0.0f)
+            {
+                bgmAudioSource.volume -= TimeManager.instance.deltaTime;
+                yield return null;
+            }
+
+            bgmAudioSource.volume = 0.0f;
+
+            foreach (var clip in BGMClips)
+            {
+                if (clip.name == currentSceneName)
+                {
+                    bgmAudioSource.clip = clip.clip;
+                }
+            }
+
+            StartCoroutine(FadeIn());
+        }
+
+        IEnumerator FadeIn()
+        {
+            while (bgmAudioSource.volume < 1.0f)
+            {
+                bgmAudioSource.volume += TimeManager.instance.deltaTime;
+                yield return null;
+            }
+
+            bgmAudioSource.volume = 1.0f;
+
+            changeBgmFlg = false;
         }
     }
 }

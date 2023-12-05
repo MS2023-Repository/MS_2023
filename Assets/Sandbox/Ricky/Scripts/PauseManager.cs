@@ -7,6 +7,7 @@ namespace OutGame.PauseManager
 {
     using OutGame.InputManager;
     using OutGame.SceneManager;
+    using OutGame.TimeManager;
 
     public class PauseManager : MonoBehaviour
     {
@@ -50,8 +51,6 @@ namespace OutGame.PauseManager
             {
                 instance = this;
             }
-
-            DontDestroyOnLoad(this);
         }
 
         // Start is called before the first frame update
@@ -62,6 +61,9 @@ namespace OutGame.PauseManager
             blackPanel = transform.GetChild(0).GetComponent<Image>();
 
             blackPanel.gameObject.SetActive(false);
+
+            this.transform.SetParent(GameObject.Find("Canvas").transform);
+            this.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
             currentSelected = MENUOPTIONS.RESUME;
         }
