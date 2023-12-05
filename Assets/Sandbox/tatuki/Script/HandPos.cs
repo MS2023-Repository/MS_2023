@@ -39,7 +39,7 @@ namespace InGame.Player
 
         public void SetLeftHandHeight(float InitHeight,float InitWidth,float height,float width)
         {
-            _BoxCornerPosScript.SetBoxCornerPos();
+            //_BoxCornerPosScript.SetBoxCornerPos();
 
             _LeftHeight = -height * width;
 
@@ -51,7 +51,7 @@ namespace InGame.Player
 
         public void SetRightHandHeight(float InitHeight,float InitWidth,float height, float range)
         {
-            _BoxCornerPosScript.SetBoxCornerPos();
+            //_BoxCornerPosScript.SetBoxCornerPos();
 
             _RightHeight = -height * range;
 
@@ -63,7 +63,7 @@ namespace InGame.Player
 
         private void ResetRotateHand()
         {
-            _RightHand.transform.rotation = new Quaternion(0,90,0,0);
+            _RightHand.transform.rotation = new Quaternion(0,-90,0,0);
             _LeftHand.transform.rotation = new Quaternion(0, -90, 0, 0);
         }
     }

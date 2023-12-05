@@ -9,6 +9,7 @@ TagManager:
   - Box
   - Cage
   - GoalHolePoint
+  - Ground
   - PlayerBody
   - BoxRange
   - BoxInner
