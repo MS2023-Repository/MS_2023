@@ -18,19 +18,18 @@ namespace OutGame.UI
         {
             CheckForCanvas();
 
-            if (UIElements.Length > 0)
+            string sceneName = SceneLoader.instance.GetCurrentScene();
+            if (sceneName != "Title" && sceneName != "StageSelect")
             {
-                foreach (var element in UIElements)
+                if (UIElements.Length > 0)
                 {
-                    var newUI = Instantiate(element, canvasObj.transform);
+                    foreach (var element in UIElements)
+                    {
+                        var newUI = Instantiate(element, canvasObj.transform);
+                        Debug.Log("created");
+                    }
                 }
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            CheckForCanvas();
         }
 
         private void CheckForCanvas()

@@ -47,7 +47,6 @@ MonoBehaviour:
   managerList:
   - {fileID: 7377947280548767824, guid: 5bb57e41cb38a6c4ca2755ee07b94da3, type: 3}
   - {fileID: 9084401458883340462, guid: 8ce6a0e094ecf75488b9ae3a8ff3fd82, type: 3}
-  - {fileID: 2214147914454701292, guid: c7870968889690e478e295cf8891deac, type: 3}
   - {fileID: 870047553754346204, guid: 9db39a79e537da44da07990a3f02c3fa, type: 3}
   - {fileID: 5985549573158917170, guid: 38276765e25c2834dab4ad304416d352, type: 3}
   - {fileID: 2979057788120993364, guid: 31718934b9d1f5d4db0b5665a270e21f, type: 3}
