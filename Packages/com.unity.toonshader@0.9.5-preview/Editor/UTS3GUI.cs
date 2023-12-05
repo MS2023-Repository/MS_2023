@@ -855,6 +855,10 @@ namespace UnityEditor.Rendering.Toon
                 tooltip: "Sets the reference speed for color shift. When the value is 1, one cycle should take around 6 seconds.",
                 propName: "_ColorShift_Speed", defaultValue: 0);
 
+            public static readonly FloatProperty snow = new FloatProperty(label:"Snow",
+                tooltip: "積雪量",
+                propName: "_snow", defaultValue: 0);
+            
             // Color prperties
             public static readonly ColorProperty viewShiftText = new ColorProperty(label: "Shifting Target Color",
                 tooltip: "Target color above, must be specified in HDR.",
@@ -878,6 +882,7 @@ namespace UnityEditor.Rendering.Toon
         }
         // --------------------------------
 
+        
         public UTS3GUI()
         {
 
@@ -1369,9 +1374,7 @@ namespace UnityEditor.Rendering.Toon
             GUI_RangeProperty(material, Styles.tweakTransParencyText );
             GUI_Toggle(material, Styles.baseMapAlphaAsClippingMask, ShaderPropIsBaseMapAlphaAsClippingMask, MaterialGetInt(material, ShaderPropIsBaseMapAlphaAsClippingMask) != 0);
         }
-
-
-
+        
 
         void GUI_BasicThreeColors(Material material)
         {

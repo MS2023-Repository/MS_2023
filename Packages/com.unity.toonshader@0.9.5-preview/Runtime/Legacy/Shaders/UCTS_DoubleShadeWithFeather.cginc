@@ -432,6 +432,7 @@ float4 frag(VertexOutput i, fixed facing : VFACE) : SV_TARGET
     #ifdef _IS_CLIPPING_OFF
     //DoubleShadeWithFeather
     #ifdef _IS_PASS_FWDBASE
+    finalColor = float4(1,0,0,1);
     fixed4 finalRGBA = fixed4(finalColor, 1);
     #elif _IS_PASS_FWDDELTA
 	                fixed4 finalRGBA = fixed4(finalColor,0);
@@ -460,6 +461,8 @@ float4 frag(VertexOutput i, fixed facing : VFACE) : SV_TARGET
 ///カスタム背景専用Shader
 ///AUther:Umata Haruto
 //-----------------------------------------------------------
+half _Snow;
+
 float4 fragEnvironment(VertexOutput i, fixed facing : VFACE) : SV_TARGET
 {
     UNITY_SETUP_INSTANCE_ID(i);

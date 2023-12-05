@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1973020405893422842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3728185836341926406}
+  - component: {fileID: 879834376790858300}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3728185836341926406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973020405893422842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879834376790858300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973020405893422842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52adddc5f8828442ba63fb7109072e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerList:
+  - {fileID: 7377947280548767824, guid: 5bb57e41cb38a6c4ca2755ee07b94da3, type: 3}
+  - {fileID: 9084401458883340462, guid: 8ce6a0e094ecf75488b9ae3a8ff3fd82, type: 3}
+  - {fileID: 2214147914454701292, guid: c7870968889690e478e295cf8891deac, type: 3}
+  - {fileID: 870047553754346204, guid: 9db39a79e537da44da07990a3f02c3fa, type: 3}
+  - {fileID: 5985549573158917170, guid: 38276765e25c2834dab4ad304416d352, type: 3}
+  - {fileID: 2979057788120993364, guid: 31718934b9d1f5d4db0b5665a270e21f, type: 3}
+  - {fileID: 7315806776128791966, guid: eb405cb326e8f864f806ac8fc3fe7480, type: 3}
+  - {fileID: 2845403168075899256, guid: 1809fa52f679ddd41b2781f6ffca38c6, type: 3}

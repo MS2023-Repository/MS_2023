@@ -15,6 +15,11 @@ namespace OutGame.SceneManager
 
         private GameObject loadingObj;
 
+        public string GetCurrentScene()
+        {
+            return SceneManager.GetActiveScene().name;
+        }
+
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -50,11 +55,6 @@ namespace OutGame.SceneManager
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                LoadScene("SampleScene");
-            }
-
             if (loadingObj.transform.parent == null)
             {
                 if (GameObject.Find("Canvas") != null)
@@ -68,7 +68,13 @@ namespace OutGame.SceneManager
         public void LoadScene(string sceneName)
         {
             loadingObj.SetActive(true);
+            loadingObj.GetComponent<RectTransform>().localScale = Vector3.one;
             StartCoroutine(LoadSceneAsynchronously(sceneName));
+        }
+
+        public void ReloadScene()
+        {
+            LoadScene(SceneManager.GetActiveScene().name);
         }
 
         IEnumerator LoadSceneAsynchronously(string name)
