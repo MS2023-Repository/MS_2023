@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using OutGame.GameManager;
 using OutGame.TimeManager;
+using OutGame.Audio;
 
 namespace InGame.CollectibleItem
 {
@@ -318,6 +319,8 @@ namespace InGame.CollectibleItem
             boxObject = playerObj.transform.parent.gameObject;
 
             dropToBox = true;
+
+            AudioManager.instance.PlaySE("PickupFood");
 
             yield return null;
         }

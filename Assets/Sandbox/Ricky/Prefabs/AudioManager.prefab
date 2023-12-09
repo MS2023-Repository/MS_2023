@@ -304,23 +304,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747ac831d5b2ec344b6da03646b76549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmAudioSource: {fileID: 4741551114355611403}
+  seAudioSource: {fileID: 595901590580160207}
   SEClips:
-  - name: sa
-    clip: {fileID: 8300000, guid: 51f0c54706b53c14c9c24bbd63bb18a6, type: 3}
-    volume: 0
-  - name: sada
-    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
-    volume: 0
-  - name: sada
-    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
-    volume: 0
-  - name: sada
-    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
-    volume: 0
+  - name: WalkGrav
+    clip: {fileID: 8300000, guid: 1a52c05f61c907649b16cc48d8b02f85, type: 3}
+    volume: 0.406
+  - name: WalkSnow
+    clip: {fileID: 8300000, guid: eecf27dd6e17b7a4086eedddb27c9ea5, type: 3}
+    volume: 0.485
+  - name: PickupFood
+    clip: {fileID: 8300000, guid: 3165d3e7954989641997aed8b2b89c5d, type: 3}
+    volume: 0.446
+  - name: HungrySE
+    clip: {fileID: 8300000, guid: 1b4a77634a1c7524aab4c4625f59ce48, type: 3}
+    volume: 0.495
+  - name: EatFood
+    clip: {fileID: 8300000, guid: 2671dc001676c964b86dcac598e7303c, type: 3}
+    volume: 0.495
+  - name: EnterGoal
+    clip: {fileID: 8300000, guid: ab381471f2271a54fb07a2cc68c2a611, type: 3}
+    volume: 0.297
+  - name: TimeUp
+    clip: {fileID: 8300000, guid: fc2581b019e6a1743affda592d85c2ea, type: 3}
+    volume: 0.495
+  - name: MoveButton
+    clip: {fileID: 8300000, guid: 1ce72b884319a0845b2fe4211b3f4c1d, type: 3}
+    volume: 0.43
+  - name: SelectButton
+    clip: {fileID: 8300000, guid: 0294694d81b5b5744a16bd194140d759, type: 3}
+    volume: 0.446
+  - name: CancelButton
+    clip: {fileID: 8300000, guid: 5ca075833c883ca48ae264878e9b6ba9, type: 3}
+    volume: 0.455
+  - name: PauseSE
+    clip: {fileID: 8300000, guid: 5a214eaff25c4914796981328f32a6f6, type: 3}
+    volume: 0.495
   BGMClips:
   - name: Title
-    clip: {fileID: 0}
-    volume: 0
+    clip: {fileID: 8300000, guid: e012fd156c4ade24db0763151d8be6cc, type: 3}
+    volume: 0.424
   - name: StageSelect
-    clip: {fileID: 0}
-    volume: 0
+    clip: {fileID: 8300000, guid: 1d6a0886625e5c349980a36bd486f405, type: 3}
+    volume: 0.377
+  - name: BeforeGame
+    clip: {fileID: 8300000, guid: 97f9073385a70dd4594f294058d990b2, type: 3}
+    volume: 0.457
+  - name: Game
+    clip: {fileID: 8300000, guid: 2615de26a1f15a442be18436368b78a7, type: 3}
+    volume: 0.457

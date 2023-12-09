@@ -6,6 +6,7 @@ using TMPro;
 using OutGame.InputManager;
 using OutGame.SceneManager;
 using OutGame.TimeManager;
+using OutGame.Audio;
 
 public class TitleScript : MonoBehaviour
 {
@@ -92,6 +93,7 @@ public class TitleScript : MonoBehaviour
 
                 if (InputManager.instance.menuSelectedState)
                 {
+                    AudioManager.instance.PlaySE("SelectButton");
                     menuState = MENUSTATE.MAIN;
                     alphaTime = 1.0f;
                 }
@@ -109,6 +111,7 @@ public class TitleScript : MonoBehaviour
                     switch (selectedMenu)
                     {
                         case MENUS.QUIT:
+                            AudioManager.instance.PlaySE("MoveButton");
                             selectedMenu = MENUS.START;
                             alphaTime = 1.0f;
                             break;
@@ -121,6 +124,7 @@ public class TitleScript : MonoBehaviour
                     switch (selectedMenu)
                     {
                         case MENUS.START:
+                            AudioManager.instance.PlaySE("MoveButton");
                             selectedMenu = MENUS.QUIT;
                             alphaTime = 1.0f;
                             break;
@@ -131,6 +135,8 @@ public class TitleScript : MonoBehaviour
 
                 if (InputManager.instance.menuSelectedState)
                 {
+                    AudioManager.instance.PlaySE("SelectButton");
+
                     switch (selectedMenu)
                     {
                         case MENUS.START:
