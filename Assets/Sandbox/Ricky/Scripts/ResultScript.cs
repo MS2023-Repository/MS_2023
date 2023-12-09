@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using OutGame.GameManager;
+using OutGame.TimeManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,8 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private GameObject leftConfetti;
 
     [SerializeField] private GameObject blurPanel;
-    private GameObject blurObj;
+    private Material blurObj;
+    private float blurT;
 
     private bool startSpawn;
 
@@ -34,12 +36,14 @@ public class ResultScript : MonoBehaviour
 
         if (GameObject.Find("BlurPanel") == null)
         {
-            blurObj = Instantiate(blurPanel, Camera.main.transform);
+            blurObj = Instantiate(blurPanel, Camera.main.transform).GetComponent<Renderer>().materials[0];
         }
         else
         {
-            blurObj = GameObject.Find("BlurPanel");
+            blurObj = GameObject.Find("BlurPanel").GetComponent<Renderer>().materials[0];
         }
+
+        blurT = 0;
     }
 
     // Update is called once per frame
@@ -47,14 +51,29 @@ public class ResultScript : MonoBehaviour
     {
         if (!GameManager.instance.isInGame())
         {
-            panel.SetActive(true);
-            if (resultPlayerSc.reachedPos)
+            if (blurT == 1.5f)
             {
-                if (!startSpawn)
+                panel.SetActive(true);
+                if (resultPlayerSc.reachedPos)
                 {
-                    StartCoroutine(SpawnFoods());
-                    startSpawn = true;
+                    if (!startSpawn)
+                    {
+                        StartCoroutine(SpawnFoods());
+                        startSpawn = true;
+                    }
                 }
+            }
+            else
+            {
+                blurT += TimeManager.instance.unscaledDeltaTime;
+
+                var ti = blurT / 1.5f;
+                ti = ti * ti * (3f - 2f * ti);
+                var valueToSet = Mathf.Lerp(0, 0.15f, ti);
+                blurObj.SetFloat("_BlurX", valueToSet);
+                blurObj.SetFloat("_BlurY", valueToSet);
+
+                blurT = Mathf.Clamp(blurT, 0, 1.5f);
             }
         }
     }

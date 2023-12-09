@@ -47,5 +47,6 @@ MonoBehaviour:
   UIElements:
   - {fileID: 2214147914454701292, guid: c7870968889690e478e295cf8891deac, type: 3}
   - {fileID: 2244970504755049385, guid: 79602fb4faa4be046be128c3e3d9d75b, type: 3}
+  - {fileID: 4386481136549614900, guid: 91877aa573c70ac45b67f20978149017, type: 3}
   canvasPrefab: {fileID: 7524670629885771101, guid: 23e14ee8bed760f4ab9b75ac17bf9144,
     type: 3}

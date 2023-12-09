@@ -158,7 +158,7 @@ namespace InGame.CollectibleItem
                             posDif.Normalize();
 
                             // Apply the friction force
-                            this.GetComponent<Rigidbody>().AddForce(posDif * 10f, ForceMode.Force);
+                            this.GetComponent<Rigidbody>().AddForce(posDif * 9f, ForceMode.Force);
                         }
 
                         lastPos = currentPosition;

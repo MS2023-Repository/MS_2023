@@ -37,11 +37,14 @@ namespace OutGame.UI
             if (GameObject.Find("Canvas") != null)
             {
                 canvasObj = GameObject.Find("Canvas");
+                canvasObj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+                canvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
             }
             else
             {
                 canvasObj = Instantiate(canvasPrefab);
                 canvasObj.name = "Canvas";
+                canvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
             }
         }
     }
