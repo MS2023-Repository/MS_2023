@@ -6,7 +6,7 @@
 //float _Snow;
 //CBUFFER_END
 
-float4 fragDoubleShadeFeather(float _Snow,VertexOutput i, fixed facing : VFACE) : SV_TARGET
+float4 fragDoubleShadeFeather(float _Snow, VertexOutput i, fixed facing : VFACE) : SV_TARGET
 {
     i.normalDir = normalize(i.normalDir);
     float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
@@ -87,9 +87,8 @@ float4 fragDoubleShadeFeather(float _Snow,VertexOutput i, fixed facing : VFACE) 
 
     //雪シェーダー
     float d = dot(i.normalDir, fixed3(0, 1, 0));
-    fixed4 white = fixed4(1,1,1,1);
-    _MainTex_var = lerp(_MainTex_var, white, d*_Snow);
-    
+    fixed4 white = fixed4(1, 1, 1, 1);
+    _MainTex_var = lerp(_MainTex_var, white, d * _Snow);
     //v.2.0.4
     #if defined(_IS_CLIPPING_MODE)
 //DoubleShadeWithFeather_Clipping
@@ -150,7 +149,7 @@ float4 fragDoubleShadeFeather(float _Snow,VertexOutput i, fixed facing : VFACE) 
 
     #ifdef _IS_PASS_FWDBASE
     float3 Set_LightColor = lightColor.rgb;
-    
+
     float3 Set_BaseColor = lerp((_BaseColor.rgb * _MainTex_var.rgb),
                                 ((_BaseColor.rgb * _MainTex_var.rgb) * Set_LightColor), _Is_LightColor_Base);
     //v.2.0.5
@@ -190,7 +189,7 @@ float4 fragDoubleShadeFeather(float _Snow,VertexOutput i, fixed facing : VFACE) 
                                                                  _ShadeColor_Step - (_ShadeColor_Step -
                                                                      _1st2nd_Shades_Feather))))),
                                      Set_FinalShadowMask); // Final Color
-    
+
     float4 _Set_HighColorMask_var = tex2D(_Set_HighColorMask, TRANSFORM_TEX(Set_UV0, _Set_HighColorMask));
 
     float _Specular_var = 0.5 * dot(halfDirection, lerp(i.normalDir, normalDirection, _Is_NormalMapToHighColor)) + 0.5;
@@ -531,11 +530,11 @@ float4 fragDoubleShadeFeather(float _Snow,VertexOutput i, fixed facing : VFACE) 
                 float4 emissive_Color = lerp(colorShift_Color, viewShift_Color, _Is_ViewShift);
                 emissive = emissive_Color.rgb * _Emissive_Tex_var.rgb * emissiveMask;
     #endif
-    
+
     //Final Composition#if
     finalColor = SATURATE_IF_SDR(finalColor) + (envLightColor * envLightIntensity * _GI_Intensity * smoothstep(
         1, 0, envLightIntensity / 2)) + emissive;
-    
+
     finalColor += pointLightColor;
     #endif
 

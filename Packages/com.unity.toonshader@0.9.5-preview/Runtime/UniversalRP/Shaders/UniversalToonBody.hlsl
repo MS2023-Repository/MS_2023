@@ -512,6 +512,7 @@ VertexOutput vert(VertexInput v)
 
 CBUFFER_START(CustomToonMaterialCBuffer)
 float _Snow;
+
 CBUFFER_END 
 
 float4 frag(VertexOutput i, fixed facing : VFACE) : SV_TARGET
@@ -519,8 +520,9 @@ float4 frag(VertexOutput i, fixed facing : VFACE) : SV_TARGET
     #if defined(_SHADINGGRADEMAP)
                     return fragShadingGradeMap(i, facing);
     #else
+    IsLightCookieEnabled(false);
     fixed4 color = fragDoubleShadeFeather(_Snow,i, facing);
-    
+  
     return color;
     #endif
 }
