@@ -340,10 +340,13 @@ MonoBehaviour:
   - name: PauseSE
     clip: {fileID: 8300000, guid: 5a214eaff25c4914796981328f32a6f6, type: 3}
     volume: 0.495
+  - name: StandOnButton
+    clip: {fileID: 8300000, guid: 7e9a7ae9ee5a7d14cb1585225b824fc5, type: 3}
+    volume: 0.175
   BGMClips:
   - name: Title
     clip: {fileID: 8300000, guid: e012fd156c4ade24db0763151d8be6cc, type: 3}
-    volume: 0.424
+    volume: 0.45
   - name: StageSelect
     clip: {fileID: 8300000, guid: 1d6a0886625e5c349980a36bd486f405, type: 3}
     volume: 0.377

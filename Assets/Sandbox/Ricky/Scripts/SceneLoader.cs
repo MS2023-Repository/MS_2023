@@ -50,7 +50,7 @@ namespace OutGame.SceneManager
         void Start()
         {
             sceneName = string.Empty;
-            ResetLoadingScreen();
+            //ResetLoadingScreen();
         }
 
         // Update is called once per frame
@@ -58,15 +58,23 @@ namespace OutGame.SceneManager
         {
             if (SceneChanged())
             {
+                Debug.Log("Scene has changed");
                 ResetLoadingScreen();
             }
 
-            if (loadingObj.transform.parent.parent == null)
+            if (loadingObj != null)
             {
-                if (GameObject.Find("Canvas") != null)
+                if (loadingObj.transform.parent == null)
                 {
-                    loadingObj.transform.parent.SetParent(GameObject.Find("Canvas").transform);
-                    loadingObj.transform.parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    if (GameObject.Find("Canvas") != null)
+                    {
+                        loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);
+                        loadingObj.transform.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, -5);
+                        loadingObj.transform.GetComponent<RectTransform>().localEulerAngles = Vector3.zero;
+                        loadingObj.transform.GetComponent<RectTransform>().localScale = Vector3.one;
+
+                        isLoading = false;
+                    }
                 }
             }
         }
@@ -96,13 +104,10 @@ namespace OutGame.SceneManager
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);
             while (!operation.isDone)
             {
-                Debug.Log(operation.progress);
-                loadingObj.transform.GetChild(1).GetComponent<Slider>().value = operation.progress;
                 yield return new WaitForSeconds(2f);
             }
 
-            loadingObj.SetActive(false);
-            StartCoroutine(FadeScreen(false, string.Empty));
+            //StartCoroutine(FadeScreen(false, string.Empty));
         }
 
         private void ResetLoadingScreen()
@@ -117,34 +122,30 @@ namespace OutGame.SceneManager
                 loadingObj = GameObject.Find("LoadingScreen");
             }
 
+            loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);
+            loadingObj.transform.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, -5);
+            loadingObj.transform.GetComponent<RectTransform>().localEulerAngles = Vector3.zero;
+            loadingObj.transform.GetComponent<RectTransform>().localScale = Vector3.one;
+
             fadePanel = loadingObj.transform.GetChild(0).GetComponent<Image>();
             var tempColor = fadePanel.color;
             tempColor.a = 1;
             fadePanel.color = tempColor;
-            loadingObj = loadingObj.transform.GetChild(1).gameObject;
-            loadingObj.SetActive(false);
 
-            if (loadingObj.transform.parent.parent == null)
-            {
-                if (GameObject.Find("Canvas") != null)
-                {
-                    loadingObj.transform.parent.SetParent(GameObject.Find("Canvas").transform);
-                    loadingObj.transform.parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                }
-            }
+            Debug.Log("loaldig");
 
             StartCoroutine(FadeScreen(false, string.Empty));
-
-            GameObject.FindObjectOfType<AudioManager>().ChangeBGM();
-
-            isLoading = true;
         }
 
         IEnumerator FadeScreen(bool fadeOut, string sceneName)
         {
+            isLoading = true;
+
             if (fadeOut)
             {
                 GameObject.FindObjectOfType<FadeScript>().PlayFadeOut();
+
+                Debug.Log("FadeOut");
 
                 while (GameObject.FindObjectOfType<FadeScript>().fadeOutState)
                 {
@@ -163,8 +164,6 @@ namespace OutGame.SceneManager
 
             if (fadeOut)
             {
-                loadingObj.SetActive(true);
-                loadingObj.GetComponent<RectTransform>().localScale = Vector3.one;
                 StartCoroutine(LoadSceneAsynchronously(sceneName));
             }
             else

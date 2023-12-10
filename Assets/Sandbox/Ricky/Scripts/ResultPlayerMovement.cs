@@ -11,24 +11,36 @@ public class ResultPlayerMovement : MonoBehaviour
 
     public bool reachedPos {get; private set;}
 
+    private bool moveState;
+
+    public void StartMove()
+    {
+        moveState = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        targetPos = new Vector3(-0.066f, this.transform.localPosition.y, this.transform.localPosition.z);
+        targetPos = new Vector3(18, -28.35f, 56.5f);
         reachedPos = false;
+
+        moveState = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.localPosition != targetPos)
+        if (moveState)
         {
-            this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPos, moveSpeed * TimeManager.instance.unscaledDeltaTime / 10.0f);
-        }
-        else
-        {
-            reachedPos = true;
-            this.transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            if (this.transform.localPosition != targetPos)
+            {
+                this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPos, moveSpeed * TimeManager.instance.unscaledDeltaTime / 10.0f);
+            }
+            else
+            {
+                reachedPos = true;
+                this.transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
     }
 }

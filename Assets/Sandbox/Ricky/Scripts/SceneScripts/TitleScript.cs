@@ -84,6 +84,8 @@ public class TitleScript : MonoBehaviour
             increaseTime = true;
         }
 
+        alphaTime = Mathf.Clamp(alphaTime, 0.2f, 1.1f);
+
         switch (menuState)
         {
             case MENUSTATE.PRESS:

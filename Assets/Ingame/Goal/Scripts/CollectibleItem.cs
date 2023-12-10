@@ -1,3 +1,4 @@
+using OutGame.GameManager;
 using UnityEngine;
 
 namespace InGame.Goal
@@ -25,33 +26,42 @@ namespace InGame.Goal
 
         private void Update()
         {
-            // 成長中のイージング処理
-            if (isGrowing)
+            if (GameManager.instance.isInGame())
             {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.SmoothStep(0, 1, elapsedTime / easeDurationGrow);
-                _holeImage.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+                this.transform.GetChild(0).gameObject.SetActive(true);
 
-                if (elapsedTime >= easeDurationGrow)
+                // 成長中のイージング処理
+                if (isGrowing)
                 {
-                    // 成長が完了したら縮小へ
-                    isGrowing = false;
-                    isShrinking = true;
-                    elapsedTime = 0;
+                    elapsedTime += Time.deltaTime;
+                    float t = Mathf.SmoothStep(0, 1, elapsedTime / easeDurationGrow);
+                    _holeImage.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+
+                    if (elapsedTime >= easeDurationGrow)
+                    {
+                        // 成長が完了したら縮小へ
+                        isGrowing = false;
+                        isShrinking = true;
+                        elapsedTime = 0;
+                    }
+                }
+                // 縮小中のイージング処理
+                else if (isShrinking)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float t = Mathf.SmoothStep(0, 1, elapsedTime / easeDurationShrink);
+                    _holeImage.transform.localScale = Vector3.Lerp(targetScale, initialScale, t);
+
+                    if (elapsedTime >= easeDurationShrink)
+                    {
+                        // 縮小が完了したら縮小終了
+                        isShrinking = false;
+                    }
                 }
             }
-            // 縮小中のイージング処理
-            else if (isShrinking)
+            else
             {
-                elapsedTime += Time.deltaTime;
-                float t = Mathf.SmoothStep(0, 1, elapsedTime / easeDurationShrink);
-                _holeImage.transform.localScale = Vector3.Lerp(targetScale, initialScale, t);
-
-                if (elapsedTime >= easeDurationShrink)
-                {
-                    // 縮小が完了したら縮小終了
-                    isShrinking = false;
-                }
+                this.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
 

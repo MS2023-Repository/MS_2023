@@ -28,8 +28,10 @@ namespace OutGame.UI
                 {
                     foreach (var element in UIElements)
                     {
-                        var newUI = Instantiate(element, canvasObj.transform);
-                        Debug.Log("created");
+                        if (GameObject.Find(element.name) == null)
+                        {
+                            var newUI = Instantiate(element, canvasObj.transform);
+                        }
                     }
                 }
             }
@@ -47,16 +49,14 @@ namespace OutGame.UI
                 canvasObj.name = "Canvas";
             }
 
-            if (sceneName != "Title" && sceneName != "StageSelect")
-            {
-                SetWorldCamera();
-            }
+            SetWorldCamera();
         }
 
         private void SetWorldCamera()
         {
             canvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
             canvasObj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+            canvasObj.GetComponent<Canvas>().planeDistance = 1;
         }
     }
 }

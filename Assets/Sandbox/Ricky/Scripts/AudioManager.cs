@@ -32,10 +32,27 @@ namespace OutGame.Audio
 
         private float volumeT;
 
+        public AudioClip GetAudioClip(string clipName)
+        {
+            AudioClip clipToReturn = null;
+
+            foreach (var clip in SEClips)
+            {
+                if (clip.name == clipName)
+                {
+                    clipToReturn = clip.clip;
+                    break;
+                }
+            }
+
+            return clipToReturn;
+        }
+
         public void ChangeBGM()
         {
             if (!changeBgmFlg)
             {
+                StopAllCoroutines();
                 changeBgmFlg = true;
                 StartCoroutine(FadeOut());
             }
@@ -123,7 +140,6 @@ namespace OutGame.Audio
                 {
                     if (clip.name == currentSceneName)
                     {
-                        Debug.Log(clip.name + " " + currentSceneName);
                         bgmAudioSource.clip = clip.clip;
                         targetVolume = clip.volume;
                         break;

@@ -202,6 +202,8 @@ namespace InGame.CollectibleItem
                 this.transform.GetComponent<Rigidbody>().drag = 3;
                 this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
                 this.transform.GetComponent<Rigidbody>().mass = 0;
+
+                AudioManager.instance.PlaySE("EnterGoal");
             }
 
             if (other.gameObject.tag == "BoxRange")
