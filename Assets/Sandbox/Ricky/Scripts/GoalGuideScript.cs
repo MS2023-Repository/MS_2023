@@ -13,6 +13,8 @@ namespace InGame.GoalGuide
         [SerializeField] Image halfProgress;
         [SerializeField] Image fullProgress;
 
+        [SerializeField] RawImage goalImage;
+
         private float progressNum;
         private float realProgressNum;
 
@@ -21,16 +23,38 @@ namespace InGame.GoalGuide
         private GameObject cameraObj;
         private GameObject goalObj;
 
+        [SerializeField] private Camera goalCamera;
+        private RenderTexture goalTex;
+        private Vector3 offsetPos;
+
         // Start is called before the first frame update
         void Start()
         {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(1).gameObject.SetActive(true);
+            this.transform.GetChild(2).gameObject.SetActive(true);
+
             progressNum = 0;
             realProgressNum = 0;
 
             scaleScalar = 3.15f;
 
             cameraObj = Camera.main.gameObject;
+
             goalObj = GameObject.FindGameObjectWithTag("Goal");
+
+            offsetPos = new Vector3(0, 1, -2);
+            goalCamera.transform.parent = null;
+            goalCamera.transform.position = goalObj.transform.position + offsetPos;
+
+            if (goalCamera.targetTexture != null)
+            {
+                goalCamera.targetTexture.Release();
+            }
+
+            goalTex = new RenderTexture(1920, 1080, 1);
+            goalCamera.targetTexture = goalTex;
+            goalImage.texture = goalTex;
         }
 
         // Update is called once per frame
@@ -56,11 +80,15 @@ namespace InGame.GoalGuide
                 scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime);
             }
 
+            halfProgress.fillAmount = progressNum;
+
             transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
         }
 
         private void FixedUpdate()
         {
+            goalCamera.transform.LookAt(goalObj.transform);
+
             UpdatePosition();
         }
 
@@ -73,10 +101,20 @@ namespace InGame.GoalGuide
 
             screenDir *= 1200.0f;
 
-            screenDir.y = Mathf.Clamp(screenDir.y, -355, 355);
+            screenDir.y = Mathf.Clamp(screenDir.y, -340, 340);
             screenDir.x = Mathf.Clamp(screenDir.x, -830, 830);
 
             this.GetComponent<RectTransform>().anchoredPosition = screenDir;
+        }
+
+        private void OnDisable() 
+        {
+            if (goalTex != null)
+            {
+                goalImage.texture = null;
+                goalTex.Release();
+                goalTex = null;
+            }
         }
     }
 }

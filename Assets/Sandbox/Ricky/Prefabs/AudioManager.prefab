@@ -304,3 +304,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747ac831d5b2ec344b6da03646b76549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SEClips:
+  - name: sa
+    clip: {fileID: 8300000, guid: 51f0c54706b53c14c9c24bbd63bb18a6, type: 3}
+    volume: 0
+  - name: sada
+    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
+    volume: 0
+  - name: sada
+    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
+    volume: 0
+  - name: sada
+    clip: {fileID: 8300000, guid: e885484e1bc99fb47a0ac3f6bfa586b1, type: 3}
+    volume: 0
+  BGMClips:
+  - name: Title
+    clip: {fileID: 0}
+    volume: 0
+  - name: StageSelect
+    clip: {fileID: 0}
+    volume: 0

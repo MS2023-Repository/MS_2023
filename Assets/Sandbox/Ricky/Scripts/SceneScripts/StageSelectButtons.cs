@@ -14,6 +14,8 @@ public class StageSelectButtons : MonoBehaviour
 
     private Material mat;
 
+    private bool sceneLoaded;
+
     [SerializeField] private string sceneToLoad;
 
     // Start is called before the first frame update
@@ -25,6 +27,8 @@ public class StageSelectButtons : MonoBehaviour
 
         t = 0;
         mat = transform.GetChild(1).GetComponent<Renderer>().material;
+
+        sceneLoaded = false;
     }
 
     // Update is called once per frame
@@ -47,7 +51,11 @@ public class StageSelectButtons : MonoBehaviour
 
         if (t >= 2)
         {
-            SceneLoader.instance.LoadScene(sceneToLoad);
+            if (!sceneLoaded)
+            {
+                SceneLoader.instance.LoadScene(sceneToLoad);
+                sceneLoaded = true;
+            }
         }
     }
 

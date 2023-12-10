@@ -5,22 +5,41 @@ using UnityEngine;
 
 namespace OutGame.GameManager
 {
+    using InGame.CollectibleItem;
+    using OutGame.TimeManager;
+
     public class GameManager : MonoBehaviour
     {
         // �}�l�[�W���[�̃V���O���g��
         public static GameManager instance { get; private set; }
 
-        private int collectedItems;
+        private int collectedNum;
         private int maxItems;
 
-        public void AddCollectedItems(int num)
+        [SerializeField] private float timeLimit = 210;
+        private float elapsedTime;
+
+        [SerializeField] private int targetItems = 5;
+
+        public List<GameObject> collectedItems { get; private set; }
+
+        public bool isInGame()
         {
-            collectedItems += num;
+            return elapsedTime < timeLimit;
+        }
+
+        public void AddCollectedItems(int num, GameObject itemToInsert)
+        {
+            itemToInsert.transform.position = new Vector3(100, 100, 100);
+
+            collectedNum += num;
+            collectedItems.Add(itemToInsert);
         }
 
         public float GetCollectedItemPercentage()
         {
-            float num = (float)collectedItems / (float)maxItems;
+            float num = (float)collectedNum / (float)targetItems;
+            num = Mathf.Clamp01(num);
             return num;
         }
 
@@ -34,25 +53,29 @@ namespace OutGame.GameManager
             {
                 instance = this;
             }
-
-            DontDestroyOnLoad(this);
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            collectedItems = 0;
+            collectedNum = 0;
 
             maxItems = GameObject.FindGameObjectsWithTag("CollectibleObject").Count();
+
+            targetItems = Mathf.Clamp(targetItems, 0, maxItems);
+
+            elapsedTime = 0;
+
+            collectedItems = new List<GameObject>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.UpArrow))
-            //{
-            //    collectedItems++;
-            //}
+            if (elapsedTime < timeLimit)
+            {
+                elapsedTime += TimeManager.instance.deltaTime;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Managers : MonoBehaviour
 {
@@ -10,13 +11,20 @@ public class Managers : MonoBehaviour
     {
         foreach (GameObject managerObj in managerList)
         {
-            if (GameObject.Find(managerObj.name) == null)
+            if (GameObject.Find(managerObj.name + "(Clone)") == null)
             {
-                Instantiate(managerObj, this.transform);
-            }
-            else
-            {
-                GameObject.Find(managerObj.name).transform.parent = this.transform;
+                string sceneName = SceneManager.GetActiveScene().name;
+                if (sceneName == "Title" && sceneName == "StageSelect")
+                {
+                    if (managerObj.name != "GameManager")
+                    {
+                        Instantiate(managerObj);
+                    }
+                }
+                else
+                {
+                    Instantiate(managerObj);
+                }
             }
         }
     }
