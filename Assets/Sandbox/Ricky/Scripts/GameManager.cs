@@ -16,6 +16,8 @@ namespace OutGame.GameManager
         private int collectedNum;
         private int maxItems;
 
+        private bool startGameState;
+
         [SerializeField] private float timeLimit = 210;
         private float elapsedTime;
 
@@ -25,7 +27,17 @@ namespace OutGame.GameManager
 
         public bool isInGame()
         {
-            return elapsedTime < timeLimit;
+            return elapsedTime < timeLimit && startGameState;
+        }
+
+        public bool isEndGame()
+        {
+            return elapsedTime > timeLimit;
+        }
+
+        public void StartGame()
+        {
+            startGameState = true;
         }
 
         public void AddCollectedItems(int num, GameObject itemToInsert)
@@ -58,6 +70,8 @@ namespace OutGame.GameManager
         // Start is called before the first frame update
         void Start()
         {
+            startGameState = false;
+
             collectedNum = 0;
 
             maxItems = GameObject.FindGameObjectsWithTag("CollectibleObject").Count();
@@ -72,9 +86,12 @@ namespace OutGame.GameManager
         // Update is called once per frame
         void Update()
         {
-            if (elapsedTime < timeLimit)
+            if (startGameState)
             {
-                elapsedTime += TimeManager.instance.deltaTime;
+                if (elapsedTime < timeLimit)
+                {
+                    elapsedTime += TimeManager.instance.deltaTime;
+                }
             }
         }
     }

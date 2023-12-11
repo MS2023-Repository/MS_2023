@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using InGame.CollectibleItem;
 using OutGame.GameManager;
+using OutGame.InputManager;
+using OutGame.SceneManager;
 using OutGame.TimeManager;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +43,19 @@ public class ResultScript : MonoBehaviour
     private Material blurObj;
     private float blurT;
 
+    enum MENUSTATE
+    {
+        SELECT,
+        NEXT
+    }    
+
+    [SerializeField] private TextMeshProUGUI selectTxt;
+    [SerializeField] private TextMeshProUGUI nextTxt;
+    private MENUSTATE selectedMenu;
+    private float menuT;
+    private bool increaseTime;
+    private Color32 invisColor, visibleColor;
+
     private bool startSpawn;
 
     // Start is called before the first frame update
@@ -67,12 +83,18 @@ public class ResultScript : MonoBehaviour
 
         resultBackgroundTarget = new Vector3(-300, 85, 0);
         resultBackground.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(resultBackgroundTarget.x, resultBackgroundTarget.y + 1000, resultBackgroundTarget.z);
+
+        selectedMenu = MENUSTATE.NEXT;
+        menuT = 1;
+        increaseTime = false;
+        invisColor = new Color32(255, 255, 255, 0);
+        visibleColor = new Color32(255, 255, 255, 255);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.isInGame())
+        if (GameManager.instance.isEndGame())
         {
             switch (animState)
             {
@@ -122,6 +144,80 @@ public class ResultScript : MonoBehaviour
                     }
                     break;
                 case ANIMSTATE.MENU:
+                    var menuDir = InputManager.instance.GetMenuMovement();
+
+                    if (menuDir.x > 0)
+                    {
+                        switch (selectedMenu)
+                        {
+                            case MENUSTATE.SELECT:
+                                selectedMenu = MENUSTATE.NEXT;
+                                menuT = 1;
+                                break;
+                            case MENUSTATE.NEXT:
+                                break;
+                        }
+                    }
+                    else if (menuDir.x < 0)
+                    {
+                        switch (selectedMenu)
+                        {
+                            case MENUSTATE.NEXT:
+                                selectedMenu = MENUSTATE.SELECT;
+                                menuT = 1;
+                                break;
+                            case MENUSTATE.SELECT:
+                                break;
+                        }
+                    }
+
+                    if (increaseTime)
+                    {
+                        menuT += TimeManager.instance.unscaledDeltaTime;
+                    }
+                    else
+                    {
+                        menuT -= TimeManager.instance.unscaledDeltaTime;
+                    }
+
+                    if (menuT >= 1)
+                    {
+                        increaseTime = false;
+                    }
+                    else if (menuT < 0)
+                    {
+                        increaseTime = true;
+                    }
+
+                    menuT = Mathf.Clamp01(menuT);
+
+                    var t = menuT / 1.5f;
+                    t = t * t * (3f - 2f * t);
+
+                    switch (selectedMenu)
+                    {
+                        case MENUSTATE.SELECT:
+                            selectTxt.faceColor = Color32.Lerp(invisColor, visibleColor, t);
+                            nextTxt.faceColor = visibleColor;
+                            break;
+                        case MENUSTATE.NEXT:
+                            nextTxt.faceColor = Color32.Lerp(invisColor, visibleColor, t);
+                            selectTxt.faceColor = visibleColor;
+                            break;
+                    }
+
+                    if (InputManager.instance.menuSelectedState)
+                    {
+                        switch (selectedMenu)
+                        {
+                            case MENUSTATE.SELECT:
+                                SceneLoader.instance.LoadScene("StageSelect");
+                                break;
+                            case MENUSTATE.NEXT:
+                                SceneLoader.instance.ReloadScene();
+                                break;
+                        }
+                    }
 
                     break;
             }
@@ -171,7 +267,11 @@ public class ResultScript : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        //rightConfetti.SetActive(true);
-        //leftConfetti.SetActive(true);
+        selectTxt.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        nextTxt.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+
+        animState = ANIMSTATE.MENU;
     }
 }
