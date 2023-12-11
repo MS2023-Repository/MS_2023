@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using InGame.CollectibleItem;
 using OutGame.GameManager;
 using OutGame.TimeManager;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +33,8 @@ public class ResultScript : MonoBehaviour
 
     [SerializeField] private GameObject resultBackground;
     private Vector3 resultBackgroundTarget;
+
+    [SerializeField] private GameObject testObj;
 
     [SerializeField] private GameObject blurPanel;
     private Material blurObj;
@@ -96,6 +100,7 @@ public class ResultScript : MonoBehaviour
                     {
                         animState = ANIMSTATE.PLAYERMOVE;
                         resultPlayerSc.StartMove();
+                        transform.GetChild(0).GetChild(1).SetParent(null);
                     }
                     else
                     {
@@ -128,6 +133,8 @@ public class ResultScript : MonoBehaviour
         if (resultCamera.targetTexture != null)
         {
             resultCamera.targetTexture.Release();
+            resultCamera.targetTexture.DiscardContents();
+            resultCamera.targetTexture = null;
         }
 
         resultTexture = new RenderTexture(1920, 1080, 1);
@@ -142,6 +149,7 @@ public class ResultScript : MonoBehaviour
             resultCamera.targetTexture = null;
             playerImage.texture = null;
             resultTexture.Release();
+            resultTexture.DiscardContents();
             resultTexture = null;
         }
     }
@@ -150,12 +158,15 @@ public class ResultScript : MonoBehaviour
     {
         for (int i = 0; i < GameManager.instance.collectedItems.Count; i++)
         {
-            var spawnedObj = GameManager.instance.collectedItems[i];
-            spawnedObj.transform.parent = spawnPoint.transform;
-            spawnedObj.transform.localPosition = Vector3.zero;
+            var spawnedObj = Instantiate(testObj);
+            //Destroy(spawnedObj.GetComponent<CollectibleItem>());
+            spawnedObj.transform.position = spawnPoint.position;
 
             spawnedObj.GetComponent<Rigidbody>().useGravity = true;
-            spawnedObj.transform.localScale *= 1.2f;
+            spawnedObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            spawnedObj.GetComponent<Rigidbody>().drag = 20f;
+
+            spawnedObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
             yield return new WaitForSeconds(0.5f);
         }

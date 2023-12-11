@@ -21,7 +21,7 @@ public class ResultPlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetPos = new Vector3(18, -28.35f, 56.5f);
+        targetPos = new Vector3(173, -188, 390);
         reachedPos = false;
 
         moveState = false;

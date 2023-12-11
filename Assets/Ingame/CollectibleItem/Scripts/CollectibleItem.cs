@@ -201,31 +201,37 @@ namespace InGame.CollectibleItem
                 this.transform.GetChild(0).GetComponent<Collider>().enabled = true;
                 this.transform.GetComponent<Rigidbody>().drag = 3;
                 this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
-                this.transform.GetComponent<Rigidbody>().mass = 0;
+                this.transform.GetComponent<Rigidbody>().mass = 0.5f;
 
                 AudioManager.instance.PlaySE("EnterGoal");
             }
 
             if (other.gameObject.tag == "BoxRange")
             {
-                if (!pickedUp)
+                if (!resultState)
                 {
-                    StartCoroutine(PickUpObject(other.gameObject));
-                    pickedUp = true;
+                    if (!pickedUp)
+                    {
+                        StartCoroutine(PickUpObject(other.gameObject));
+                        pickedUp = true;
+                    }
                 }
             }
 
             if (other.gameObject.tag == "BoxInner")
             {
-                if (pickedUp && !_beingSucked)
+                if (!resultState)
                 {
-                    this.transform.GetComponent<Rigidbody>().drag = 13;
-                    this.transform.GetComponent<Rigidbody>().angularDrag = 5;
+                    if (pickedUp && !_beingSucked)
+                    {
+                        this.transform.GetComponent<Rigidbody>().drag = 13;
+                        this.transform.GetComponent<Rigidbody>().angularDrag = 5;
 
-                    onBoard = true; 
-                    dropToBox = false;
+                        onBoard = true;
+                        dropToBox = false;
 
-                    startDropCount = false;
+                        startDropCount = false;
+                    }
                 }
             }
         }
@@ -257,13 +263,16 @@ namespace InGame.CollectibleItem
 
             if (other.gameObject.tag == "BoxInner")
             {
-                if (pickedUp && !_beingSucked)
+                if (!resultState)
                 {
-                    onBoard = false;
-                    startDropCount = true;
+                    if (pickedUp && !_beingSucked)
+                    {
+                        onBoard = false;
+                        startDropCount = true;
 
-                    this.transform.GetComponent<Rigidbody>().drag = 0;
-                    this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
+                        this.transform.GetComponent<Rigidbody>().drag = 0;
+                        this.transform.GetComponent<Rigidbody>().angularDrag = 0.05f;
+                    }
                 }
             }
         }
