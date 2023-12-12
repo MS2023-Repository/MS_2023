@@ -68,11 +68,11 @@ public class TitleScript : MonoBehaviour
 
         if (increaseTime)
         {
-            alphaTime += TimeManager.instance.unscaledDeltaTime;
+            alphaTime += TimeManager.instance.deltaTime;
         }
         else
         {
-            alphaTime -= TimeManager.instance.unscaledDeltaTime;
+            alphaTime -= TimeManager.instance.deltaTime;
         }
 
         if (alphaTime >= 1.0f)

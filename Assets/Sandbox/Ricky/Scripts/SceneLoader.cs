@@ -27,6 +27,11 @@ namespace OutGame.SceneManager
             return SceneManager.GetActiveScene().name;
         }
 
+        public bool IsGameScene()
+        {
+            return GetCurrentScene() != "Title" && GetCurrentScene() != "StageSelect";
+        }
+
         public bool SceneChanged()
         {
             return sceneName != GetCurrentScene();
@@ -106,8 +111,6 @@ namespace OutGame.SceneManager
             {
                 yield return new WaitForSeconds(2f);
             }
-
-            //StartCoroutine(FadeScreen(false, string.Empty));
         }
 
         private void ResetLoadingScreen()
@@ -132,8 +135,6 @@ namespace OutGame.SceneManager
             tempColor.a = 1;
             fadePanel.color = tempColor;
 
-            Debug.Log("loaldig");
-
             StartCoroutine(FadeScreen(false, string.Empty));
         }
 
@@ -144,8 +145,6 @@ namespace OutGame.SceneManager
             if (fadeOut)
             {
                 GameObject.FindObjectOfType<FadeScript>().PlayFadeOut();
-
-                Debug.Log("FadeOut");
 
                 while (GameObject.FindObjectOfType<FadeScript>().fadeOutState)
                 {

@@ -39602,6 +39602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CountdownPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5767762261034161110, guid: b9e7a8269079a124b927281b66fcd796,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8831479767351353781, guid: b9e7a8269079a124b927281b66fcd796,
         type: 3}
       propertyPath: m_Pivot.x

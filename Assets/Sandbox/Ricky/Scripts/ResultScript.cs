@@ -38,6 +38,7 @@ public class ResultScript : MonoBehaviour
     private Vector3 resultBackgroundTarget;
 
     [SerializeField] private GameObject testObj;
+    [SerializeField] private ScoreCounter scoreCounter;
 
     [SerializeField] private GameObject blurPanel;
     private Material blurObj;
@@ -127,7 +128,7 @@ public class ResultScript : MonoBehaviour
                     else
                     {
                         resultBackground.GetComponent<RectTransform>().anchoredPosition3D = Vector3.MoveTowards(
-                            resultBackground.GetComponent<RectTransform>().anchoredPosition3D, resultBackgroundTarget, TimeManager.instance.unscaledDeltaTime * 500);
+                            resultBackground.GetComponent<RectTransform>().anchoredPosition3D, resultBackgroundTarget, TimeManager.instance.unscaledDeltaTime * 1000);
                     }
                     break;
                 case ANIMSTATE.PLAYERMOVE:
@@ -184,7 +185,7 @@ public class ResultScript : MonoBehaviour
                     {
                         increaseTime = false;
                     }
-                    else if (menuT < 0)
+                    else if (menuT < 0.3f)
                     {
                         increaseTime = true;
                     }
@@ -242,7 +243,11 @@ public class ResultScript : MonoBehaviour
     {
         if (resultTexture != null)
         {
-            resultCamera.targetTexture = null;
+            if (resultCamera.targetTexture != null)
+            {
+                resultCamera.targetTexture = null;
+            }
+            
             playerImage.texture = null;
             resultTexture.Release();
             resultTexture.DiscardContents();
@@ -264,8 +269,12 @@ public class ResultScript : MonoBehaviour
 
             spawnedObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
+            scoreCounter.AddScore(100);
+
             yield return new WaitForSeconds(0.5f);
         }
+
+        yield return new WaitForSeconds(1.0f);
 
         selectTxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
