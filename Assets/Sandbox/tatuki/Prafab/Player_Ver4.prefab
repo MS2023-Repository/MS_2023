@@ -72,7 +72,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.27854, y: 0.04182642, z: 0.12160472}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -655,9 +655,9 @@ MonoBehaviour:
   player:
   - {fileID: 7277158630741465071}
   - {fileID: 2890052713891626402}
-  _NomalSpeed: 0
-  _FatSpeed: 0
-  _ThinSpeed: 0
+  _NomalSpeed: 1.5
+  _FatSpeed: 0.7
+  _ThinSpeed: 0.7
 --- !u!114 &5180615406103297954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,13 +674,14 @@ MonoBehaviour:
   - {fileID: 7277158630741465071}
   - {fileID: 2890052713891626402}
   _HandHeightRange: 0.3
-  _InitHandHeight: 0.85
-  _InitHandWidth: 0.3
+  _InitHandHeight: 1
+  _InitHandWidth: 0.25
   _MaxDistance: 1.5
   _MinDistance: 1.4
+  _CreakHandRange: 0.05
   _ResetSpeedRotateHead: 100
-  _SpeedScaleHead: 20
-  _ScaleUpHead: {x: 4, y: 0.5, z: 0.5}
+  _SpeedScaleHead: 60
+  _ScaleUpHead: {x: 8, y: 1, z: 1}
 --- !u!114 &5897166732245554800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,11 +696,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _FatBodyScale: 2
   _ThinBodyScale: 0.5
-  _InitHungerLevel: 100
-  _FatHungerLevel: 200
-  _ThinHungerLevel: 10
-  _HungerLevelUpNum: 50
-  _HungerLevelDownNum: 10
+  _InitHungerLevel: 80
+  _MaxHungerLevel: 140
+  _FatHungerLevel: 101
+  _ThinHungerLevel: 20
+  _HungerLevelUpNum: 24
+  _HungerLevelDownNum: 3
 --- !u!114 &6110495458225640254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,7 +1033,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.27854, y: 0.04182642, z: -0.14123528}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -1775,6 +1777,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4018237980703690, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329976122811638, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615012503339724, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4627909804491518, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
       propertyPath: m_RootOrder
       value: 171
@@ -2160,6 +2174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControllerScript: {fileID: 5180615406103297954}
+  _IdleAnimLoopTime: 5
 --- !u!114 &6949081425705887680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,6 +2514,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4018237980703690, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329976122811638, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4627909804491518, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2569,6 +2592,11 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137746923026467394, guid: d1d7f6d670a38f84d82180544cf7d7f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 879fb49b484136947912c40ed9af1ef2, type: 2}
     - target: {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0,
         type: 3}
       propertyPath: m_Enabled
@@ -2700,7 +2728,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.052673414, y: -0.18172543, z: 0.08270316}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -2888,6 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControllerScript: {fileID: 5180615406103297954}
+  _IdleAnimLoopTime: 5
 --- !u!114 &433172778730663504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,7 +3016,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.0526838, y: -0.18172596, z: 0.059835948}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

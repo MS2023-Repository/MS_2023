@@ -25,7 +25,7 @@ namespace InGame.Player
         [SerializeField] private float _InitHandWidth;
         [SerializeField] private float _MaxDistance;
         [SerializeField] private float _MinDistance;
-        [SerializeField] private float _CreakHandRange;
+        [Range(0, 1)] [SerializeField] private float _CreakHandRange;
 
         public Vector2 rightStickP1 { get; private set; }
         public Vector2 rightStickP2 { get; private set; }

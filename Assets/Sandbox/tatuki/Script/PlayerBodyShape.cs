@@ -126,9 +126,14 @@ namespace InGame.Player
 
         public void HungerUp()
         {
-            _HungerLevel += _BodyShapeVariable.hungerLevelUpNum;
-
             //‚½‚×‚½ŽžSE
+
+            _HungerLevel += _BodyShapeVariable.hungerLevelUpNum;
+            
+            if(_HungerLevel >= _BodyShapeVariable.maxHungerLevel)
+            {
+                _HungerLevel = _BodyShapeVariable.maxHungerLevel;
+            }
         }
 
         public BodyShapeType GetBodyShapeType()

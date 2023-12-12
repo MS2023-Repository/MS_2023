@@ -11,6 +11,7 @@ namespace InGame.Player
             public float fatBodyScale;
             public float thinBodyScale;
             public float initHungerLevel;
+            public float maxHungerLevel;
             public float fatHungerLevel;
             public float thinHungerLevel;
             public float hungerLevelUpNum;
@@ -20,6 +21,7 @@ namespace InGame.Player
         [SerializeField] private float _FatBodyScale;
         [SerializeField] private float _ThinBodyScale;
         [SerializeField] private float _InitHungerLevel;
+        [SerializeField] private float _MaxHungerLevel;
         [SerializeField] private float _FatHungerLevel;
         [SerializeField] private float _ThinHungerLevel;
         [SerializeField] private float _HungerLevelUpNum;
@@ -33,6 +35,7 @@ namespace InGame.Player
             _BodyShapeVariable.fatBodyScale = _FatBodyScale;
             _BodyShapeVariable.thinBodyScale = _ThinBodyScale;
             _BodyShapeVariable.initHungerLevel = _InitHungerLevel;
+            _BodyShapeVariable.maxHungerLevel = _MaxHungerLevel;
             _BodyShapeVariable.fatHungerLevel = _FatHungerLevel;
             _BodyShapeVariable.thinHungerLevel = _ThinHungerLevel;
             _BodyShapeVariable.hungerLevelUpNum = _HungerLevelUpNum;
