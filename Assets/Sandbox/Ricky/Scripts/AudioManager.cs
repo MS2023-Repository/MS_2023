@@ -19,8 +19,8 @@ namespace OutGame.Audio
     {
         public static AudioManager instance { get; private set; }
 
-        private AudioSource bgmAudioSource;
-        private AudioSource seAudioSource;
+        [SerializeField] private AudioSource bgmAudioSource;
+        [SerializeField] private AudioSource seAudioSource;
 
         public SoundClip[] SEClips;
         public SoundClip[] BGMClips;
@@ -28,6 +28,35 @@ namespace OutGame.Audio
         private string currentSceneName;
 
         private bool changeBgmFlg;
+        private float targetVolume;
+
+        private float volumeT;
+
+        public AudioClip GetAudioClip(string clipName)
+        {
+            AudioClip clipToReturn = null;
+
+            foreach (var clip in SEClips)
+            {
+                if (clip.name == clipName)
+                {
+                    clipToReturn = clip.clip;
+                    break;
+                }
+            }
+
+            return clipToReturn;
+        }
+
+        public void ChangeBGM()
+        {
+            if (!changeBgmFlg)
+            {
+                StopAllCoroutines();
+                changeBgmFlg = true;
+                StartCoroutine(FadeOut());
+            }
+        }
 
         private void Awake()
         {
@@ -46,15 +75,12 @@ namespace OutGame.Audio
         // Start is called before the first frame update
         void Start()
         {
-            bgmAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
-            seAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
-
             bgmAudioSource.loop = true;
 
             var audioObjs = GameObject.FindObjectsOfType<AudioListener>();
             foreach (var current in audioObjs)
             {
-                if (current.name != "MainCamera")
+                if (current.name != "Main Camera")
                 {
                     Destroy(current);
                 }
@@ -64,19 +90,18 @@ namespace OutGame.Audio
 
             bgmAudioSource.volume = 0.0f;
             changeBgmFlg = false;
+
+            volumeT = 0;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (currentSceneName != SceneLoader.instance.GetCurrentScene())
+            bgmAudioSource.volume = Mathf.Lerp(0, targetVolume, volumeT);
+
+            if (SceneLoader.instance.SceneChanged())
             {
-                if (!changeBgmFlg)
-                {
-                    currentSceneName = SceneLoader.instance.GetCurrentScene();
-                    changeBgmFlg = true;
-                    StartCoroutine(FadeOut());
-                }
+                StartCoroutine(FadeIn());
             }
         }
 
@@ -96,34 +121,50 @@ namespace OutGame.Audio
 
         IEnumerator FadeOut()
         {
-            while (bgmAudioSource.volume > 0.0f)
+            while (volumeT > 0.0f)
             {
-                bgmAudioSource.volume -= TimeManager.instance.deltaTime;
+                volumeT -= TimeManager.instance.deltaTime;
                 yield return null;
             }
 
             bgmAudioSource.volume = 0.0f;
-
-            foreach (var clip in BGMClips)
-            {
-                if (clip.name == currentSceneName)
-                {
-                    bgmAudioSource.clip = clip.clip;
-                }
-            }
-
-            StartCoroutine(FadeIn());
         }
 
         IEnumerator FadeIn()
         {
-            while (bgmAudioSource.volume < 1.0f)
+            currentSceneName = SceneLoader.instance.GetCurrentScene();
+
+            foreach (var clip in BGMClips)
             {
-                bgmAudioSource.volume += TimeManager.instance.deltaTime;
+                if (currentSceneName.Contains("Title") || currentSceneName.Contains("StageSelect"))
+                {
+                    if (clip.name == currentSceneName)
+                    {
+                        bgmAudioSource.clip = clip.clip;
+                        targetVolume = clip.volume;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (clip.name == "Game")
+                    {
+                        bgmAudioSource.clip = clip.clip;
+                        targetVolume = clip.volume;
+                        break;
+                    }
+                }
+            }
+
+            bgmAudioSource.Play();
+
+            while (volumeT < 1)
+            {
+                volumeT += TimeManager.instance.deltaTime / 2;
                 yield return null;
             }
 
-            bgmAudioSource.volume = 1.0f;
+            volumeT = 1;
 
             changeBgmFlg = false;
         }

@@ -4,6 +4,7 @@ namespace OutGame.TimeManager
 {
     using OutGame.PauseManager;
     using OutGame.SceneManager;
+    using OutGame.GameManager;
 
     public class TimeManager : MonoBehaviour
     {
@@ -20,13 +21,9 @@ namespace OutGame.TimeManager
 
         private const float minutesInADay = 1440.0f; // 1日の合計分数
 
-        private float setSpeed;
-
-        private string sceneName;
-
         public void SetTimeSpeed(float speed)
         {
-            setSpeed = speed;
+            timeSpeed = speed;
             timeSpeed = Mathf.Clamp01(timeSpeed);
         }
 
@@ -45,28 +42,22 @@ namespace OutGame.TimeManager
         // Start is called before the first frame update
         void Start()
         {
-            setSpeed = 1;
-            timeSpeed = setSpeed;
+            timeSpeed = 1;
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
 
             sceneName = SceneLoader.instance.GetCurrentScene();
+
+            daytimescale = GameManager.instance.GetTimeLimit() * 2;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (sceneName != "Title" && sceneName != "StageSelect")
+            if (PauseManager.instance.isPaused)
             {
-                if (PauseManager.instance.isPaused)
-                {
-                    timeSpeed = 0;
-                }
-                else
-                {
-                    timeSpeed = setSpeed;
-                }
+                timeSpeed = 0;
             }
 
             Time.timeScale = timeSpeed;
@@ -74,13 +65,16 @@ namespace OutGame.TimeManager
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
 
-            // 現在の経過時間を更新
-            currentTime += deltaTime / daytimescale * minutesInADay;
-
-            // 1日（1440分）に達した場合、時間をリセット
-            if (currentTime >= minutesInADay)
+            if (GameManager.instance.isInGame())
             {
-                currentTime = 0.0f;
+                // 現在の経過時間を更新
+                currentTime += deltaTime / daytimescale * minutesInADay;
+
+                // 1日（1440分）に達した場合、時間をリセット
+                if (currentTime >= minutesInADay)
+                {
+                    currentTime = 0.0f;
+                }
             }
         }
 
@@ -94,12 +88,10 @@ namespace OutGame.TimeManager
         {
             return Mathf.FloorToInt(currentTime);
         }
-
         public int GetCurrentMinuteTime()
         {
             return Mathf.FloorToInt(currentTime % 60);
         }
-
         public float GetMinutesInADay()
         {
             return minutesInADay;
