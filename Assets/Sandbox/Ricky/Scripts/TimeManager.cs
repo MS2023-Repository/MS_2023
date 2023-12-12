@@ -21,13 +21,9 @@ namespace OutGame.TimeManager
 
         private const float minutesInADay = 1440.0f; // 1日の合計分数
 
-        private float setSpeed;
-
-        private string sceneName;
-
         public void SetTimeSpeed(float speed)
         {
-            setSpeed = speed;
+            timeSpeed = speed;
             timeSpeed = Mathf.Clamp01(timeSpeed);
         }
 
@@ -46,8 +42,7 @@ namespace OutGame.TimeManager
         // Start is called before the first frame update
         void Start()
         {
-            setSpeed = 1;
-            timeSpeed = setSpeed;
+            timeSpeed = 1;
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
@@ -60,16 +55,9 @@ namespace OutGame.TimeManager
         // Update is called once per frame
         void Update()
         {
-            if (sceneName != "Title" && sceneName != "StageSelect")
+            if (PauseManager.instance.isPaused)
             {
-                if (PauseManager.instance.isPaused)
-                {
-                    timeSpeed = 0;
-                }
-                else
-                {
-                    timeSpeed = setSpeed;
-                }
+                timeSpeed = 0;
             }
 
             Time.timeScale = timeSpeed;
@@ -100,12 +88,10 @@ namespace OutGame.TimeManager
         {
             return Mathf.FloorToInt(currentTime);
         }
-
         public int GetCurrentMinuteTime()
         {
             return Mathf.FloorToInt(currentTime % 60);
         }
-
         public float GetMinutesInADay()
         {
             return minutesInADay;
