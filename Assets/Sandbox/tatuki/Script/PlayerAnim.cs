@@ -13,6 +13,7 @@ namespace InGame.Player
             Back,
             Left,
             Right,
+            HitBack,
         }
 
         public enum EatAnimID
@@ -24,10 +25,27 @@ namespace InGame.Player
         [SerializeField] private PlayerController _PlayerControllerScript;
         private Animator _Anim;
 
+        [SerializeField] private float _IdleAnimLoopTime;
+        private float _IdleAnimTime;
+
         // Start is called before the first frame update
         void Start()
         {
             _Anim = GetComponent<Animator>();
+        }
+
+        private void FixedUpdate()
+        {
+            _IdleAnimTime += Time.deltaTime;
+
+            if(GetWalkAnimID() == WalkAnimID.Idle)
+            {
+                if(_IdleAnimTime >= _IdleAnimLoopTime)
+                {
+                    _IdleAnimTime = 0.0f;
+                    //アイドルアニメーションSE
+                }
+            }
         }
 
         public void SetAnimWalk(Vector3 PlayerForwardVec,Vector2 StickVec)
@@ -75,9 +93,19 @@ namespace InGame.Player
             SetAnimWalkID(WalkAnimID.Idle);
         }
 
+        public void SetHitBackAnimWalk()
+        {
+            SetAnimWalkID(WalkAnimID.HitBack);
+        }
+
         void SetAnimWalkID(WalkAnimID id)
         {
             _Anim.SetInteger("WalkAnim", (int)id);
+        }
+
+        public WalkAnimID GetWalkAnimID()
+        {
+            return (WalkAnimID)_Anim.GetInteger("WalkAnim");
         }
 
         public void StartAnimEat()
@@ -94,12 +122,10 @@ namespace InGame.Player
         {
             if (_PlayerControllerScript.GetISRightStickTrigger())
             {
-                //Debug.Log("ccccccccccc");
                 _Anim.SetFloat("AnimSpeed", 0.0f);
             }
             else if(!_PlayerControllerScript.GetISRightStickTrigger())
             {
-                //Debug.Log("afafafafafaf");
                 _Anim.SetFloat("AnimSpeed", 1.0f);
             }
         }
