@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using OutGame.TimeManager;
 using Unity.VisualScripting;
+using OutGame.Audio;
 
 public class CountdownScript : MonoBehaviour
 {
@@ -36,15 +37,15 @@ public class CountdownScript : MonoBehaviour
 
         imageToShow.sizeDelta = new Vector2(0, 0);
 
-        while (imageToShow.sizeDelta.x != 450.0f)
+        while (imageToShow.sizeDelta.x != 350)
         {
-            imageToShow.sizeDelta = Vector2.MoveTowards(imageToShow.sizeDelta, new Vector2(450.0f, 450.0f), TimeManager.instance.deltaTime * 2000.0f);
+            imageToShow.sizeDelta = Vector2.MoveTowards(imageToShow.sizeDelta, new Vector2(350, 350), TimeManager.instance.deltaTime * 2000.0f);
             yield return null;
         }
 
-        while (imageToShow.sizeDelta.x != 400.0f)
+        while (imageToShow.sizeDelta.x != 300)
         {
-            imageToShow.sizeDelta = Vector2.MoveTowards(imageToShow.sizeDelta, new Vector2(400.0f, 400.0f), TimeManager.instance.deltaTime * 500.0f);
+            imageToShow.sizeDelta = Vector2.MoveTowards(imageToShow.sizeDelta, new Vector2(300, 300), TimeManager.instance.deltaTime * 1000.0f);
             yield return null;
         }
     }
@@ -55,7 +56,7 @@ public class CountdownScript : MonoBehaviour
         var startTrans = startTxt.GetComponent<RectTransform>();
 
         startTrans.sizeDelta = new Vector2(0, 0);
-        var targetSize = new Vector2(1000, 500);
+        var targetSize = new Vector2(1200, 600);
         
         while (startTrans.sizeDelta != targetSize)
         {
@@ -93,6 +94,7 @@ public class CountdownScript : MonoBehaviour
         StartCoroutine(ShowStart());
 
         GameManager.instance.StartGame();
+        AudioManager.instance.PlaySE("StartSE");
 
         yield return new WaitForSeconds(1.5f);
 

@@ -343,6 +343,18 @@ MonoBehaviour:
   - name: StandOnButton
     clip: {fileID: 8300000, guid: 7e9a7ae9ee5a7d14cb1585225b824fc5, type: 3}
     volume: 0.175
+  - name: StartSE
+    clip: {fileID: 8300000, guid: 7cc10915ddf946b47a240617f544ba66, type: 3}
+    volume: 0.175
+  - name: 1MinSE
+    clip: {fileID: 8300000, guid: 99befc06ecf3cc74b8515978699158a8, type: 3}
+    volume: 0.175
+  - name: 2MinSE
+    clip: {fileID: 8300000, guid: e611b5fab9d8ac845a3e291ff565d847, type: 3}
+    volume: 0.175
+  - name: 3MinSE
+    clip: {fileID: 8300000, guid: 7cc10915ddf946b47a240617f544ba66, type: 3}
+    volume: 0.175
   BGMClips:
   - name: Title
     clip: {fileID: 8300000, guid: e012fd156c4ade24db0763151d8be6cc, type: 3}

@@ -4,6 +4,7 @@ namespace OutGame.TimeManager
 {
     using OutGame.PauseManager;
     using OutGame.SceneManager;
+    using OutGame.GameManager;
 
     public class TimeManager : MonoBehaviour
     {
@@ -52,6 +53,8 @@ namespace OutGame.TimeManager
             unscaledDeltaTime = Time.unscaledDeltaTime;
 
             sceneName = SceneLoader.instance.GetCurrentScene();
+
+            daytimescale = GameManager.instance.GetTimeLimit() * 2;
         }
 
         // Update is called once per frame
@@ -74,13 +77,16 @@ namespace OutGame.TimeManager
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
 
-            // 現在の経過時間を更新
-            currentTime += deltaTime / daytimescale * minutesInADay;
-
-            // 1日（1440分）に達した場合、時間をリセット
-            if (currentTime >= minutesInADay)
+            if (GameManager.instance.isInGame())
             {
-                currentTime = 0.0f;
+                // 現在の経過時間を更新
+                currentTime += deltaTime / daytimescale * minutesInADay;
+
+                // 1日（1440分）に達した場合、時間をリセット
+                if (currentTime >= minutesInADay)
+                {
+                    currentTime = 0.0f;
+                }
             }
         }
 
