@@ -13,20 +13,25 @@ namespace OutGame.UI
 
         private GameObject canvasObj;
 
+        private string sceneName;
+
         // Start is called before the first frame update
         void Start()
         {
+            sceneName = SceneLoader.instance.GetCurrentScene();
+
             CheckForCanvas();
 
-            string sceneName = SceneLoader.instance.GetCurrentScene();
             if (sceneName != "Title" && sceneName != "StageSelect")
             {
                 if (UIElements.Length > 0)
                 {
                     foreach (var element in UIElements)
                     {
-                        var newUI = Instantiate(element, canvasObj.transform);
-                        Debug.Log("created");
+                        if (GameObject.Find(element.name) == null)
+                        {
+                            var newUI = Instantiate(element, canvasObj.transform);
+                        }
                     }
                 }
             }
@@ -43,6 +48,15 @@ namespace OutGame.UI
                 canvasObj = Instantiate(canvasPrefab);
                 canvasObj.name = "Canvas";
             }
+
+            SetWorldCamera();
+        }
+
+        private void SetWorldCamera()
+        {
+            canvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
+            canvasObj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+            canvasObj.GetComponent<Canvas>().planeDistance = 1;
         }
     }
 }

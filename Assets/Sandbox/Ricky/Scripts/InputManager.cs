@@ -8,6 +8,7 @@ namespace OutGame.InputManager
     using UnityEngine.SceneManagement;
     using OutGame.PauseManager;
     using OutGame.TimeManager;
+    using OutGame.GameManager;
 
     public class InputManager : MonoBehaviour
     {
@@ -112,39 +113,53 @@ namespace OutGame.InputManager
 
         private void GameUpdate()
         {
-            if (PauseManager.instance.isPaused)
+            if (GameManager.instance.isInGame())
             {
-                if (!inputControls.PauseMenu.enabled)
+                if (PauseManager.instance.isPaused)
                 {
-                    inputControls.PauseMenu.Enable();
-                    inputControls.Player.Disable();
-                }
-
-                if (pMenuMovement != Vector2.zero)
-                {
-                    if (input_delay < 0.3f)
+                    if (!inputControls.PauseMenu.enabled)
                     {
-                        input_delay += TimeManager.instance.unscaledDeltaTime;
+                        inputControls.PauseMenu.Enable();
+                        inputControls.Player.Disable();
+                    }
+
+                    if (pMenuMovement != Vector2.zero)
+                    {
+                        if (input_delay < 0.3f)
+                        {
+                            input_delay += TimeManager.instance.unscaledDeltaTime;
+                        }
+                        else
+                        {
+                            input_delay = 0;
+                        }
                     }
                     else
                     {
                         input_delay = 0;
                     }
+
+                    pMenuMovement = inputControls.PauseMenu.Move.ReadValue<Vector2>();
                 }
                 else
                 {
-                    input_delay = 0;
+                    if (!inputControls.Player.enabled)
+                    {
+                        inputControls.Player.Enable();
+                        inputControls.PauseMenu.Disable();
+                    }
                 }
-
-                pMenuMovement = inputControls.PauseMenu.Move.ReadValue<Vector2>();
             }
             else
             {
-                if (!inputControls.Player.enabled)
+                if (!inputControls.Menu.enabled)
                 {
-                    inputControls.Player.Enable();
+                    inputControls.Player.Disable();
                     inputControls.PauseMenu.Disable();
+                    inputControls.Menu.Enable();
                 }
+
+                MenuUpdate();
             }
         }
 

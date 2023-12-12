@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace OutGame.PauseManager
 {
+    using OutGame.Audio;
     using OutGame.InputManager;
     using OutGame.SceneManager;
     using OutGame.TimeManager;
@@ -31,14 +32,22 @@ namespace OutGame.PauseManager
 
         public void PauseGame()
         {
-            isPaused = true;
-            blackPanel.gameObject.SetActive(true);
+            if (!isPaused)
+            {
+                isPaused = true;
+                blackPanel.gameObject.SetActive(true);
+            }
         }
 
         public void ResumeGame()
         {
-            isPaused = false;
-            blackPanel.gameObject.SetActive(false);
+            if (isPaused)
+            {
+                isPaused = false;
+                blackPanel.gameObject.SetActive(false);
+
+                AudioManager.instance.PlaySE("CancelSE");
+            }
         }
 
         private void Awake() 
@@ -106,12 +115,15 @@ namespace OutGame.PauseManager
                     {
                         case MENUOPTIONS.RESUME:
                             ResumeGame();
+                            AudioManager.instance.PlaySE("PauseSE");
                             break;
                         case MENUOPTIONS.RETRY:
                             SceneLoader.instance.ReloadScene();
+                            AudioManager.instance.PlaySE("SelectButton");
                             break;
                         case MENUOPTIONS.EXIT:
-                            Application.Quit();
+                            SceneLoader.instance.LoadScene("Title");
+                            AudioManager.instance.PlaySE("SelectButton");
                             break;
                     }
                 }

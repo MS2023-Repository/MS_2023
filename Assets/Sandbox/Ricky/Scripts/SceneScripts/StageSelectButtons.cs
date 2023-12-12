@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using OutGame.Audio;
 using OutGame.SceneManager;
 using OutGame.TimeManager;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class StageSelectButtons : MonoBehaviour
 
     [SerializeField] private string sceneToLoad;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class StageSelectButtons : MonoBehaviour
         mat = transform.GetChild(1).GetComponent<Renderer>().material;
 
         sceneLoaded = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,7 +67,13 @@ public class StageSelectButtons : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBody")
         {
+            AudioManager.instance.PlaySE("StandOnButton");
             playerCount++;
+
+            if (playerCount == 2)
+            {
+                audioSource.Play();
+            }
         }
     }
 
@@ -71,6 +81,7 @@ public class StageSelectButtons : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBody")
         {
+            audioSource.Stop();
             playerCount--;
         }
     }

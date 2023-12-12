@@ -60,29 +60,36 @@ namespace InGame.GoalGuide
         // Update is called once per frame
         void Update()
         {
-            progressNum = GameManager.instance.GetCollectedItemPercentage();
-
-            if (realProgressNum < progressNum)
+            if (GameManager.instance.isInGame())
             {
-                if (scaleScalar < 3.45f)
+                progressNum = GameManager.instance.GetCollectedItemPercentage();
+
+                if (realProgressNum < progressNum)
                 {
-                    scaleScalar = Mathf.MoveTowards(scaleScalar, 3.45f, TimeManager.instance.deltaTime);
+                    if (scaleScalar < 3.45f)
+                    {
+                        scaleScalar = Mathf.MoveTowards(scaleScalar, 3.45f, TimeManager.instance.deltaTime);
+                    }
+                    else
+                    {
+                        realProgressNum = Mathf.MoveTowards(realProgressNum, progressNum, TimeManager.instance.deltaTime / 6.0f);
+
+                        fullProgress.fillAmount = realProgressNum;
+                    }
                 }
                 else
                 {
-                    realProgressNum = Mathf.MoveTowards(realProgressNum, progressNum, TimeManager.instance.deltaTime / 6.0f);
-
-                    fullProgress.fillAmount = realProgressNum;
+                    scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime);
                 }
+
+                halfProgress.fillAmount = progressNum;
+
+                transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
             }
             else
             {
-                scaleScalar = Mathf.MoveTowards(scaleScalar, 3.15f, TimeManager.instance.deltaTime);
+                this.gameObject.SetActive(false);
             }
-
-            halfProgress.fillAmount = progressNum;
-
-            transform.GetChild(0).gameObject.GetComponent<RectTransform>().localScale = new Vector3(scaleScalar, scaleScalar, scaleScalar);
         }
 
         private void FixedUpdate()

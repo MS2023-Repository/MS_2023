@@ -7,6 +7,7 @@ namespace OutGame.SceneManager
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
     using OutGame.TimeManager;
+    using OutGame.Audio;
 
     public class SceneLoader : MonoBehaviour
     {
@@ -18,6 +19,8 @@ namespace OutGame.SceneManager
         private Image fadePanel;
 
         private string sceneName;
+
+        private bool isLoading;
 
         public string GetCurrentScene()
         {
@@ -46,7 +49,8 @@ namespace OutGame.SceneManager
         // Start is called before the first frame update
         void Start()
         {
-            ResetLoadingScreen();
+            sceneName = string.Empty;
+            //ResetLoadingScreen();
         }
 
         // Update is called once per frame
@@ -54,22 +58,40 @@ namespace OutGame.SceneManager
         {
             if (SceneChanged())
             {
+                Debug.Log("Scene has changed");
                 ResetLoadingScreen();
             }
 
-            if (loadingObj.transform.parent.parent == null)
+            if (loadingObj != null)
             {
-                if (GameObject.Find("Canvas") != null)
+                if (loadingObj.transform.parent == null)
                 {
-                    loadingObj.transform.parent.SetParent(GameObject.Find("Canvas").transform);
-                    loadingObj.transform.parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    if (GameObject.Find("Canvas") != null)
+                    {
+                        loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);
+                        loadingObj.transform.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, -5);
+                        loadingObj.transform.GetComponent<RectTransform>().localEulerAngles = Vector3.zero;
+                        loadingObj.transform.GetComponent<RectTransform>().localScale = Vector3.one;
+
+                        isLoading = false;
+                    }
                 }
             }
         }
 
+        private void LateUpdate()
+        {
+            sceneName = GetCurrentScene();
+        }
+
         public void LoadScene(string sceneName)
         {
-            StartCoroutine(FadeScreen(true, sceneName));
+            if (!isLoading)
+            {
+                AudioManager.instance.ChangeBGM();
+                StartCoroutine(FadeScreen(true, sceneName));
+                isLoading = true;
+            }
         }
 
         public void ReloadScene()
@@ -82,13 +104,10 @@ namespace OutGame.SceneManager
             AsyncOperation operation = SceneManager.LoadSceneAsync(name);
             while (!operation.isDone)
             {
-                Debug.Log(operation.progress);
-                loadingObj.transform.GetChild(1).GetComponent<Slider>().value = operation.progress;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(2f);
             }
 
-            loadingObj.SetActive(false);
-            StartCoroutine(FadeScreen(false, string.Empty));
+            //StartCoroutine(FadeScreen(false, string.Empty));
         }
 
         private void ResetLoadingScreen()
@@ -103,38 +122,53 @@ namespace OutGame.SceneManager
                 loadingObj = GameObject.Find("LoadingScreen");
             }
 
+            loadingObj.transform.SetParent(GameObject.Find("Canvas").transform);
+            loadingObj.transform.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, -5);
+            loadingObj.transform.GetComponent<RectTransform>().localEulerAngles = Vector3.zero;
+            loadingObj.transform.GetComponent<RectTransform>().localScale = Vector3.one;
+
             fadePanel = loadingObj.transform.GetChild(0).GetComponent<Image>();
             var tempColor = fadePanel.color;
             tempColor.a = 1;
             fadePanel.color = tempColor;
-            loadingObj = loadingObj.transform.GetChild(1).gameObject;
-            loadingObj.SetActive(false);
-            Debug.Log("Scene Changed");
 
-            sceneName = GetCurrentScene();
+            Debug.Log("loaldig");
 
             StartCoroutine(FadeScreen(false, string.Empty));
         }
 
         IEnumerator FadeScreen(bool fadeOut, string sceneName)
         {
-            var color = fadePanel.color;
+            isLoading = true;
 
-            float targetA = fadeOut ? 1f : 0f;
-
-            while (color.a != targetA)
+            if (fadeOut)
             {
-                color.a = Mathf.MoveTowards(color.a, targetA, TimeManager.instance.unscaledDeltaTime);
-                fadePanel.color = color;
-                Debug.Log(color.a);
-                yield return null;
+                GameObject.FindObjectOfType<FadeScript>().PlayFadeOut();
+
+                Debug.Log("FadeOut");
+
+                while (GameObject.FindObjectOfType<FadeScript>().fadeOutState)
+                {
+                    yield return null;
+                }
+            }
+            else
+            {
+                GameObject.FindObjectOfType<FadeScript>().PlayFadeIn();
+
+                while (GameObject.FindObjectOfType<FadeScript>().fadeInState)
+                {
+                    yield return null;
+                }
             }
 
             if (fadeOut)
             {
-                loadingObj.SetActive(true);
-                loadingObj.GetComponent<RectTransform>().localScale = Vector3.one;
                 StartCoroutine(LoadSceneAsynchronously(sceneName));
+            }
+            else
+            {
+                isLoading = false;
             }
         }
     }
