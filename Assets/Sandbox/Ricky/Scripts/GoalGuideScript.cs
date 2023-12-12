@@ -129,6 +129,7 @@ namespace InGame.GoalGuide
                 goalImage.texture = null;
                 goalTex.Release();
                 goalTex = null;
+                Destroy(goalTex);
             }
         }
     }

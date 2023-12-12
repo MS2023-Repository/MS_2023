@@ -232,6 +232,8 @@ public class ResultScript : MonoBehaviour
             resultCamera.targetTexture.Release();
             resultCamera.targetTexture.DiscardContents();
             resultCamera.targetTexture = null;
+
+            Destroy(resultCamera.targetTexture);
         }
 
         resultTexture = new RenderTexture(1920, 1080, 1);
@@ -246,6 +248,7 @@ public class ResultScript : MonoBehaviour
             if (resultCamera.targetTexture != null)
             {
                 resultCamera.targetTexture = null;
+                Destroy(resultCamera.targetTexture);
             }
             
             playerImage.texture = null;
