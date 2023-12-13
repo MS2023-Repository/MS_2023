@@ -27,10 +27,14 @@ namespace InGame.Player
         [SerializeField] private float _InitHandWidth;
         [SerializeField] private float _MaxDistance;
         [SerializeField] private float _MinDistance;
+        [Range(0, 1)] [SerializeField] private float _CreakHandRange;
 
         public Vector2 rightStickP1 { get; private set; }
         public Vector2 rightStickP2 { get; private set; }
-        
+
+        private float _BeforeLeftTriggerValue;
+        private float _BeforeRightTriggerValue;
+
         //食べるモーション
         [SerializeField] private float _ResetSpeedRotateHead;
         [SerializeField] private float _SpeedScaleHead;
@@ -45,6 +49,9 @@ namespace InGame.Player
             rightStickP1 = Vector2.zero;
             rightStickP2 = Vector2.zero;
 
+            _BeforeLeftTriggerValue = 0.0f;
+            _BeforeRightTriggerValue = 0.0f;
+
             _HandPosScript[0] = _Player[0].GetComponent<HandPos>();
             _HandPosScript[1] = _Player[1].GetComponent<HandPos>();
             _HeadIKscript[0] = _Player[0].GetComponent<HeadIK>();
@@ -57,7 +64,7 @@ namespace InGame.Player
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             // コントローラー操作
             // Gamepad.all で接続されているすべてのゲームパッドを列挙できる
@@ -95,14 +102,14 @@ namespace InGame.Player
                 //左スティック
                 if (leftStickValue.magnitude > 0f)
                 {
+                    //歩くときSE
+
                     _PlayerMoveScript.MoveLStick(i, leftStickValue.normalized);
-                    _PlayerAnim[i] = _Player[i].GetComponent<PlayerAnim>();
                     _PlayerAnim[i].SetAnimWalk(_Player[i].transform.forward, leftStickValue.normalized);
                 }
                 else
                 {
-                    _PlayerAnim[i] = _Player[i].GetComponent<PlayerAnim>();
-                    _PlayerAnim[i].SetIdleAnimWalk();
+                    SetIdleOrHitBackAnim(i);
                 }
 
                 //右スティック
@@ -112,21 +119,18 @@ namespace InGame.Player
 
                     _PlayerAnim[i].StartAnimEat();
 
-                    _HeadIKscript[i].SetNeckRotation(-GetSignedAngle(
+                    _HeadIKscript[i].SetNeckRotationY(-GetSignedAngle(
                         _Player[i].transform.forward,
                         new Vector3(rightStickValue.normalized.x,
                                     1,
                                     rightStickValue.normalized.y))
                     );
-
-                    //_HeadIKscript[i].ChangeScaleNeck(_ScaleUpHead,_SpeedScaleHead);
                 }
                 else
                 {
                     _IsRightStickTrigger = false;
 
                     _HeadIKscript[i].ResetHeadRotation(_ResetSpeedRotateHead);
-                    //_HeadIKscript[i].ResetScaleNeck();
 
                     _PlayerAnim[i].SetAnimSpeedEat();
                 }
@@ -142,6 +146,21 @@ namespace InGame.Player
 
                 _HandPosScript[i].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, leftTriggerValue, _HandHeightRange);
                 _HandPosScript[i].SetRightHandHeight(_InitHandHeight, _InitHandWidth, rightTriggerValue, _HandHeightRange);
+
+                if(Mathf.Abs(leftTriggerValue - _BeforeLeftTriggerValue) > _CreakHandRange)
+                {
+                    //軋むSE
+                    float volume = Mathf.Abs(leftTriggerValue - _BeforeLeftTriggerValue);
+                }
+                if(Mathf.Abs(rightTriggerValue - _BeforeRightTriggerValue) > _CreakHandRange)
+                {
+                    //軋むSE
+                    float volume = Mathf.Abs(rightTriggerValue - _BeforeRightTriggerValue);
+                }
+
+
+                _BeforeLeftTriggerValue = leftTriggerValue;
+                _BeforeRightTriggerValue = rightTriggerValue;
 
             }
 
@@ -176,7 +195,7 @@ namespace InGame.Player
 
             if(zkey.isPressed)
             {
-                _HeadIKscript[0].SetNeckRotation(90);
+                _HeadIKscript[0].SetNeckRotationY(90);
             }
 
 
@@ -377,6 +396,34 @@ namespace InGame.Player
         public bool GetISRightStickTrigger()
         {
             return _IsRightStickTrigger;
+        }
+
+        public void SetIdleOrHitBackAnim(int i)
+        {
+            if (i == 0)
+            {
+                if (_PlayerAnim[1].GetWalkAnimID() != PlayerAnim.WalkAnimID.Idle &&
+                    _PlayerAnim[1].GetWalkAnimID() != PlayerAnim.WalkAnimID.HitBack)
+                {
+                    _PlayerAnim[i].SetHitBackAnimWalk();
+                }
+                else
+                {
+                    _PlayerAnim[i].SetIdleAnimWalk();
+                }
+            }
+            else if (i == 1)
+            {
+                if (_PlayerAnim[0].GetWalkAnimID() != PlayerAnim.WalkAnimID.Idle &&
+                    _PlayerAnim[1].GetWalkAnimID() != PlayerAnim.WalkAnimID.HitBack)
+                {
+                    _PlayerAnim[i].SetHitBackAnimWalk();
+                }
+                else
+                {
+                    _PlayerAnim[i].SetIdleAnimWalk();
+                }
+            }
         }
     }
 }

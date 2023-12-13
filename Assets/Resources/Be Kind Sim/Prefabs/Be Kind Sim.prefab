@@ -1022,7 +1022,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.31218126
   m_Height: 1.1989832
@@ -1069,6 +1069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4627909804491518}
   - component: {fileID: 95792339774633994}
+  - component: {fileID: 2531058862452719746}
   m_Layer: 9
   m_Name: Be Kind Sim
   m_TagString: Untagged
@@ -1117,3 +1118,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &2531058862452719746
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927408138077048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2578395
+  m_Height: 1.2185911
+  m_Direction: 1
+  m_Center: {x: 0.0026356843, y: 0.61810696, z: -2.8702704e-18}
