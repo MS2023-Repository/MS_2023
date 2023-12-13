@@ -40,6 +40,8 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private GameObject testObj;
     [SerializeField] private ScoreCounter scoreCounter;
 
+    [SerializeField] private GameObject foodNumObj;
+
     [SerializeField] private GameObject blurPanel;
     private Material blurObj;
     private float blurT;
@@ -264,7 +266,12 @@ public class ResultScript : MonoBehaviour
         {
             var spawnedObj = Instantiate(testObj);
             //Destroy(spawnedObj.GetComponent<CollectibleItem>());
-            spawnedObj.transform.position = spawnPoint.position;
+            spawnedObj.transform.position = new Vector3(spawnPoint.position.x + Random.Range(-0.02f, 0.02f), spawnPoint.position.y, spawnPoint.position.z + Random.Range(-0.02f, 0.02f));
+
+            Vector3 screenPos = resultCamera.WorldToScreenPoint(spawnedObj.transform.position);
+            var scoreObj = Instantiate(foodNumObj, this.transform.GetChild(0).GetChild(0));
+            scoreObj.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(screenPos.x - 860, screenPos.y - 650, 0);
+            scoreObj.GetComponent<FoodNumScript>().SetNum(100);
 
             spawnedObj.GetComponent<Rigidbody>().useGravity = true;
             spawnedObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -277,12 +284,11 @@ public class ResultScript : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         selectTxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         nextTxt.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
 
         animState = ANIMSTATE.MENU;
     }

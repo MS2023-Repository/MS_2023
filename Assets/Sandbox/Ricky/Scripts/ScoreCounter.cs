@@ -21,7 +21,7 @@ public class ScoreCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreNum = 1250;
+        scoreNum = 0;
 
         numSpace = 150.0f;
 
@@ -42,31 +42,18 @@ public class ScoreCounter : MonoBehaviour
 
         numObjLine.Clear();
 
-        int numToInsert = 0;
-        int digitToCheck = 10000;
         int scoreNow = scoreNum;
 
         while (scoreNow > 0)
         {
-            if (scoreNow >= digitToCheck)
-            {
-                numToInsert = scoreNow / digitToCheck;
+            int currentDigit = scoreNow % 10;
 
-                numObjLine.Add(Instantiate(numObj[numToInsert], this.transform));
-            }
+            numObjLine.Add(Instantiate(numObj[currentDigit], this.transform));
 
-            while (scoreNow >= digitToCheck)
-            {
-                scoreNow -= digitToCheck;
-            }
-
-            if (scoreNow < 10)
-            {
-                numObjLine.Add(Instantiate(numObj[scoreNow], this.transform));
-            }
-
-            digitToCheck /= 10;
+            scoreNow /= 10;
         }
+
+        numObjLine.Reverse();
 
         float startPos = 0;
 
