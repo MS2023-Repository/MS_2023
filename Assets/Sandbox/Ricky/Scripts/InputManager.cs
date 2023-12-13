@@ -36,10 +36,16 @@ namespace OutGame.InputManager
             {
                 if (inGameState)
                 {
-                    if (PauseManager.instance.isPaused)
+                    if (GameManager.instance.isInGame())
                     {
-                        vecToReturn = pMenuMovement;
-                        
+                        if (PauseManager.instance.isPaused)
+                        {
+                            vecToReturn = pMenuMovement;
+                        }
+                    }
+                    else
+                    {
+                        vecToReturn = menuMovement;
                     }
                 }
                 else
@@ -165,6 +171,22 @@ namespace OutGame.InputManager
 
         private void MenuUpdate()
         {
+            if (menuMovement != Vector2.zero)
+            {
+                if (input_delay < 0.3f)
+                {
+                    input_delay += TimeManager.instance.unscaledDeltaTime;
+                }
+                else
+                {
+                    input_delay = 0;
+                }
+            }
+            else
+            {
+                input_delay = 0;
+            }
+
             menuMovement = inputControls.Menu.Move.ReadValue<Vector2>();
         }
 

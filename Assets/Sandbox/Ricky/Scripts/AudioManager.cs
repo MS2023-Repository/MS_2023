@@ -107,16 +107,22 @@ namespace OutGame.Audio
 
         public void PlaySE(string clipName)
         {
+            AudioClip clipToPlay = null;
+
             foreach (var clip in SEClips)
             {
                 if (clip.name == clipName)
                 {
                     seAudioSource.PlayOneShot(clip.clip, clip.volume);
+                    clipToPlay = clip.clip;
                     break;
                 }
             }
 
-            Debug.LogError("No coressponding SE clip found");
+            if (clipToPlay == null)
+            {
+                Debug.LogError("No corresponding SE clip found");
+            }
         }
 
         IEnumerator FadeOut()

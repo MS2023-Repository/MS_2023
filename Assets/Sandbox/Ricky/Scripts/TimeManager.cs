@@ -21,10 +21,13 @@ namespace OutGame.TimeManager
 
         private const float minutesInADay = 1440.0f; // 1日の合計分数
 
+        private string sceneName;
+        private float setSpeed;
+
         public void SetTimeSpeed(float speed)
         {
-            timeSpeed = speed;
-            timeSpeed = Mathf.Clamp01(timeSpeed);
+            setSpeed = speed;
+            setSpeed = Mathf.Clamp01(timeSpeed);
         }
 
         private void Awake()
@@ -42,7 +45,8 @@ namespace OutGame.TimeManager
         // Start is called before the first frame update
         void Start()
         {
-            timeSpeed = 1;
+            setSpeed = 1;
+            timeSpeed = setSpeed;
 
             deltaTime = Time.deltaTime;
             unscaledDeltaTime = Time.unscaledDeltaTime;
@@ -55,26 +59,40 @@ namespace OutGame.TimeManager
         // Update is called once per frame
         void Update()
         {
-            if (PauseManager.instance.isPaused)
+            if (sceneName != "Title" && sceneName != "StageSelect")
             {
-                timeSpeed = 0;
-            }
-
-            Time.timeScale = timeSpeed;
-
-            deltaTime = Time.deltaTime;
-            unscaledDeltaTime = Time.unscaledDeltaTime;
-
-            if (GameManager.instance.isInGame())
-            {
-                // 現在の経過時間を更新
-                currentTime += deltaTime / daytimescale * minutesInADay;
-
-                // 1日（1440分）に達した場合、時間をリセット
-                if (currentTime >= minutesInADay)
+                if (PauseManager.instance.isPaused)
                 {
-                    currentTime = 0.0f;
+                    timeSpeed = 0;
                 }
+                else
+                {
+                    timeSpeed = setSpeed;
+                }
+
+                Time.timeScale = timeSpeed;
+
+                deltaTime = Time.deltaTime;
+                unscaledDeltaTime = Time.unscaledDeltaTime;
+
+                if (GameManager.instance.isInGame())
+                {
+                    // 現在の経過時間を更新
+                    currentTime += deltaTime / daytimescale * minutesInADay;
+
+                    // 1日（1440分）に達した場合、時間をリセット
+                    if (currentTime >= minutesInADay)
+                    {
+                        currentTime = 0.0f;
+                    }
+                }
+            }
+            else
+            {
+                Time.timeScale = timeSpeed;
+
+                deltaTime = Time.deltaTime;
+                unscaledDeltaTime = Time.unscaledDeltaTime;
             }
         }
 

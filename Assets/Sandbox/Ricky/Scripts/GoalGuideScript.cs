@@ -62,6 +62,11 @@ namespace InGame.GoalGuide
         {
             if (GameManager.instance.isInGame())
             {
+                foreach (Transform child in transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+
                 progressNum = GameManager.instance.GetCollectedItemPercentage();
 
                 if (realProgressNum < progressNum)
@@ -88,7 +93,10 @@ namespace InGame.GoalGuide
             }
             else
             {
-                this.gameObject.SetActive(false);
+                foreach (Transform child in transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -121,6 +129,7 @@ namespace InGame.GoalGuide
                 goalImage.texture = null;
                 goalTex.Release();
                 goalTex = null;
+                Destroy(goalTex);
             }
         }
     }

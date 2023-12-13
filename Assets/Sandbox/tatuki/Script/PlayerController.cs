@@ -1,4 +1,5 @@
 using OutGame.GameManager;
+using OutGame.SceneManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,7 +83,7 @@ namespace InGame.Player
                 var rightStickValue = gamepad.rightStick.ReadValue();
                 var dpadValue = gamepad.dpad.ReadValue();
 
-                if (GameManager.instance.isInGame())
+                if (GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene() && SceneLoader.instance.IsGameScene())
                 {
                     leftStickValue = Vector2.zero;
                     rightStickValue = Vector2.zero;
@@ -137,7 +138,7 @@ namespace InGame.Player
                 var leftTriggerValue = gamepad.leftTrigger.ReadValue();
                 var rightTriggerValue = gamepad.rightTrigger.ReadValue();
 
-                if (GameManager.instance.isInGame())
+                if (GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
                 {
                     leftTriggerValue = 0;
                     rightTriggerValue = 0;
@@ -200,7 +201,29 @@ namespace InGame.Player
 
             if (Gamepad.all.Count < 2)
             {
-                if (GameManager.instance.isInGame())
+                if (SceneLoader.instance.IsGameScene())
+                {
+                    if (GameManager.instance.isInGame())
+                    {
+                        if (aKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(0, PlayerMove.MoveDirection.Left);
+                        }
+                        if (wKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(0, PlayerMove.MoveDirection.Forward);
+                        }
+                        if (sKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(0, PlayerMove.MoveDirection.Back);
+                        }
+                        if (dKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(0, PlayerMove.MoveDirection.Right);
+                        }
+                    }
+                }
+                else
                 {
                     if (aKey.isPressed)
                     {
@@ -219,30 +242,75 @@ namespace InGame.Player
                         _PlayerMoveScript.MoveKeyboard(0, PlayerMove.MoveDirection.Right);
                     }
                 }
+                
+                if (SceneLoader.instance.IsGameScene())
+                {
+                    if (qKey.isPressed)
+                    {
+                        _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
 
-                if (qKey.isPressed && GameManager.instance.isInGame())
-                { 
-                    _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    if (eKey.isPressed)
+                    {
+                        _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
                 }
                 else
                 {
-                    _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
-                }
+                    if (qKey.isPressed)
+                    {
+                        _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[0].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
 
-                if (eKey.isPressed && GameManager.instance.isInGame())
-                {
-                    _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    if (eKey.isPressed)
+                    {
+                        _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
                 }
-                else
-                {
-                    _HandPosScript[0].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
-
-                }
+                
             }
 
             if (Gamepad.all.Count < 1)
             {
-                if (GameManager.instance.isInGame())
+                if (SceneLoader.instance.IsGameScene())
+                {
+                    if (GameManager.instance.isInGame())
+                    {
+                        if (jKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(1, PlayerMove.MoveDirection.Left);
+                        }
+                        if (iKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(1, PlayerMove.MoveDirection.Forward);
+                        }
+                        if (kKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(1, PlayerMove.MoveDirection.Back);
+                        }
+                        if (lKey.isPressed)
+                        {
+                            _PlayerMoveScript.MoveKeyboard(1, PlayerMove.MoveDirection.Right);
+                        }
+                    }
+                }
+                else
                 {
                     if (jKey.isPressed)
                     {
@@ -261,23 +329,46 @@ namespace InGame.Player
                         _PlayerMoveScript.MoveKeyboard(1, PlayerMove.MoveDirection.Right);
                     }
                 }
-
-                if (uKey.isPressed && GameManager.instance.isInGame())
+                
+                if (SceneLoader.instance.IsGameScene())
                 {
-                    _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    if (uKey.isPressed && GameManager.instance.isInGame())
+                    {
+                        _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
+
+                    if (oKey.isPressed && GameManager.instance.isInGame())
+                    {
+                        _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
                 }
                 else
                 {
-                    _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
-                }
+                    if (uKey.isPressed)
+                    {
+                        _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[1].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
 
-                if (oKey.isPressed && GameManager.instance.isInGame())
-                {
-                    _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
-                }
-                else
-                { 
-                    _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    if (oKey.isPressed)
+                    {
+                        _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 1.0f, _HandHeightRange);
+                    }
+                    else
+                    {
+                        _HandPosScript[1].SetRightHandHeight(_InitHandHeight, _InitHandWidth, 0.0f, _HandHeightRange);
+                    }
                 }
             }
 

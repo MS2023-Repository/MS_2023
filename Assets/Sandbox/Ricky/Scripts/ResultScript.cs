@@ -38,6 +38,9 @@ public class ResultScript : MonoBehaviour
     private Vector3 resultBackgroundTarget;
 
     [SerializeField] private GameObject testObj;
+    [SerializeField] private ScoreCounter scoreCounter;
+
+    [SerializeField] private GameObject foodNumObj;
 
     [SerializeField] private GameObject blurPanel;
     private Material blurObj;
@@ -127,7 +130,7 @@ public class ResultScript : MonoBehaviour
                     else
                     {
                         resultBackground.GetComponent<RectTransform>().anchoredPosition3D = Vector3.MoveTowards(
-                            resultBackground.GetComponent<RectTransform>().anchoredPosition3D, resultBackgroundTarget, TimeManager.instance.unscaledDeltaTime * 500);
+                            resultBackground.GetComponent<RectTransform>().anchoredPosition3D, resultBackgroundTarget, TimeManager.instance.unscaledDeltaTime * 1000);
                     }
                     break;
                 case ANIMSTATE.PLAYERMOVE:
@@ -184,7 +187,7 @@ public class ResultScript : MonoBehaviour
                     {
                         increaseTime = false;
                     }
-                    else if (menuT < 0)
+                    else if (menuT < 0.3f)
                     {
                         increaseTime = true;
                     }
@@ -231,6 +234,8 @@ public class ResultScript : MonoBehaviour
             resultCamera.targetTexture.Release();
             resultCamera.targetTexture.DiscardContents();
             resultCamera.targetTexture = null;
+
+            Destroy(resultCamera.targetTexture);
         }
 
         resultTexture = new RenderTexture(1920, 1080, 1);
@@ -242,7 +247,12 @@ public class ResultScript : MonoBehaviour
     {
         if (resultTexture != null)
         {
-            resultCamera.targetTexture = null;
+            if (resultCamera.targetTexture != null)
+            {
+                resultCamera.targetTexture = null;
+                Destroy(resultCamera.targetTexture);
+            }
+            
             playerImage.texture = null;
             resultTexture.Release();
             resultTexture.DiscardContents();
@@ -256,7 +266,12 @@ public class ResultScript : MonoBehaviour
         {
             var spawnedObj = Instantiate(testObj);
             //Destroy(spawnedObj.GetComponent<CollectibleItem>());
-            spawnedObj.transform.position = spawnPoint.position;
+            spawnedObj.transform.position = new Vector3(spawnPoint.position.x + Random.Range(-0.02f, 0.02f), spawnPoint.position.y, spawnPoint.position.z + Random.Range(-0.02f, 0.02f));
+
+            Vector3 screenPos = resultCamera.WorldToScreenPoint(spawnedObj.transform.position);
+            var scoreObj = Instantiate(foodNumObj, this.transform.GetChild(0).GetChild(0));
+            scoreObj.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(screenPos.x - 860, screenPos.y - 650, 0);
+            scoreObj.GetComponent<FoodNumScript>().SetNum(100);
 
             spawnedObj.GetComponent<Rigidbody>().useGravity = true;
             spawnedObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -264,13 +279,16 @@ public class ResultScript : MonoBehaviour
 
             spawnedObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
+            scoreCounter.AddScore(100);
+
             yield return new WaitForSeconds(0.5f);
         }
+
+        yield return new WaitForSeconds(0.5f);
 
         selectTxt.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         nextTxt.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
 
         animState = ANIMSTATE.MENU;
     }
