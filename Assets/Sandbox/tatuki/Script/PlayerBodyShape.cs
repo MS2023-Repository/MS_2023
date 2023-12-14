@@ -1,3 +1,4 @@
+using OutGame.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -115,10 +116,12 @@ namespace InGame.Player
             if(_BeforeBodyShapeType > _BodyShapeType)
             {
                 //‘‰‚¹‚½ŽžSE
+                AudioManager.instance.PlaySE("HungrySE");
             }
             else if(_BeforeBodyShapeType < _BodyShapeType)
             {
                 //‘¾‚Á‚½ŽžSE
+                AudioManager.instance.PlaySE("FatSE");
             }
 
             _BeforeBodyShapeType = _BodyShapeType;
@@ -127,6 +130,7 @@ namespace InGame.Player
         public void HungerUp()
         {
             //‚½‚×‚½ŽžSE
+            AudioManager.instance.PlaySE("EatFood");
 
             _HungerLevel += _BodyShapeVariable.hungerLevelUpNum;
             

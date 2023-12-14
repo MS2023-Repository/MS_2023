@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using InGame.CollectibleItem;
+using OutGame.Audio;
 using OutGame.GameManager;
 using OutGame.InputManager;
 using OutGame.SceneManager;
@@ -151,6 +152,7 @@ public class ResultScript : MonoBehaviour
 
                     if (menuDir.x > 0)
                     {
+                        AudioManager.instance.PlaySE("MoveButton");
                         switch (selectedMenu)
                         {
                             case MENUSTATE.SELECT:
@@ -163,6 +165,7 @@ public class ResultScript : MonoBehaviour
                     }
                     else if (menuDir.x < 0)
                     {
+                        AudioManager.instance.PlaySE("MoveButton");
                         switch (selectedMenu)
                         {
                             case MENUSTATE.NEXT:
@@ -211,6 +214,8 @@ public class ResultScript : MonoBehaviour
 
                     if (InputManager.instance.menuSelectedState)
                     {
+                        AudioManager.instance.PlaySE("SelectButton");
+
                         switch (selectedMenu)
                         {
                             case MENUSTATE.SELECT:

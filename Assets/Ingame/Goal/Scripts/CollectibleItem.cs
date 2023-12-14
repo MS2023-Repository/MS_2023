@@ -28,8 +28,6 @@ namespace InGame.Goal
         {
             if (GameManager.instance.isInGame())
             {
-                this.transform.GetChild(0).gameObject.SetActive(true);
-
                 // 成長中のイージング処理
                 if (isGrowing)
                 {
@@ -58,10 +56,6 @@ namespace InGame.Goal
                         isShrinking = false;
                     }
                 }
-            }
-            else
-            {
-                this.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
 

@@ -319,6 +319,9 @@ MonoBehaviour:
   - name: HungrySE
     clip: {fileID: 8300000, guid: 1b4a77634a1c7524aab4c4625f59ce48, type: 3}
     volume: 0.495
+  - name: FatSE
+    clip: {fileID: 8300000, guid: f764b4fbdf4eb8f459e1bb3cdec87da6, type: 3}
+    volume: 0.175
   - name: EatFood
     clip: {fileID: 8300000, guid: 2671dc001676c964b86dcac598e7303c, type: 3}
     volume: 0.495
