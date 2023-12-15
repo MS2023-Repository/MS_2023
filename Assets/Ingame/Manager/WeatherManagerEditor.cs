@@ -1,18 +1,18 @@
-using UnityEditor;
-using UnityEngine;
+//using UnityEditor;
+//using UnityEngine;
 
-[CustomEditor(typeof(WeatherManager))]
-public class WeatherManagerEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
+//[CustomEditor(typeof(WeatherManager))]
+//public class WeatherManagerEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
 
-        WeatherManager manager = (WeatherManager)target;
+//        WeatherManager manager = (WeatherManager)target;
 
-        if (GUI.changed)
-        {
-            manager.UpdateMaterials();
-        }
-    }
-}
+//        if (GUI.changed)
+//        {
+//            manager.UpdateMaterials();
+//        }
+//    }
+//}
