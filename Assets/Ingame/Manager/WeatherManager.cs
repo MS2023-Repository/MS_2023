@@ -8,8 +8,8 @@ public class WeatherManager : MonoBehaviour
     public Material[] materials;
 
     private const float MaxSnowValue = 1.7f;
-    private const int StartSnowHour = 14;
-    private const int FullSnowHour = 22;
+    private const int StartSnowHour = 12;
+    private const int FullSnowHour = 18;
 
     public enum WeatherState
     {
@@ -40,7 +40,7 @@ public class WeatherManager : MonoBehaviour
 
     void UpdateSnow()
     {
-        int currentHour = TimeManager.instance.GetCurrentHour();
+        int currentHour = TimeManager.instance.GetCurrentHour() + 6;
         int currentMinute = TimeManager.instance.GetCurrentMinuteTime();
         float totalMinutes = currentHour * 60 + currentMinute;
 

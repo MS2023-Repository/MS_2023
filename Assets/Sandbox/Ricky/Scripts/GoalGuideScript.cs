@@ -43,7 +43,7 @@ namespace InGame.GoalGuide
 
             goalObj = GameObject.FindGameObjectWithTag("Goal");
 
-            offsetPos = new Vector3(0, 1, -2);
+            offsetPos = new Vector3(0, 1, -5);
             goalCamera.transform.parent = null;
             goalCamera.transform.position = goalObj.transform.position + offsetPos;
 
@@ -128,6 +128,7 @@ namespace InGame.GoalGuide
             {
                 goalImage.texture = null;
                 goalTex.Release();
+                goalTex.DiscardContents();
                 goalTex = null;
                 Destroy(goalTex);
             }

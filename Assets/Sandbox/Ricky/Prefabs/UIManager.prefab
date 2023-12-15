@@ -51,3 +51,5 @@ MonoBehaviour:
   - {fileID: 1320536270633079315, guid: b9e7a8269079a124b927281b66fcd796, type: 3}
   canvasPrefab: {fileID: 7524670629885771101, guid: 23e14ee8bed760f4ab9b75ac17bf9144,
     type: 3}
+  UICamera: {fileID: 2787272188626887734, guid: 102d0f32cfeb85142b2d3737c71b802d,
+    type: 3}

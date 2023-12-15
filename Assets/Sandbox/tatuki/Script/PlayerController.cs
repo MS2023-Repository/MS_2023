@@ -1,3 +1,4 @@
+using OutGame.Audio;
 using OutGame.GameManager;
 using OutGame.SceneManager;
 using System.Collections;
@@ -103,6 +104,7 @@ namespace InGame.Player
                 if (leftStickValue.magnitude > 0f)
                 {
                     //歩くときSE
+                    AudioManager.instance.PlaySE("WalkGrav");
 
                     _PlayerMoveScript.MoveLStick(i, leftStickValue.normalized);
                     _PlayerAnim[i].SetAnimWalk(_Player[i].transform.forward, leftStickValue.normalized);

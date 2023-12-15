@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using OutGame.SceneManager;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace OutGame.UI
@@ -10,6 +11,9 @@ namespace OutGame.UI
     {
         [SerializeField] private GameObject[] UIElements;
         [SerializeField] private GameObject canvasPrefab;
+
+        [SerializeField] private GameObject UICamera;
+        private GameObject uiCam;
 
         private GameObject canvasObj;
 
@@ -34,7 +38,20 @@ namespace OutGame.UI
                         }
                     }
                 }
+
+                if (GameObject.FindGameObjectWithTag("UICamera") == null)
+                {
+                    uiCam = Instantiate(UICamera);
+                }
+                else
+                {
+                    uiCam = GameObject.FindGameObjectWithTag("UICamera");
+                }
+                
+                Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(uiCam.GetComponent<Camera>());
             }
+
+            SetWorldCamera();
         }
 
         private void CheckForCanvas()
@@ -48,14 +65,17 @@ namespace OutGame.UI
                 canvasObj = Instantiate(canvasPrefab);
                 canvasObj.name = "Canvas";
             }
-
-            SetWorldCamera();
         }
 
         private void SetWorldCamera()
         {
-            canvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
             canvasObj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+
+            if (sceneName != "Title" && sceneName != "StageSelect")
+            {
+                canvasObj.GetComponent<Canvas>().worldCamera = uiCam.GetComponent<Camera>();
+            }
+
             canvasObj.GetComponent<Canvas>().planeDistance = 1;
         }
     }

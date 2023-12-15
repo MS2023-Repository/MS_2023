@@ -318,7 +318,10 @@ MonoBehaviour:
     volume: 0.446
   - name: HungrySE
     clip: {fileID: 8300000, guid: 1b4a77634a1c7524aab4c4625f59ce48, type: 3}
-    volume: 0.495
+    volume: 0.324
+  - name: FatSE
+    clip: {fileID: 8300000, guid: f764b4fbdf4eb8f459e1bb3cdec87da6, type: 3}
+    volume: 0.131
   - name: EatFood
     clip: {fileID: 8300000, guid: 2671dc001676c964b86dcac598e7303c, type: 3}
     volume: 0.495
@@ -330,10 +333,10 @@ MonoBehaviour:
     volume: 0.495
   - name: MoveButton
     clip: {fileID: 8300000, guid: 1ce72b884319a0845b2fe4211b3f4c1d, type: 3}
-    volume: 0.43
+    volume: 0.324
   - name: SelectButton
     clip: {fileID: 8300000, guid: 0294694d81b5b5744a16bd194140d759, type: 3}
-    volume: 0.446
+    volume: 0.438
   - name: CancelButton
     clip: {fileID: 8300000, guid: 5ca075833c883ca48ae264878e9b6ba9, type: 3}
     volume: 0.455
@@ -345,16 +348,25 @@ MonoBehaviour:
     volume: 0.175
   - name: StartSE
     clip: {fileID: 8300000, guid: 7cc10915ddf946b47a240617f544ba66, type: 3}
-    volume: 0.175
+    volume: 0.445
   - name: 1MinSE
     clip: {fileID: 8300000, guid: 99befc06ecf3cc74b8515978699158a8, type: 3}
-    volume: 0.175
+    volume: 0.352
   - name: 2MinSE
     clip: {fileID: 8300000, guid: e611b5fab9d8ac845a3e291ff565d847, type: 3}
-    volume: 0.175
+    volume: 0.367
   - name: 3MinSE
-    clip: {fileID: 8300000, guid: 7cc10915ddf946b47a240617f544ba66, type: 3}
-    volume: 0.175
+    clip: {fileID: 8300000, guid: 119f6f8b7cb5f5544adbae421152b50d, type: 3}
+    volume: 0.338
+  - name: CountdownSE
+    clip: {fileID: 8300000, guid: ab42b25653c78bd45b02431d40ab22cd, type: 3}
+    volume: 0.531
+  - name: ButtonFinishSE
+    clip: {fileID: 8300000, guid: 08d1751c1a81a414f82a9d852d3b15f6, type: 3}
+    volume: 0.595
+  - name: ScoreCountSE
+    clip: {fileID: 8300000, guid: b1e30b1366cc34b48ad7dde29d169333, type: 3}
+    volume: 0.595
   BGMClips:
   - name: Title
     clip: {fileID: 8300000, guid: e012fd156c4ade24db0763151d8be6cc, type: 3}
@@ -367,4 +379,4 @@ MonoBehaviour:
     volume: 0.457
   - name: Game
     clip: {fileID: 8300000, guid: 2615de26a1f15a442be18436368b78a7, type: 3}
-    volume: 0.457
+    volume: 0.635

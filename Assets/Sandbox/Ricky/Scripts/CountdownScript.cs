@@ -13,6 +13,14 @@ public class CountdownScript : MonoBehaviour
     [SerializeField] private RectTransform two;
     [SerializeField] private RectTransform one;
     [SerializeField] private RectTransform startTxt;
+    [SerializeField] private RectTransform endTxt;
+
+    private bool startPhase = true;
+
+    public void StartEndCountdown()
+    {
+        StartCoroutine(CountDown());
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,7 @@ public class CountdownScript : MonoBehaviour
         two.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
         startTxt.gameObject.SetActive(false);
+        endTxt.gameObject.SetActive(false);
 
         StartCoroutine(CountDown());
     }
@@ -34,8 +43,9 @@ public class CountdownScript : MonoBehaviour
     IEnumerator ShowNumber(RectTransform imageToShow)
     {
         imageToShow.gameObject.SetActive(true);
-
         imageToShow.sizeDelta = new Vector2(0, 0);
+
+        AudioManager.instance.PlaySE("CountdownSE");
 
         while (imageToShow.sizeDelta.x != 350)
         {
@@ -63,6 +73,29 @@ public class CountdownScript : MonoBehaviour
             startTrans.sizeDelta = Vector2.MoveTowards(startTrans.sizeDelta, targetSize, TimeManager.instance.deltaTime * 10000.0f);
             yield return null;
         }
+
+        yield return new WaitForSeconds(1.5f);
+        startTxt.gameObject.SetActive(false);
+
+        startPhase = false;
+    }
+
+    IEnumerator ShowEnd()
+    {
+        endTxt.gameObject.SetActive(true);
+        var endTrans = endTxt.GetComponent<RectTransform>();
+
+        endTrans.sizeDelta = new Vector2(0, 0);
+        var targetSize = new Vector2(1600, 800);
+
+        while (endTrans.sizeDelta != targetSize)
+        {
+            endTrans.sizeDelta = Vector2.MoveTowards(endTrans.sizeDelta, targetSize, TimeManager.instance.deltaTime * 10000.0f);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2.0f);
+        endTxt.gameObject.SetActive(false);
     }
 
     IEnumerator CountDown()
@@ -91,13 +124,16 @@ public class CountdownScript : MonoBehaviour
         two.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
 
-        StartCoroutine(ShowStart());
-
-        GameManager.instance.StartGame();
-        AudioManager.instance.PlaySE("StartSE");
-
-        yield return new WaitForSeconds(1.5f);
-
-        startTxt.gameObject.SetActive(false);
+        if (startPhase)
+        {
+            StartCoroutine(ShowStart());
+            AudioManager.instance.PlaySE("StartSE");
+            GameManager.instance.StartGame();
+        }
+        else
+        {
+            StartCoroutine(ShowEnd());
+            AudioManager.instance.PlaySE("TimeUp");
+        }
     }
 }

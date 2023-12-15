@@ -41,6 +41,8 @@ namespace InGame.CollectibleItem
         [SerializeField]
         private float rotationAroundGoalDistance = 2f;
 
+        [SerializeField] private int objScore = 100;
+
         // 開始位置
         private Vector3 _startPosition;
 
@@ -66,6 +68,11 @@ namespace InGame.CollectibleItem
         private bool startDropCount;
 
         private bool resultState;
+
+        public int GetScoreNum()
+        {
+            return objScore;
+        }
 
         /// <summary>
         /// 初期化処理
@@ -121,14 +128,14 @@ namespace InGame.CollectibleItem
                 {
                     this.transform.GetComponent<Rigidbody>().useGravity = false;
                     this.transform.GetChild(0).GetComponent<Collider>().enabled = false;
-                    RotateAroundXZPlane(transform.position, _goalPosition, rotationAroundGoalDistance);
+                    //RotateAroundXZPlane(transform.position, _goalPosition, rotationAroundGoalDistance);
                     // "Goal"に向かって徐々に移動
-                    float step = suctionSpeed * Time.deltaTime;
+                    float step = suctionSpeed * TimeManager.instance.deltaTime * 10;
                     transform.position = Vector3.MoveTowards(transform.position, _goalPosition, step);
-                    transform.RotateAround(_goalPosition, Vector3.up, rotationAroundGoalSpeed * Time.deltaTime);
+                    //transform.RotateAround(_goalPosition, Vector3.up, rotationAroundGoalSpeed * Time.deltaTime);
                     // "Goal"に向かってY方向にも徐々に移動
-                    float newY = Mathf.Lerp(transform.position.y, _goalPosition.y, step);
-                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                    //float newY = Mathf.Lerp(transform.position.y, _goalPosition.y, step);
+                    //transform.position = new Vector3(transform.position.x, newY, transform.position.z);
                 }
 
                 if (isHitGroundEnabled)
@@ -142,32 +149,35 @@ namespace InGame.CollectibleItem
         {
             if (!resultState)
             {
-                if (pickedUp)
+                if (!_beingSucked)
                 {
-                    if (dropToBox)
+                    if (pickedUp)
                     {
-                        this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x , this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
-                    }
-                    
-                    if (onBoard)
-                    {
-                        var currentPosition = boxObject.transform.position;
-
-                        Vector3 posDif = currentPosition - lastPos;
-                        if (posDif.magnitude > 0.009f)
+                        if (dropToBox)
                         {
-                            posDif.Normalize();
-
-                            // Apply the friction force
-                            this.GetComponent<Rigidbody>().AddForce(posDif * 9f, ForceMode.Force);
+                            this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x, this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
                         }
 
-                        lastPos = currentPosition;
-                    }
+                        if (onBoard)
+                        {
+                            var currentPosition = boxObject.transform.position;
 
-                    if (CheckIfFallenOff())
-                    {
-                        StartCoroutine(ResetObject());
+                            Vector3 posDif = currentPosition - lastPos;
+                            if (posDif.magnitude > 0.009f)
+                            {
+                                posDif.Normalize();
+
+                                // Apply the friction force
+                                this.GetComponent<Rigidbody>().AddForce(posDif * 9f, ForceMode.Force);
+                            }
+
+                            lastPos = currentPosition;
+                        }
+
+                        if (CheckIfFallenOff())
+                        {
+                            StartCoroutine(ResetObject());
+                        }
                     }
                 }
             }
@@ -224,7 +234,7 @@ namespace InGame.CollectibleItem
                 {
                     if (pickedUp && !_beingSucked)
                     {
-                        this.transform.GetComponent<Rigidbody>().drag = 13;
+                        this.transform.GetComponent<Rigidbody>().drag = 11;
                         this.transform.GetComponent<Rigidbody>().angularDrag = 5;
 
                         onBoard = true;

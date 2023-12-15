@@ -58,6 +58,7 @@ public class StageSelectButtons : MonoBehaviour
             if (!sceneLoaded)
             {
                 SceneLoader.instance.LoadScene(sceneToLoad);
+                AudioManager.instance.PlaySE("ButtonFinishSE");
                 sceneLoaded = true;
             }
         }
