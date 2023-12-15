@@ -93,6 +93,8 @@ namespace OutGame.PauseManager
                             currentSelected = MENUOPTIONS.RETRY;
                             break;
                     }
+
+                    AudioManager.instance.PlaySE("MoveButton");
                 }
                 else if (InputManager.instance.GetMenuMovement().y < 0)
                 {
@@ -105,6 +107,8 @@ namespace OutGame.PauseManager
                             currentSelected = MENUOPTIONS.EXIT;
                             break;
                     }
+
+                    AudioManager.instance.PlaySE("MoveButton");
                 }
 
                 UpdateButtonPositions();
@@ -120,17 +124,17 @@ namespace OutGame.PauseManager
                         case MENUOPTIONS.RETRY:
                             SceneLoader.instance.ReloadScene();
                             AudioManager.instance.PlaySE("SelectButton");
+                            isPaused = false;
+                            blackPanel.gameObject.SetActive(false);
                             break;
                         case MENUOPTIONS.EXIT:
                             SceneLoader.instance.LoadScene("Title");
                             AudioManager.instance.PlaySE("SelectButton");
+                            isPaused = false;
+                            blackPanel.gameObject.SetActive(false);
                             break;
                     }
                 }
-            }
-            else
-            {
-
             }
         }
 

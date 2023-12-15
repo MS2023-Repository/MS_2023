@@ -1809,6 +1809,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1898730828562528, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBody
+      objectReference: {fileID: 0}
     - target: {fileID: 1914666797483600, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1919,10 +1923,14 @@ PrefabInstance:
     - target: {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+    - target: {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4627909804491518, guid: d1d7f6d670a38f84d82180544cf7d7f0,
@@ -2556,6 +2564,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1898730828562528, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBody
+      objectReference: {fileID: 0}
     - target: {fileID: 1914666797483600, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -2669,8 +2681,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
+    - target: {fileID: 3946057714369583542, guid: d1d7f6d670a38f84d82180544cf7d7f0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4627909804491518, guid: d1d7f6d670a38f84d82180544cf7d7f0,

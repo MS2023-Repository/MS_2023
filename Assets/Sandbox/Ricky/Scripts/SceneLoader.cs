@@ -22,6 +22,8 @@ namespace OutGame.SceneManager
 
         private bool isLoading;
 
+        private bool reloadSceneState = false;
+
         public string GetCurrentScene()
         {
             return SceneManager.GetActiveScene().name;
@@ -85,7 +87,10 @@ namespace OutGame.SceneManager
 
         private void LateUpdate()
         {
-            sceneName = GetCurrentScene();
+            if (!reloadSceneState)
+            {
+                sceneName = GetCurrentScene();
+            }
         }
 
         public void LoadScene(string sceneName)
@@ -100,6 +105,7 @@ namespace OutGame.SceneManager
 
         public void ReloadScene()
         {
+            reloadSceneState = true;
             LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -137,7 +143,7 @@ namespace OutGame.SceneManager
             StartCoroutine(FadeScreen(false, string.Empty));
         }
 
-        IEnumerator FadeScreen(bool fadeOut, string sceneName)
+        IEnumerator FadeScreen(bool fadeOut, string fadeSceneName)
         {
             isLoading = true;
 
@@ -162,11 +168,16 @@ namespace OutGame.SceneManager
 
             if (fadeOut)
             {
-                StartCoroutine(LoadSceneAsynchronously(sceneName));
+                StartCoroutine(LoadSceneAsynchronously(fadeSceneName));
+                if (reloadSceneState)
+                {
+                    sceneName = string.Empty;
+                }
             }
             else
             {
                 isLoading = false;
+                reloadSceneState = false;
             }
         }
     }
