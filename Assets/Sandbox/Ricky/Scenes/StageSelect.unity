@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbd92ea4e53b642bfe4c9932c39869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: RickyProtoLevel
+  sceneToLoad: Stage0.5
 --- !u!82 &459520832
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbd92ea4e53b642bfe4c9932c39869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: RickyProtoLevel
+  sceneToLoad: Stage0.5
 --- !u!82 &771892194
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbd92ea4e53b642bfe4c9932c39869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: RickyProtoLevel
+  sceneToLoad: Stage0.5
 --- !u!82 &1032476148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbd92ea4e53b642bfe4c9932c39869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: RickyProtoLevel
+  sceneToLoad: Stage0.5
 --- !u!82 &1098726417
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bbd92ea4e53b642bfe4c9932c39869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: RickyProtoLevel
+  sceneToLoad: Stage0.5
 --- !u!82 &2048009344
 AudioSource:
   m_ObjectHideFlags: 0
