@@ -54,16 +54,6 @@ namespace InGame.Player
                 _HungerLevel = 0;
             }
 
-            if(Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                _HungerLevel = 300;
-            }
-
-            if(Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                _HungerLevel = 0.0f;
-            }
-
             if(_HungerLevel <= _BodyShapeVariable.thinHungerLevel)
             {
                 _BodyShapeType = BodyShapeType.Thin;
