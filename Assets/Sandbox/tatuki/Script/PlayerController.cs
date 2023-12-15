@@ -83,7 +83,7 @@ namespace InGame.Player
                 var rightStickValue = gamepad.rightStick.ReadValue();
                 var dpadValue = gamepad.dpad.ReadValue();
 
-                if (GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene() && SceneLoader.instance.IsGameScene())
+                if (!GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
                 {
                     leftStickValue = Vector2.zero;
                     rightStickValue = Vector2.zero;
@@ -138,7 +138,7 @@ namespace InGame.Player
                 var leftTriggerValue = gamepad.leftTrigger.ReadValue();
                 var rightTriggerValue = gamepad.rightTrigger.ReadValue();
 
-                if (GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
+                if (!GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
                 {
                     leftTriggerValue = 0;
                     rightTriggerValue = 0;
