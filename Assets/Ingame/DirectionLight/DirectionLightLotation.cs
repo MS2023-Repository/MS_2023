@@ -68,6 +68,7 @@ namespace Ingame.DirectionLight
             // 太陽の色を更新
             UpdateSunColor(rotationAngle);
         }
+
         private void UpdateSunColor(float rotationAngle)
         {
             if (rotationAngle < 45.0f) // 朝

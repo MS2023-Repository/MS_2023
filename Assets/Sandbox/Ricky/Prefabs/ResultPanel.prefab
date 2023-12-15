@@ -5108,7 +5108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8459776443690157293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5190,7 +5190,12 @@ MonoBehaviour:
   rightConfetti: {fileID: 9138830515473670403}
   leftConfetti: {fileID: 302605246023810362}
   resultBackground: {fileID: 8161796123321823517}
-  testObj: {fileID: 1049469514527995408, guid: 0a3fc59f82da5e146be45b02de74fb83, type: 3}
+  fallingFoodObj:
+  - {fileID: 4340330488127628746, guid: 25e7c9a5f5ce2b646b3eaacf021072a8, type: 3}
+  - {fileID: 1222592751976292811, guid: 1112cf87f3a813f4f9d25c0f9411f6e7, type: 3}
+  - {fileID: 3062967147544695462, guid: e2617b7fe6c8e3c40be15f011fc9be6b, type: 3}
+  - {fileID: 533308585199506042, guid: 105a50e622fbc034cb72c8bdc56ee7c4, type: 3}
+  - {fileID: 1049469514527995408, guid: 0a3fc59f82da5e146be45b02de74fb83, type: 3}
   scoreCounter: {fileID: 700668342433910129}
   foodNumObj: {fileID: 1502931462498403886, guid: 24df478b8430ae24e8b21e5ae848a816,
     type: 3}
@@ -10822,6 +10827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.017223367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789287681222373866, guid: 7142ab82929426d4ba52281460139846,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6899338789948602523, guid: 7142ab82929426d4ba52281460139846,
         type: 3}

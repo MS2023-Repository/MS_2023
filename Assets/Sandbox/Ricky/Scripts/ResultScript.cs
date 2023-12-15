@@ -38,7 +38,8 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private GameObject resultBackground;
     private Vector3 resultBackgroundTarget;
 
-    [SerializeField] private GameObject testObj;
+    [SerializeField] private GameObject[] fallingFoodObj;
+
     [SerializeField] private ScoreCounter scoreCounter;
 
     [SerializeField] private GameObject foodNumObj;
@@ -85,7 +86,7 @@ public class ResultScript : MonoBehaviour
 
         blurT = 0;
 
-        resultBackgroundTarget = new Vector3(-300, 85, 0);
+        resultBackgroundTarget = new Vector3(-390, 85, 0);
         resultBackground.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(resultBackgroundTarget.x, resultBackgroundTarget.y + 1000, resultBackgroundTarget.z);
 
         selectedMenu = MENUSTATE.NEXT;
@@ -93,6 +94,10 @@ public class ResultScript : MonoBehaviour
         increaseTime = false;
         invisColor = new Color32(255, 255, 255, 0);
         visibleColor = new Color32(255, 255, 255, 255);
+
+        resultTexture = new RenderTexture(1920, 1080, 1);
+        resultCamera.targetTexture = resultTexture;
+        playerImage.texture = resultTexture;
     }
 
     // Update is called once per frame
@@ -232,36 +237,24 @@ public class ResultScript : MonoBehaviour
         }
     }
 
-    private void OnGUI()
-    {
-        if (resultCamera.targetTexture != null)
-        {
-            resultCamera.targetTexture.Release();
-            resultCamera.targetTexture.DiscardContents();
-            resultCamera.targetTexture = null;
-
-            Destroy(resultCamera.targetTexture);
-        }
-
-        resultTexture = new RenderTexture(1920, 1080, 1);
-        resultCamera.targetTexture = resultTexture;
-        playerImage.texture = resultTexture;
-    }
-
     private void OnDisable() 
     {
         if (resultTexture != null)
         {
-            if (resultCamera.targetTexture != null)
+            if (resultCamera != null)
             {
-                resultCamera.targetTexture = null;
-                Destroy(resultCamera.targetTexture);
+                if (resultCamera.targetTexture != null)
+                {
+                    resultCamera.targetTexture = null;
+                    Destroy(resultCamera.targetTexture);
+                }
             }
             
             playerImage.texture = null;
             resultTexture.Release();
             resultTexture.DiscardContents();
             resultTexture = null;
+            Destroy(resultTexture);
         }
     }
 
@@ -269,14 +262,43 @@ public class ResultScript : MonoBehaviour
     {
         for (int i = 0; i < GameManager.instance.collectedItems.Count; i++)
         {
-            var spawnedObj = Instantiate(testObj);
-            //Destroy(spawnedObj.GetComponent<CollectibleItem>());
+            string name = GameManager.instance.collectedItems[i].name;
+            GameObject objToSpawn = null;
+
+            if (name.Contains("Berry"))
+            {
+                objToSpawn = fallingFoodObj[0];
+            }
+            else if (name.Contains("Cherry"))
+            {
+                objToSpawn = fallingFoodObj[1];
+            }
+            else if (name.Contains("Lemon"))
+            {
+                objToSpawn = fallingFoodObj[2];
+            }
+            else if (name.Contains("Peach"))
+            {
+                objToSpawn = fallingFoodObj[3];
+            }
+            else if (name.Contains("Tomato"))
+            {
+                objToSpawn = fallingFoodObj[4];
+            }
+            else
+            {
+                objToSpawn = fallingFoodObj[4];
+            }
+
+            var spawnedObj = Instantiate(objToSpawn);
             spawnedObj.transform.position = new Vector3(spawnPoint.position.x + Random.Range(-0.02f, 0.02f), spawnPoint.position.y, spawnPoint.position.z + Random.Range(-0.02f, 0.02f));
 
             Vector3 screenPos = resultCamera.WorldToScreenPoint(spawnedObj.transform.position);
             var scoreObj = Instantiate(foodNumObj, this.transform.GetChild(0).GetChild(0));
             scoreObj.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(screenPos.x - 860, screenPos.y - 650, 0);
-            scoreObj.GetComponent<FoodNumScript>().SetNum(100);
+            var scoreToAdd = GameManager.instance.collectedItems[i].GetComponent<CollectibleItem>().GetScoreNum();
+            scoreObj.GetComponent<FoodNumScript>().SetNum(scoreToAdd);
+            scoreCounter.AddScore(scoreToAdd);
 
             spawnedObj.GetComponent<Rigidbody>().useGravity = true;
             spawnedObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -284,7 +306,7 @@ public class ResultScript : MonoBehaviour
 
             spawnedObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-            scoreCounter.AddScore(100);
+            AudioManager.instance.PlaySE("ScoreCountSE");
 
             yield return new WaitForSeconds(0.5f);
         }

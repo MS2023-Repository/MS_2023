@@ -41,6 +41,8 @@ namespace InGame.CollectibleItem
         [SerializeField]
         private float rotationAroundGoalDistance = 2f;
 
+        [SerializeField] private int objScore = 100;
+
         // 開始位置
         private Vector3 _startPosition;
 
@@ -66,6 +68,11 @@ namespace InGame.CollectibleItem
         private bool startDropCount;
 
         private bool resultState;
+
+        public int GetScoreNum()
+        {
+            return objScore;
+        }
 
         /// <summary>
         /// 初期化処理
@@ -227,7 +234,7 @@ namespace InGame.CollectibleItem
                 {
                     if (pickedUp && !_beingSucked)
                     {
-                        this.transform.GetComponent<Rigidbody>().drag = 13;
+                        this.transform.GetComponent<Rigidbody>().drag = 11;
                         this.transform.GetComponent<Rigidbody>().angularDrag = 5;
 
                         onBoard = true;

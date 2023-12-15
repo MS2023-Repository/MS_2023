@@ -452,6 +452,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5572363926852500294, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393164393032768903, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 8962780908485679206, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962780908485679206, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962780908485679206, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962780908485679206, guid: 1bbb91c8d96cb2446a07151ce95d1f0f,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 36623
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

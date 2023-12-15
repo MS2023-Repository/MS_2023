@@ -128,6 +128,7 @@ namespace InGame.GoalGuide
             {
                 goalImage.texture = null;
                 goalTex.Release();
+                goalTex.DiscardContents();
                 goalTex = null;
                 Destroy(goalTex);
             }

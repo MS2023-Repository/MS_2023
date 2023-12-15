@@ -30,6 +30,10 @@ namespace OutGame.GameManager
         private bool min2Played;
         private bool min3Played;
 
+        private bool playEndCount = true;
+
+        private bool endGameState = false;
+
         public bool isInGame()
         {
             return elapsedTime < timeLimit && startGameState;
@@ -37,7 +41,7 @@ namespace OutGame.GameManager
 
         public bool isEndGame()
         {
-            return elapsedTime > timeLimit;
+            return elapsedTime > timeLimit && endGameState;
         }
 
         public float GetTimeLimit()
@@ -106,15 +110,17 @@ namespace OutGame.GameManager
                 {
                     elapsedTime += TimeManager.instance.deltaTime;
 
-                    if (elapsedTime > 180.0f)
+                    if (elapsedTime >= timeLimit)
                     {
                         if (!min3Played)
                         {
                             AudioManager.instance.PlaySE("3MinSE");
                             min3Played = true;
+
+                            StartCoroutine(EndCount());
                         }
                     }
-                    else if (elapsedTime > 120.0f)
+                    else if (elapsedTime > timeLimit / 3.0f * 2.0f)
                     {
                         if (!min2Played)
                         {
@@ -122,7 +128,7 @@ namespace OutGame.GameManager
                             min2Played = true;
                         }
                     }
-                    else if (elapsedTime > 60.0f)
+                    else if (elapsedTime > timeLimit / 3.0f)
                     {
                         if (!min1Played)
                         {
@@ -130,8 +136,21 @@ namespace OutGame.GameManager
                             min1Played = true;
                         }
                     }
+
+                    if (timeLimit - elapsedTime <= 3.5f && playEndCount)
+                    {
+                        playEndCount = false;
+                        GameObject.FindObjectOfType<CountdownScript>().StartEndCountdown();
+                    }
                 }
             }
+        }
+
+        IEnumerator EndCount()
+        {
+            yield return new WaitForSeconds(2.0f);
+
+            endGameState = true;
         }
     }
 }

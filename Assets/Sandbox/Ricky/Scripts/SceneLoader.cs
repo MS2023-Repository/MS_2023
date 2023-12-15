@@ -63,7 +63,6 @@ namespace OutGame.SceneManager
         {
             if (SceneChanged())
             {
-                Debug.Log("Scene has changed");
                 ResetLoadingScreen();
             }
 

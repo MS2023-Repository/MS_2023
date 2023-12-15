@@ -14,6 +14,7 @@ public struct SoundClip
 namespace OutGame.Audio
 {
     using OutGame.TimeManager;
+    using OutGame.GameManager;
 
     public class AudioManager : MonoBehaviour
     {
@@ -102,6 +103,27 @@ namespace OutGame.Audio
             if (SceneLoader.instance.SceneChanged())
             {
                 StartCoroutine(FadeIn());
+            }
+
+            if (SceneLoader.instance.IsGameScene())
+            {
+                if (GameManager.instance.isInGame())
+                {
+                    volumeT = 1;
+                    if (!bgmAudioSource.isPlaying)
+                    {
+                        bgmAudioSource.Play();
+                    }
+                }
+                else
+                {
+                    volumeT = 0;
+
+                    if (bgmAudioSource.isPlaying)
+                    {
+                        bgmAudioSource.Stop();
+                    }
+                }
             }
         }
 
