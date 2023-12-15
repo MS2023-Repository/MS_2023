@@ -155,7 +155,7 @@ namespace InGame.CollectibleItem
                     {
                         if (dropToBox)
                         {
-                            this.transform.position = new Vector3(boxObject.transform.GetChild(4).GetChild(0).position.x, this.transform.position.y, boxObject.transform.GetChild(4).GetChild(0).position.z);
+                            this.transform.position = new Vector3(boxObject.transform.GetChild(10).position.x, this.transform.position.y, boxObject.transform.GetChild(10).position.z);
                         }
 
                         if (onBoard)
@@ -330,14 +330,14 @@ namespace InGame.CollectibleItem
 
         IEnumerator PickUpObject(GameObject playerObj)
         {
-            this.transform.position = playerObj.transform.GetChild(0).position;
+            this.transform.position = playerObj.transform.parent.parent.GetChild(0).GetChild(10).position;
             this.transform.GetComponent<Rigidbody>().useGravity = true;
             this.transform.GetComponent<Rigidbody>().drag = 5f;
 
             this.transform.GetChild(1).gameObject.SetActive(false);
             this.transform.GetChild(2).gameObject.SetActive(false);
 
-            boxObject = playerObj.transform.parent.gameObject;
+            boxObject = playerObj.transform.parent.parent.GetChild(0).gameObject;
 
             dropToBox = true;
 

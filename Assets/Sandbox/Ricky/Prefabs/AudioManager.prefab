@@ -348,7 +348,7 @@ MonoBehaviour:
     volume: 0.175
   - name: StartSE
     clip: {fileID: 8300000, guid: 7cc10915ddf946b47a240617f544ba66, type: 3}
-    volume: 0.445
+    volume: 0.338
   - name: 1MinSE
     clip: {fileID: 8300000, guid: 99befc06ecf3cc74b8515978699158a8, type: 3}
     volume: 0.352
