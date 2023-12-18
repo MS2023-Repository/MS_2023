@@ -103,8 +103,8 @@ namespace InGame.Player
                 //左スティック
                 if (leftStickValue.magnitude > 0f)
                 {
-                    //歩くときSE
-                    AudioManager.instance.PlaySE("WalkGrav");
+                    ////歩くときSE
+                    //AudioManager.instance.PlaySE("WalkGrav");
 
                     _PlayerMoveScript.MoveLStick(i, leftStickValue.normalized);
                     _PlayerAnim[i].SetAnimWalk(_Player[i].transform.forward, leftStickValue.normalized);

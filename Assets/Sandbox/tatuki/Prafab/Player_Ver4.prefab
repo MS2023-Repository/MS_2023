@@ -665,9 +665,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5610074002796454130}
   - component: {fileID: 8753690907307497171}
-  - component: {fileID: 5180615406103297954}
   - component: {fileID: 5897166732245554800}
   - component: {fileID: 6110495458225640254}
+  - component: {fileID: 2100815490767670627}
   m_Layer: 0
   m_Name: Player_Ver4
   m_TagString: Player
@@ -711,30 +711,6 @@ MonoBehaviour:
   _NomalSpeed: 1.5
   _FatSpeed: 0.7
   _ThinSpeed: 0.7
---- !u!114 &5180615406103297954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191419719403457030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 823702e7c3f17f149a58454ff19ac263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Player:
-  - {fileID: 7277158630741465071}
-  - {fileID: 2890052713891626402}
-  _HandHeightRange: 0.3
-  _InitHandHeight: 1
-  _InitHandWidth: 0.25
-  _MaxDistance: 1.5
-  _MinDistance: 1.4
-  _CreakHandRange: 0.05
-  _ResetSpeedRotateHead: 100
-  _SpeedScaleHead: 60
-  _ScaleUpHead: {x: 8, y: 1, z: 1}
 --- !u!114 &5897166732245554800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +746,30 @@ MonoBehaviour:
   _FatHeadScale: -1
   _ThinHeadScale: 1
   _NeckRotateZ: 30
+--- !u!114 &2100815490767670627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191419719403457030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ea6c323bc5d5049848283f2291826b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Player:
+  - {fileID: 7277158630741465071}
+  - {fileID: 2890052713891626402}
+  _HandHeightRange: 0.3
+  _InitHandHeight: 1
+  _InitHandWidth: 0.25
+  _MaxDistance: 1.5
+  _MinDistance: 1.4
+  _CreakHandRange: 0.05
+  _ResetSpeedRotateHead: 100
+  _SpeedScaleHead: 120
+  _ScaleUpHead: {x: 3, y: 1, z: 1}
 --- !u!1 &3281380688399415487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa63ad1b5f8140448a04fb147e6a8657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerControllerScript: {fileID: 5180615406103297954}
+  _PlayerControllerScript: {fileID: 2100815490767670627}
   _IdleAnimLoopTime: 5
 --- !u!114 &6949081425705887680
 MonoBehaviour:
@@ -3003,7 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa63ad1b5f8140448a04fb147e6a8657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerControllerScript: {fileID: 5180615406103297954}
+  _PlayerControllerScript: {fileID: 2100815490767670627}
   _IdleAnimLoopTime: 5
 --- !u!114 &433172778730663504
 MonoBehaviour:
