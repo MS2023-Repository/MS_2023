@@ -31,7 +31,7 @@ namespace OutGame.SceneManager
 
         public bool IsGameScene()
         {
-            return GetCurrentScene() != "Title" && GetCurrentScene() != "StageSelect";
+            return GetCurrentScene().Contains("Stage");
         }
 
         public bool SceneChanged()
