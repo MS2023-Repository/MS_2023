@@ -46,7 +46,7 @@ namespace InGame.Result
         }
 
         //これを呼べばプレイヤーが定位置に移動をはじめる
-        void SetIsStartMove()
+        public void SetIsStartMove()
         {
             _IsStartMove = true;
             _DancePlayerObj[4].SetActive(true);
