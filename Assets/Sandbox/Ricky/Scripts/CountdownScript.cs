@@ -12,6 +12,11 @@ public class CountdownScript : MonoBehaviour
     [SerializeField] private RectTransform three;
     [SerializeField] private RectTransform two;
     [SerializeField] private RectTransform one;
+
+    [SerializeField] private RectTransform threeFin;
+    [SerializeField] private RectTransform twoFin;
+    [SerializeField] private RectTransform oneFin;
+
     [SerializeField] private RectTransform startTxt;
     [SerializeField] private RectTransform endTxt;
 
@@ -28,6 +33,9 @@ public class CountdownScript : MonoBehaviour
         three.gameObject.SetActive(false);
         two.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
+        threeFin.gameObject.SetActive(false);
+        twoFin.gameObject.SetActive(false);
+        oneFin.gameObject.SetActive(false);
         startTxt.gameObject.SetActive(false);
         endTxt.gameObject.SetActive(false);
 
@@ -102,27 +110,63 @@ public class CountdownScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        StartCoroutine(ShowNumber(three));
+        if (startPhase)
+        {
+            StartCoroutine(ShowNumber(three));
+            threeFin.gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(ShowNumber(threeFin));
+            three.gameObject.SetActive(false);
+        }
         two.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
+        twoFin.gameObject.SetActive(false);
+        oneFin.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.0f);
 
-        StartCoroutine(ShowNumber(two));
+        if (startPhase)
+        {
+            StartCoroutine(ShowNumber(two));
+            twoFin.gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(ShowNumber(twoFin));
+            two.gameObject.SetActive(false);
+        }
         three.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
+        threeFin.gameObject.SetActive(false);
+        oneFin.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.0f);
 
-        StartCoroutine(ShowNumber(one));
+        if (startPhase)
+        {
+            StartCoroutine(ShowNumber(one));
+            oneFin.gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(ShowNumber(oneFin));
+            one.gameObject.SetActive(false);
+        }
         three.gameObject.SetActive(false);
         two.gameObject.SetActive(false);
+        threeFin.gameObject.SetActive(false);
+        twoFin.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.0f);
 
         three.gameObject.SetActive(false);
         two.gameObject.SetActive(false);
         one.gameObject.SetActive(false);
+        threeFin.gameObject.SetActive(false);
+        twoFin.gameObject.SetActive(false);
+        oneFin.gameObject.SetActive(false);
 
         if (startPhase)
         {

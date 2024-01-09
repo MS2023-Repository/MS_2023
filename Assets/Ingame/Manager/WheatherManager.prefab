@@ -48,4 +48,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0e11d19c660a3ec43b94751a5b7f85d4, type: 2}
   - {fileID: 2100000, guid: 0799a1e95665ef14f8fe2cbcd4ba3dc4, type: 2}
   - {fileID: 2100000, guid: 93caadf4359ae8143aad35b3145d31af, type: 2}
+  snowPrefab: {fileID: 4884174978896935260, guid: 7ef8f803405753a4db3b9660aa7d902a,
+    type: 3}
   currentWeather: 0

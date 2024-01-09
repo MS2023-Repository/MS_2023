@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class CameraObjectTransparency : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class CameraObjectTransparency : MonoBehaviour
                 float distanceToPlayer = hit.distance;
                 float newTransparency = Mathf.Lerp(1.0f, 0.0f, Mathf.InverseLerp(0.0f, transparencyThreshold, distanceToPlayer));
                 objectMaterial.SetFloat("_Transparency", newTransparency);
+
+                objectRenderer.material = objectMaterial;
             }
         }
     }

@@ -25,8 +25,10 @@ public class TitleScript : MonoBehaviour
 
         MAX
     }
-    
-    [SerializeField] private TextMeshProUGUI[] buttons;
+
+    [SerializeField] private Image[] buttonImg;
+    [SerializeField] private Sprite[] unselectedStates;
+    [SerializeField] private Sprite[] selectedStates;
 
     private MENUSTATE menuState;
 
@@ -89,9 +91,9 @@ public class TitleScript : MonoBehaviour
         switch (menuState)
         {
             case MENUSTATE.PRESS:
-                buttons[0].gameObject.SetActive(true);
-                buttons[1].gameObject.SetActive(false);
-                buttons[2].gameObject.SetActive(false);
+                buttonImg[0].gameObject.SetActive(true);
+                buttonImg[1].gameObject.SetActive(false);
+                buttonImg[2].gameObject.SetActive(false);
 
                 if (InputManager.instance.menuSelectedState)
                 {
@@ -100,13 +102,13 @@ public class TitleScript : MonoBehaviour
                     alphaTime = 1.0f;
                 }
 
-                buttons[0].faceColor = Color32.Lerp(invisColor, visibleColor, t);
+                buttonImg[0].color = Color32.Lerp(invisColor, visibleColor, t);
 
                 break;
             case MENUSTATE.MAIN:
-                buttons[0].gameObject.SetActive(false);
-                buttons[1].gameObject.SetActive(true);
-                buttons[2].gameObject.SetActive(true);
+                buttonImg[0].gameObject.SetActive(false);
+                buttonImg[1].gameObject.SetActive(true);
+                buttonImg[2].gameObject.SetActive(true);
 
                 if (menuDir > 0)
                 {
@@ -115,7 +117,7 @@ public class TitleScript : MonoBehaviour
                         case MENUS.QUIT:
                             AudioManager.instance.PlaySE("MoveButton");
                             selectedMenu = MENUS.START;
-                            alphaTime = 1.0f;
+                            alphaTime = 1.5f;
                             break;
                         default:
                             break;
@@ -128,7 +130,7 @@ public class TitleScript : MonoBehaviour
                         case MENUS.START:
                             AudioManager.instance.PlaySE("MoveButton");
                             selectedMenu = MENUS.QUIT;
-                            alphaTime = 1.0f;
+                            alphaTime = 1.5f;
                             break;
                         default:
                             break;
@@ -174,11 +176,15 @@ public class TitleScript : MonoBehaviour
         {
             if (i == buttonIds)
             {
-                buttons[i + 1].faceColor = Color32.Lerp(invisColor, visibleColor, t);
+                //buttonImg[i + 1].color = Color32.Lerp(invisColor, visibleColor, t);
+                buttonImg[i + 1].GetComponent<RectTransform>().localScale = Vector3.Lerp(Vector3.one, new Vector3(1.2f, 1.2f, 1.2f), t);
+                buttonImg[i + 1].sprite = selectedStates[i];
             }
             else
             {
-                buttons[i + 1].faceColor = visibleColor;
+                //buttonImg[i + 1].color = visibleColor;
+                buttonImg[i + 1].GetComponent<RectTransform>().localScale = Vector3.one;
+                buttonImg[i + 1].sprite = unselectedStates[i];
             }
         }
     }

@@ -7,9 +7,13 @@ public class WeatherManager : MonoBehaviour
 
     public Material[] materials;
 
+    [SerializeField] private GameObject snowPrefab;
+
     private const float MaxSnowValue = 1.7f;
     private const int StartSnowHour = 12;
     private const int FullSnowHour = 18;
+
+    private bool spawnSnow = true;
 
     public enum WeatherState
     {
@@ -49,6 +53,13 @@ public class WeatherManager : MonoBehaviour
             float progress = (totalMinutes - StartSnowHour * 60) / ((FullSnowHour - StartSnowHour) * 60);
             float snowValue = Mathf.Lerp(0, MaxSnowValue, progress);
             SetSnowValue(snowValue);
+
+            if (spawnSnow)
+            {
+                spawnSnow = false;
+                var snowObj = Instantiate(snowPrefab);
+                snowObj.transform.position = GameObject.FindGameObjectWithTag("Goal").transform.position + Vector3.up * 8.0f;
+            }
         }
         else if (totalMinutes < StartSnowHour * 60 || totalMinutes > FullSnowHour * 60)
         {

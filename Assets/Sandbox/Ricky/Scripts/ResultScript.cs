@@ -28,6 +28,7 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private Camera resultCamera;
     [SerializeField] private RawImage playerImage;
     [SerializeField] private GameObject panel;
+    [SerializeField] private Image blackPanel;
 
     [SerializeField] private ResultPlayerMovement resultPlayerSc;
     [SerializeField] private Transform spawnPoint;
@@ -71,6 +72,10 @@ public class ResultScript : MonoBehaviour
         panel.SetActive(false);
         playerImage.gameObject.SetActive(true);
         startSpawn = false;
+
+        var panelColor = blackPanel.color;
+        panelColor.a = 0;
+        blackPanel.color = panelColor;
 
         rightConfetti.SetActive(false);
         leftConfetti.SetActive(false);
@@ -123,6 +128,9 @@ public class ResultScript : MonoBehaviour
                         blurObj.SetFloat("_BlurX", valueToSet);
                         blurObj.SetFloat("_BlurY", valueToSet);
 
+                        var panelColor = blackPanel.color;
+                        panelColor.a = Mathf.Lerp(0, 0.6f, ti);
+
                         blurT = Mathf.Clamp(blurT, 0, 1.5f);
                     }
                     break;
@@ -131,7 +139,7 @@ public class ResultScript : MonoBehaviour
                     {
                         animState = ANIMSTATE.PLAYERMOVE;
                         resultPlayerSc.StartMove();
-                        transform.GetChild(0).GetChild(1).SetParent(null);
+                        panel.transform.GetChild(1).SetParent(null);
                     }
                     else
                     {
@@ -294,7 +302,7 @@ public class ResultScript : MonoBehaviour
             spawnedObj.transform.position = new Vector3(spawnPoint.position.x + Random.Range(-0.02f, 0.02f), spawnPoint.position.y, spawnPoint.position.z + Random.Range(-0.02f, 0.02f));
 
             Vector3 screenPos = resultCamera.WorldToScreenPoint(spawnedObj.transform.position);
-            var scoreObj = Instantiate(foodNumObj, this.transform.GetChild(0).GetChild(0));
+            var scoreObj = Instantiate(foodNumObj, panel.transform.GetChild(0));
             scoreObj.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(screenPos.x - 860, screenPos.y - 650, 0);
             var scoreToAdd = GameManager.instance.collectedItems[i].GetComponent<CollectibleItem>().GetScoreNum();
             scoreObj.GetComponent<FoodNumScript>().SetNum(scoreToAdd);
