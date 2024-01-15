@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using InGame.CollectibleItem;
+using InGame.Result;
 using OutGame.Audio;
 using OutGame.GameManager;
 using OutGame.InputManager;
@@ -28,7 +29,6 @@ public class ResultScript : MonoBehaviour
     [SerializeField] private Camera resultCamera;
     [SerializeField] private RawImage playerImage;
     [SerializeField] private GameObject panel;
-    [SerializeField] private Image blackPanel;
 
     [SerializeField] private ResultPlayerMovement resultPlayerSc;
     [SerializeField] private Transform spawnPoint;
@@ -49,14 +49,16 @@ public class ResultScript : MonoBehaviour
     private Material blurObj;
     private float blurT;
 
+    [SerializeField] private DancePlayer playerDance;
+
     enum MENUSTATE
     {
         SELECT,
         NEXT
     }    
 
-    [SerializeField] private TextMeshProUGUI selectTxt;
-    [SerializeField] private TextMeshProUGUI nextTxt;
+    [SerializeField] private RectTransform selectTxt;
+    [SerializeField] private RectTransform nextTxt;
     private MENUSTATE selectedMenu;
     private float menuT;
     private bool increaseTime;
@@ -72,10 +74,6 @@ public class ResultScript : MonoBehaviour
         panel.SetActive(false);
         playerImage.gameObject.SetActive(true);
         startSpawn = false;
-
-        var panelColor = blackPanel.color;
-        panelColor.a = 0;
-        blackPanel.color = panelColor;
 
         rightConfetti.SetActive(false);
         leftConfetti.SetActive(false);
@@ -128,8 +126,8 @@ public class ResultScript : MonoBehaviour
                         blurObj.SetFloat("_BlurX", valueToSet);
                         blurObj.SetFloat("_BlurY", valueToSet);
 
-                        var panelColor = blackPanel.color;
-                        panelColor.a = Mathf.Lerp(0, 0.6f, ti);
+                        var darknessToSet = Mathf.Lerp(1, 0.4f, ti);
+                        blurObj.SetFloat("_Darkness", darknessToSet);
 
                         blurT = Mathf.Clamp(blurT, 0, 1.5f);
                     }
@@ -216,12 +214,10 @@ public class ResultScript : MonoBehaviour
                     switch (selectedMenu)
                     {
                         case MENUSTATE.SELECT:
-                            selectTxt.faceColor = Color32.Lerp(invisColor, visibleColor, t);
-                            nextTxt.faceColor = visibleColor;
+                            selectTxt.localScale = Vector3.Lerp(Vector3.one, new Vector3(1.2f, 1.2f, 1.2f), t);
                             break;
                         case MENUSTATE.NEXT:
-                            nextTxt.faceColor = Color32.Lerp(invisColor, visibleColor, t);
-                            selectTxt.faceColor = visibleColor;
+                            nextTxt.localScale = Vector3.Lerp(Vector3.one, new Vector3(1.2f, 1.2f, 1.2f), t);
                             break;
                     }
 
@@ -326,5 +322,7 @@ public class ResultScript : MonoBehaviour
         nextTxt.gameObject.SetActive(true);
 
         animState = ANIMSTATE.MENU;
+
+        playerDance.SetIsStartMove();
     }
 }

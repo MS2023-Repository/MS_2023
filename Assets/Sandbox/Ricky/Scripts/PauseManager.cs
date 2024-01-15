@@ -161,11 +161,11 @@ namespace OutGame.PauseManager
             {
                 if (i == buttonId)
                 {
-                    buttonObjs[i].GetComponent<Image>().color = Color.gray;
+                    buttonObjs[i].GetComponent<RectTransform>().localScale = new Vector3(1.2f, 1.2f, 1.2f);
                 }
                 else
                 {
-                    buttonObjs[i].GetComponent<Image>().color = Color.white;
+                    buttonObjs[i].GetComponent<RectTransform>().localScale = Vector3.one;
                 }
             }
         }

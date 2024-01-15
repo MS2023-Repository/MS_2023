@@ -54,7 +54,6 @@ namespace InGame.Player
             Vector3 Rot = transform.localEulerAngles;
 
             transform.localEulerAngles = new Vector3(Rot.x, Rot.y, Rot.z + degree);
-            Debug.Log(degree);
 
             //float c = Mathf.Sqrt((a * a) + (b * b));
 

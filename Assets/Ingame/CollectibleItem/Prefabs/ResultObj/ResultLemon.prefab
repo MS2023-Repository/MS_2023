@@ -90,12 +90,17 @@ PrefabInstance:
     - target: {fileID: 3189079849865706918, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}
       propertyPath: m_Mass
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3189079849865706918, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}
       propertyPath: m_UseGravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189079849865706918, guid: 0af5684afb1792241a9b065a60b6a1c1,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3577157456160891257, guid: 0af5684afb1792241a9b065a60b6a1c1,
         type: 3}

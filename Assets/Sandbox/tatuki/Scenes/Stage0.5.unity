@@ -215,6 +215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -341,6 +346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -505,6 +515,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -605,6 +620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -633,7 +653,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.7
+      value: 14.7699995
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -808,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 4340330488127628746, guid: c58043c57b9309243bd861a9c9839eef,
     type: 3}
   _RespawnRange: 1
@@ -923,6 +943,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -1321,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 3062967147544695462, guid: 117247fe09a25604e86a611f446bd2e3,
     type: 3}
   _RespawnRange: 1
@@ -1729,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -1760,6 +1785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -7222,6 +7252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -7321,6 +7356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -7681,6 +7721,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -8464,6 +8509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -8579,6 +8629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -8651,6 +8706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -8926,6 +8986,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -9267,6 +9332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -9295,7 +9365,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.66
+      value: 14.73
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -9465,7 +9535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 4340330488127628746, guid: c58043c57b9309243bd861a9c9839eef,
     type: 3}
   _RespawnRange: 1
@@ -9587,6 +9657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -9814,6 +9889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -10067,7 +10147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -10098,6 +10178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -10461,6 +10546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -10571,7 +10661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1049469514527995408, guid: 68641ecea297ecd41b693cdca4b1f5eb,
     type: 3}
   _RespawnRange: 1
@@ -10967,6 +11057,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -11061,6 +11156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -11154,6 +11254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -11254,6 +11359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -11703,6 +11813,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_07 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
       propertyPath: m_RootOrder
@@ -11979,6 +12094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -12094,6 +12214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -12175,6 +12300,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 494455733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &501141869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1545254095}
+    m_Modifications:
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000000023381
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000028055
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388362706344745222, guid: 6e5974d58128101408ec9d808f931153,
+        type: 3}
+      propertyPath: m_Name
+      value: BlurPanel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e5974d58128101408ec9d808f931153, type: 3}
 --- !u!4 &504606671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1778994357615247706, guid: ef62619642b0df743b22dd5120c6ac4d,
@@ -12294,6 +12487,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -12393,6 +12591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_07 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
@@ -12704,7 +12907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1222592751976292811, guid: af61676ca7fee584989c0e67f5d0ff0e,
     type: 3}
   _RespawnRange: 1
@@ -17958,6 +18161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -18063,6 +18271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -18570,6 +18783,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdafb3c2f54d434894928d72d282874, type: 3}
+--- !u!1 &642835711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642835714}
+  - component: {fileID: 642835713}
+  - component: {fileID: 642835712}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &642835712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642835711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &642835713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642835711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &642835714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642835711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &651637883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18849,6 +19130,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -18963,6 +19249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -19151,6 +19442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -19533,6 +19829,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -19632,6 +19933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -19907,6 +20213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -20449,6 +20760,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -20646,6 +20962,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -20812,6 +21133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -21161,6 +21487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -21627,6 +21958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -22248,6 +22584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -23479,6 +23820,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_07 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
       propertyPath: m_RootOrder
@@ -23755,6 +24101,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -23783,7 +24134,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.68
+      value: 14.75
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -24280,6 +24631,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -24557,6 +24913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -24716,6 +25077,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f52e9284944f7f4e93924c22014ce5a, type: 3}
+--- !u!4 &1025534360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1280966180916627288, guid: 6e5974d58128101408ec9d808f931153,
+    type: 3}
+  m_PrefabInstance: {fileID: 501141869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1028042352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25168,7 +25535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 3062967147544695462, guid: 117247fe09a25604e86a611f446bd2e3,
     type: 3}
   _RespawnRange: 1
@@ -25233,7 +25600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1049469514527995408, guid: 68641ecea297ecd41b693cdca4b1f5eb,
     type: 3}
   _RespawnRange: 1
@@ -25327,6 +25694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (58)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -25436,6 +25808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -25619,6 +25996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -25647,7 +26029,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.69
+      value: 14.759999
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -26150,6 +26532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -26243,6 +26630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -26426,6 +26818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -26521,6 +26918,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -26614,6 +27016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -26807,6 +27214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -28414,6 +28826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -29147,6 +29564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -29790,6 +30212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -29998,7 +30425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1049469514527995408, guid: 68641ecea297ecd41b693cdca4b1f5eb,
     type: 3}
   _RespawnRange: 1
@@ -30377,6 +30804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -30405,7 +30837,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.55
+      value: 14.62
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -30825,6 +31257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -31196,6 +31633,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -31295,6 +31737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -31382,6 +31829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -31503,7 +31955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1222592751976292811, guid: af61676ca7fee584989c0e67f5d0ff0e,
     type: 3}
   _RespawnRange: 1
@@ -32430,6 +32882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -32771,10 +33228,11 @@ Transform:
   m_GameObject: {fileID: 1545254092}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17003489, y: -0.11534757, z: -0.020044908, w: 0.97845864}
-  m_LocalPosition: {x: 511.83, y: 1.92, z: 473.58}
+  m_LocalPosition: {x: 502.741, y: 1.92, z: 481.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1025534360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 19.155, y: -14.251, z: -4.764}
 --- !u!114 &1545254096
@@ -32992,7 +33450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 4340330488127628746, guid: c58043c57b9309243bd861a9c9839eef,
     type: 3}
   _RespawnRange: 1
@@ -33207,7 +33665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1049469514527995408, guid: 68641ecea297ecd41b693cdca4b1f5eb,
     type: 3}
   _RespawnRange: 1
@@ -33354,12 +33812,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570466635}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82ab1ad0a6f94511a792c079b6356083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 720
+  initialTime: -90
   minIntensity: 0.05
   maxIntensity: 1.3
 --- !u!1001 &1574066233
@@ -33389,6 +33847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -34223,7 +34686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -34677,6 +35140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -34875,7 +35343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 1222592751976292811, guid: af61676ca7fee584989c0e67f5d0ff0e,
     type: 3}
   _RespawnRange: 1
@@ -35027,7 +35495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 3062967147544695462, guid: 117247fe09a25604e86a611f446bd2e3,
     type: 3}
   _RespawnRange: 1
@@ -35309,6 +35777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -35935,7 +36408,7 @@ PrefabInstance:
     - target: {fileID: 5610074002796454130, guid: ced16799facafea49bdc338eb3aa0c65,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 510.98
+      value: 501.89102
       objectReference: {fileID: 0}
     - target: {fileID: 5610074002796454130, guid: ced16799facafea49bdc338eb3aa0c65,
         type: 3}
@@ -35945,7 +36418,7 @@ PrefabInstance:
     - target: {fileID: 5610074002796454130, guid: ced16799facafea49bdc338eb3aa0c65,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 476.5142
+      value: 484.32422
       objectReference: {fileID: 0}
     - target: {fileID: 5610074002796454130, guid: ced16799facafea49bdc338eb3aa0c65,
         type: 3}
@@ -35982,6 +36455,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6072829438220792536, guid: ced16799facafea49bdc338eb3aa0c65,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072829438220792536, guid: ced16799facafea49bdc338eb3aa0c65,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283872543297101782, guid: ced16799facafea49bdc338eb3aa0c65,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858850634100235483, guid: ced16799facafea49bdc338eb3aa0c65,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35999,6 +36492,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -36088,6 +36586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -36116,7 +36619,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.97
+      value: 14.8
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -36187,6 +36690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -36463,6 +36971,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_07 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
@@ -36947,7 +37460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 4340330488127628746, guid: c58043c57b9309243bd861a9c9839eef,
     type: 3}
   _RespawnRange: 1
@@ -37236,6 +37749,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -37424,7 +37942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 4340330488127628746, guid: c58043c57b9309243bd861a9c9839eef,
     type: 3}
   _RespawnRange: 1
@@ -37657,6 +38175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -37685,7 +38208,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.49
+      value: 14.559999
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -37744,6 +38267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -38100,6 +38628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -38556,6 +39089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -38649,6 +39187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_07 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
@@ -38940,6 +39483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PP_Meadow_07 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
@@ -44252,6 +44800,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -44349,6 +44902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -44481,7 +45039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -44514,7 +45072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -44999,7 +45557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f57f56a275dc842808d6a438e59347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RespawnTime: 30
+  _RespawnTime: 45
   _RespawnItem: {fileID: 533308585199506042, guid: 2f52e9284944f7f4e93924c22014ce5a,
     type: 3}
   _RespawnRange: 1
@@ -46078,6 +46636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_07 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: cf22a2db10f09a34495e9f83913738c8,
         type: 3}
       propertyPath: m_RootOrder
@@ -46266,6 +46829,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -46453,6 +47021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -46995,6 +47568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
       propertyPath: m_RootOrder
@@ -47094,6 +47672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661435515762455780, guid: e289bf5debb17f6459818c207d781953,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953,
         type: 3}
@@ -47449,6 +48032,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082612214144964267, guid: d5b8de414112a004a82d0437b5f7a780,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_RootOrder
@@ -47477,7 +48065,7 @@ PrefabInstance:
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.83
+      value: 14.9
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: d5b8de414112a004a82d0437b5f7a780,
         type: 3}
@@ -47634,3 +48222,4 @@ SceneRoots:
   - {fileID: 914670154}
   - {fileID: 426358457}
   - {fileID: 1698415652}
+  - {fileID: 642835714}
