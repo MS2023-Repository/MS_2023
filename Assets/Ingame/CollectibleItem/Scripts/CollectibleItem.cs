@@ -69,6 +69,8 @@ namespace InGame.CollectibleItem
 
         private bool resultState;
 
+        private bool onGround = false;
+
         public int GetScoreNum()
         {
             return objScore;
@@ -155,7 +157,7 @@ namespace InGame.CollectibleItem
                     {
                         if (dropToBox)
                         {
-                            this.transform.position = new Vector3(boxObject.transform.GetChild(10).position.x, this.transform.position.y, boxObject.transform.GetChild(10).position.z);
+                            this.transform.position = new Vector3(boxObject.transform.position.x, this.transform.position.y, boxObject.transform.position.z);
                         }
 
                         if (onBoard)
@@ -163,20 +165,28 @@ namespace InGame.CollectibleItem
                             var currentPosition = boxObject.transform.position;
 
                             Vector3 posDif = currentPosition - lastPos;
-                            if (posDif.magnitude > 0.009f)
-                            {
-                                posDif.Normalize();
 
-                                // Apply the friction force
-                                this.GetComponent<Rigidbody>().AddForce(posDif * 9f, ForceMode.Force);
+                            posDif.Normalize();
+                            Debug.Log(boxObject.transform.right + "   " + posDif + "   ");
+
+                            posDif *= 0.95f;
+
+                            if (Mathf.Abs(Vector3.Dot(boxObject.transform.right, posDif)) < 0.6f)
+                            {
+                                posDif *= 0.8f;
                             }
+
+                            this.GetComponent<Rigidbody>().velocity = new Vector3(posDif.x, this.GetComponent<Rigidbody>().velocity.y, posDif.z);
 
                             lastPos = currentPosition;
                         }
 
-                        if (CheckIfFallenOff())
+                        if (onGround)
                         {
-                            StartCoroutine(ResetObject());
+                            if (CheckIfFallenOff())
+                            {
+                                StartCoroutine(ResetObject());
+                            }
                         }
                     }
                 }
@@ -234,8 +244,8 @@ namespace InGame.CollectibleItem
                 {
                     if (pickedUp && !_beingSucked)
                     {
-                        this.transform.GetComponent<Rigidbody>().drag = 11;
-                        this.transform.GetComponent<Rigidbody>().angularDrag = 5;
+                        this.transform.GetComponent<Rigidbody>().drag = 8;
+                        this.transform.GetComponent<Rigidbody>().angularDrag = 10;
 
                         onBoard = true;
                         dropToBox = false;
@@ -286,6 +296,23 @@ namespace InGame.CollectibleItem
                 }
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Ground")
+            {
+                onGround = true;
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "Ground")
+            {
+                onGround = false;
+            }
+        }
+
         private Vector3 RotateAroundXZPlane(Vector3 currentPosition, Vector3 goalPosition, float Length)
         {
             // 現在位置からゴール位置までの方向ベクトルを計算
@@ -318,7 +345,7 @@ namespace InGame.CollectibleItem
                 timeAway = 0;
             }
 
-            if (timeAway >= 1)
+            if (timeAway >= 0.5f)
             {
                 result = true;
                 timeAway = 0;

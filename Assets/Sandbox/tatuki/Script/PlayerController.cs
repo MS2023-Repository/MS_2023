@@ -83,11 +83,14 @@ namespace InGame.Player
                 var rightStickValue = gamepad.rightStick.ReadValue();
                 var dpadValue = gamepad.dpad.ReadValue();
 
-                if (!GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
+                if (SceneLoader.instance.IsGameScene())
                 {
-                    leftStickValue = Vector2.zero;
-                    rightStickValue = Vector2.zero;
-                    dpadValue = Vector2.zero;
+                    if (!GameManager.instance.isInGame())
+                    {
+                        leftStickValue = Vector2.zero;
+                        rightStickValue = Vector2.zero;
+                        dpadValue = Vector2.zero;
+                    }
                 }
 
                 if (i == 0)
@@ -139,10 +142,13 @@ namespace InGame.Player
                 var leftTriggerValue = gamepad.leftTrigger.ReadValue();
                 var rightTriggerValue = gamepad.rightTrigger.ReadValue();
 
-                if (!GameManager.instance.isInGame() && SceneLoader.instance.IsGameScene())
+                if (SceneLoader.instance.IsGameScene())
                 {
-                    leftTriggerValue = 0;
-                    rightTriggerValue = 0;
+                    if (!GameManager.instance.isInGame())
+                    {
+                        leftTriggerValue = 0;
+                        rightTriggerValue = 0;
+                    }
                 }
 
                 //_HandPosScript[i].SetLeftHandHeight(_InitHandHeight, _InitHandWidth, leftTriggerValue, _HandHeightRange);
